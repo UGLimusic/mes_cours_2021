@@ -1,0 +1,130 @@
+\documentclass[a4paper,12pt,french]{book}
+\usepackage[margin=2cm]{geometry}
+\usepackage[thinfonts]{uglix2}
+\nouveaustyle
+
+\begin{document}
+\textbf{NOMS DES \'ELÈVES:}\\
+
+\titre{Du cours au programme Python}{NSI1-1}{11-2021}
+
+\exo{}\\
+Rappelle-toi ce que nous avons vu en cours :
+\begin{methode}[ 1 : passer de la base 2 à la base 10]
+Que vaut $(11101)_2$ ?
+\begin{center}
+	\begin{tabular}{|c|c|c|c|c|c|}
+		\hline 
+		Chiffre binaire & 1 & 1 & 1 & 0 & 1 \\ 
+		\hline 
+		Valeur & $2^4$ & $2^3$ & $2^2$ & $2^1$ & $2^0$ \\ 
+		\hline 
+	\end{tabular}
+\end{center}
+\begin{tabbing}
+		$(11101)_2$	\= 	$=1\times 2^4+1\times 2^3+1\times 2^2+0\times 2^1+1\times 2^0$	\\
+			\>	$=16+8+4+1$	\\	
+			\>	$=29$	
+	\end{tabbing}
+\end{methode}
+
+    Tu vas compléter le programme appelé \texttt{methode1.py} qui suit... la méthode 1 :
+\begin{enumerate}[--]
+	\item 	il demande à l'utilisateur d'entrer un nombre en binaire sous la forme d'une chaine de caractères composées uniquement de 0 et de 1;
+	\item 	affiche l'écriture décimale du nombre binaire que l'utilisateur a entré.\\
+\end{enumerate}
+
+\textbf{Comment fonctionne ce programme sur un exemple ?}\\
+
+En reprenant l'exemple de l'encadré on entre \tw{11101} dans une variable \tw{chaine} et
+\begin{enumerate}[--]
+	\item 	on voit que la longueur de cette chaine est 5;
+	\item 	donc \tw{chaine[0]} est le bit de $2^4$, \tw{chaine[1]} est le bit de $2^3$, ..., \tw{chaine[4]} est le bit de $2^0$;
+	\item 	ainsi on peut créer une variable \tw{nombre} qui vaut zéro et une boucle \tw{for} pour parcourir \tw{chaine};
+	\item 	si \tw{chaine[i]} vaut 1 on ajoute la valeur correspondante à \tw{somme} sinon on ne fait rien;
+	\item 	en sortie de boucle on affiche \tw{somme}.
+\end{enumerate}
+
+Tu peux déjà commencer par compléter sur papier :
+\newpage
+
+\begin{pythoncode}
+nombre_binaire = input("Entrez un nombre en binaire :")
+valeur = ............
+n = len(............)
+for i in range(............):
+    if nombre_binaire[............] == '1':
+        valeur += 2**(............)
+print("Cela vaut",valeur)
+\end{minted}
+\end{pythoncode}
+
+Ensuite tu peux le programmer avec \textsc{EduPython}.\\
+
+\exo{}\\
+\begin{methode}[ 2 : passer de la base 10 à la base 2]
+\begin{tabbing}
+	203	\= 	$=128+64+8+2+1$	\\
+	
+		\>	$=2^7+2^6+2^3+2^1+2^0$	\\
+		
+		\>	$=1\times 2^7+1\times 2^6+0\times 2^5 + 0\times 2^4 +1\times 2^3+0\times 2^2 + 1\times 
+		2^1+1\times 2^0$	\\
+		
+		\> $=(11001011)_2$
+\end{tabbing}
+\end{methode}
+
+Tu vas compléter le programme \texttt{methode2.py} qui
+\begin{enumerate}[--]
+	\item 	demande à l'utilisateur un entier positif;
+	\item 	affiche l'écriture en binaire de cet entier (au format \pythoninline{str}) en suivant la méthode 2;\\
+\end{enumerate}
+
+\textbf{Comment fonctionne la méthode sur l'exemple ?}\\
+
+\begin{enumerate}[--]
+	\item 	j'ai d'abord déterminé que 128 est la plus grande puissance de 2 inférieure à 203 : je suis parti de 1 puis je l'ai multiplié par 2, par 2 etc, jusqu'à 256. Puisque 256 est strictement plus grand que 203, la plus grande puissance inférieur à 203 est 128.  
+	\item 	j'ai commencé par définir une variable \pythoninline{binaire} de type \pythoninline{str} valant \pythoninline{""}.
+    \item   je peux enlever 128 à 203, donc je peux ajouter \pythoninline{"1"} à \pythoninline{binaire} : c'est le bit de 128.
+    \item   j'enlève 128 à 203, il reste 75 et je regarde si la puissance de 2 « juste avant » 128 est inférieure à 75 : $64<75$ donc à ma variable \pythoninline{binaire} j'ajoute \pythoninline{'1'} (bit de 64).
+    \item   je recommence en enlevant 64 à 75 : il reste 11 et 32 « ne rentre pas dans 11 » donc j'ajoute \pythoninline{'0'} à \pythoninline{binaire}.
+    \item et ainsi de suite jusqu'à ce qu'il ne me reste plus rien.
+    
+\end{enumerate}
+
+Tu peux commencer par compléter sur papier :
+
+\pythonfile{scripts/methode2incomplet.py}
+
+Programme ensuite ton script avec \pythoninline{EduPython}.\\
+
+\exo{}\\
+
+Tu vas devoir compléter le programme \pythoninline{methode3.py} qui utilise la méthode des divisions successives par 2 pour obtenir l'écriture binaire (au format \pythoninline{str}) d'un entier.
+\newpage
+\begin{methode}[ 3 : les divisions successives]
+Voici comment on trouve les chiffres de l'écriture \textit{binaire} de 203 :
+$$\division[2]{203}$$
+En définitive, $203=(11001011)_2$.
+\end{methode}
+
+
+
+	Pour cet exercice il faut se \og débrouiller tout\cdot e seul\cdot e\fg{} en tirant les leçons des exercices précédents.
+\begin{enumerate}[\bfseries 1.]
+	\item 	\'Ecrire un programme à la main qui:
+	\begin{enumerate}[--]
+		\item 	demande un entier positif à l'utilisateur;
+		\item 	affiche son écriture en binaire en appliquant la méthode précédente.
+	\end{enumerate}
+	\item 	\'Ecrire le programme Python sur l'ordinateur, il devra s'appeler \texttt{methode3.py}	
+\end{enumerate}
+Tu peux commencer par compléter sur papier :
+
+\pythonfile{scripts/methode3incomplet.py}
+
+Programme ensuite ton script avec \pythoninline{EduPython}.
+
+
+\end{document}

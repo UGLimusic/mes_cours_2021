@@ -1,0 +1,345 @@
+\documentclass[a4paper,12pt]{book}
+\usepackage[margin=2cm]{geometry}		
+\usepackage[thinfonts]{uglix2}
+
+\begin{document}
+\chapter*{Unité et diversité des langages}
+
+\textit{\textbf{Devoir à la maison à rendre  au format PDF sur pronote pour le vendredi 11 mars.\\
+		 Tout autre format est interdit.\\
+		 Travail seul ou à deux.\\
+		 La collaboration entre groupes est interdite et sera sanctionnée.}\\}
+
+
+Nous allons voir comment on écrit l'algorithme de Fisher-Yates dans différents langages. Celui-ci donne une méthode simple pour mélanger (\textit{to shuffle} en Anglais) une liste. Le voici écrit en langage naturel :
+La fonction
+\begin{enumerate}[--]
+	\item prend en entrée une liste d'éléments numérotés de 0 à n-1;
+    \item parcourt cette liste et à chaque étape échange l'élément courant avec un élément choisi au hasard parmi ceux qui le précèdent;
+    \item ne renvoie aucune valeur.
+\end{enumerate}
+
+\begin{encadrecolore}{Langage naturel}{UGLiOrange}
+\begin{verbatim}
+01  fonction shuffle(L : liste)
+02      variables
+03         n, i, j : entiers
+04      début
+05          n = longueur(L)
+06          pour i allant de 1 à n - 1:
+07              choisir un j nombre au hasard entre 0 et i
+08              si j < i
+09                  echanger L[i] et L[j]
+10          fin
+11      fin
+\end{verbatim}
+\end{encadrecolore}
+
+Tu peux visualiser un exemple d'application de la fonction en vidéo ici :\\
+
+\url{https://youtu.be/-WLu_OqyT5s}.
+
+\section{Comprendre l'algorithme}
+
+On se donne la liste \texttt{lst = [1, 2, 3, 4, 5]} et on veut la mélanger en utilisant la fonction \texttt{shuffle} donnée ci-dessus (c'est à dire que le paramètre \texttt{L} prend la valeur de ;\texttt{lst}, c'est-à-dire \texttt{[1, 2, 3, 4, 5]}).\\
+On va examiner en détail ce qui se passe lors de l'appel \texttt{shuffle(lst)}.
+\begin{enumerate}[\bfseries 1.]
+	\item Que vaut la variable \texttt{n} de la ligne 5 ?\bareme{1pt}
+    \item Quelles sont les valeurs que va prendre la variable \texttt{i} de la ligne 6 ?\bareme{1pt}
+    \item En choisissant toi-même le nombre \texttt{j} au hasard comme indiqué, explique étape par étape le déroulement de la boucle \texttt{pour} et donne à chaque fois la valeur de \texttt{L}.\bareme{2pts}
+    \item Suivant ta méthode, quelle valeur de \texttt{lst} obtiens-tu après avoir appelé la fonction\\ \texttt{shuffle(lst)} ? \bareme{1pt}
+\end{enumerate}
+
+\section{Traduire en Python}
+
+Complète le script suivant pour écrire la fonction précédente en \textsc{Python}. Tu pourras utiliser la fonction \texttt{randint} : \texttt{randint(a, b)} renvoie un entier au hasard compris entre \texttt{a} et \texttt{b} inclus.\bareme{2pts}
+
+\begin{pythoncode}
+from random import randint
+
+def shuffle(L : list) -> None
+    # compléter
+\end{pythoncode}
+\section{Observer et classer}
+En annexe, tu trouveras des versions de la fonction \texttt{shuffle} dans différents langages. Tu vas répondre aux questions suivantes en citant des exemples et en argumentant. Voici deux choses à ne pas faire :
+\begin{enumerate}[--]
+	\item Répondre \og Pour certains langages oui, pour d'autres non\fg{} (aucun intérêt);
+    \item Répondre en faisant une liste exhaustive et détaillée (trop long).
+\end{enumerate}
+\begin{enumerate}[\bfseries 1.]
+	\item Suivant les langages :
+	\begin{enumerate}[\bfseries a.]
+		\item 	Quelles sont les notations pour signifier une \textit{affectation} ?\bareme{1pt}
+		\item 	Les éléments de la liste sont-ils toujours numérotés de 0 à n-1 ?\bareme{1pt}
+		\item 	Comment indique-t-on un bloc d'instructions (à l'intérieur d'une boucle ou dans le cas d'un test) ?\bareme{1pt}
+		\item 	Faut-il déclarer les variables  avant de commencer à programmer la fonction ?\bareme{1pt}
+		\item 	Faut-il indiquer les types des variables ?\bareme{1pt}
+	\end{enumerate}
+	
+	\item	Peux-tu regrouper quelques langages qui se ressemblent ?\bareme{1pt}
+	\item 	Y a-t-il un ou des langages très proches de \textsc{Python} ?\bareme{0,5pt}
+	\item 	Y en a-t-il un ou plusieurs qui sont très différents ?\bareme{0,5pt}
+\end{enumerate}
+
+\section{\'Etablir une chronologie}
+	
+Deux critères peuvent t'aider à classer les langages selon leur \og âge\fg{}. Ce ne sont pas des règles générales, simplement des tendances.
+\begin{enumerate}[--]
+	\item 	 Les langages de programmation les plus anciens sont souvent assez verbeux : beaucoup de lignes sont nécessaires pour décrire la structure, préciser les variables, les types de données. Avec les progrès des analyseurs de code, un grand nombre de ces informations peut être inféré (déduit par le compilateur ou l'interpréteur), ce qui permet de ne pas les écrire explicitement.
+	\item 	Avec le temps, la gestion des variables locales se simplifie considérablement. Au début, elles devaient toutes être déclarées au début de la fonction (parfois dans une section spécifique) avec leur type. Ensuite, deux évolutions sont apparues : elles ont pu être déclarées « en cours de route » (voire pas du tout) et la spécification de leur type est parfois devenue non systématiquement nécessaire.
+\end{enumerate}
+
+\begin{enumerate}[\bfseries 1.]
+	\item À l'aide des critères précédents, essaye d'établir une chronologie des langages. Le but n'est pas d'avoir une classification exacte : tu peux dans un premier temps essayer de trouver les langages les plus anciens ainsi que les plus récents (sans aller chercher sur Internet), puis ensuite aller vérifier sur Internet et décrire ce que tu avais bien vu ainsi que les erreurs que tu avais commises.\bareme{2pts}
+    \item 	Choisis un (et un seul) des langages de la liste suivante et rédige un petit document (entre une demi page et une page) qui explique l'histoire du langage, ses spécificités et des exemples de projets réalisés dans ce langage (s'il y en a).\\
+    	Tu veilleras à éviter les \og copier-coller\fg{} d'Internet. Il ne faudra pas non plus utiliser des mots que tu ne comprends pas : s'il le faut tu dois pouvoir donner une définition simple des termes employés.\bareme{3pts}\\
+\end{enumerate}
+\textbf{Liste des langages :} \textsc{C++, C\#, java, JavaScript, PHP, Python, Go, Ruby}.
+
+
+\section*{Annexe\\Implémentation de l'algorithme dans divers langages}
+
+\begin{encadre}[code Ada]
+\begin{minted}[breaklines]{ada}
+procedure Shuffle (Tab : in out Array_Type) is
+    package Discrete_Random is new Ada.Numerics.Discrete_Random(Result_Subtype =>Integer);
+    use Discrete_Random;
+    J : Integer;
+    G : Generator;
+    TMP : Element_Type;
+begin
+    Reset (G);
+    for I in Tab'Range loop
+        J := (Random(G) mod I) + 1;
+        if J < I then
+            TMP := Tab(I);
+            (I) := Tab(J);
+            Tab(J) := TMP;
+        end if;
+    end loop;
+end Shuffle;
+\end{minted}
+\end{encadre}
+
+\begin{encadre}[code Algol]
+\begin{minted}{pascal}
+procedure shuffle (tab, n);
+    array tab; integer n;
+    begin
+        integer i, j, tmp;
+        for i := 1 step 1 until n do
+        begin
+            j := random(i + 1);
+            if j < i then
+            begin
+                tmp := tab[i];
+                tab[i] := tab[j];
+                tab[j] := tmp;
+            end
+        end
+    end shuffle
+\end{minted}
+\end{encadre}
+
+\begin{encadre}[code Basic]
+\begin{minted}{basic}
+100 FOR I = 1 TO LONGUEUR
+110 J = INT(RND(1) * I + 1)
+120 IF I = J THEN GOTO 160
+130 TMP = TAB(I)
+140 TAB(I) = TAB(J)
+150 TAB(J) = TMP
+160 NEXT I
+170 END
+\end{minted}
+\end{encadre}
+
+
+\begin{encadre}[code C]
+\begin{minted}{c}
+void shuffle(int tab[], int n) {
+    int i;
+    for (i = 1; i < n; ++i) {
+        int j = random(i + 1);
+        if (j < i) {
+            int tmp = tab[i];
+            tab[i] = tab[j];
+            tab[j] = tmp;
+        }
+    }
+}
+\end{minted}
+\end{encadre}
+
+\begin{encadre}[caml]
+\begin{minted}{javascript}
+let shuffle tab =
+    for i = 1 to Array.length tab - 1 do
+        let j = Random.int (i + 1) in
+        if j < i then (
+            let temp = tab.(i) in
+            tab.(i) <- tab.(j);
+            tab.(j) <- temp
+        )
+    done
+;;
+\end{minted}
+\end{encadre}
+
+\begin{encadre}[code Cobol]
+\begin{minted}{cobol}
+IDENTIFICATION DIVISION.
+PROGRAM-ID. shuffle.
+
+DATA DIVISION.
+LOCAL-STORAGE SECTION.
+01 i            PIC 9(8).
+01 j            PIC 9(8).
+01 temp         PIC 9(8).
+
+LINKAGE SECTION.
+78 Table-Len    VALUE 10.
+01 ttable-area.
+03 ttable       PIC 9(8) OCCURS Table-Len TIMES.
+
+PROCEDURE DIVISION USING ttable-area.
+    PERFORM VARYING i FROM 2 BY 1 UNTIL i = Table-Len
+        COMPUTE j =
+            FUNCTION MOD(FUNCTION RANDOM * 10000, Table-Len) + 1
+        If j < i
+            MOVE ttable (i) TO temp
+            MOVE ttable (j) TO ttable (i)
+            MOVE temp TO ttable (j)
+        END-IF
+    END-PERFORM
+    GOBACK
+    .
+\end{minted}
+\end{encadre}
+
+\begin{encadre}[code Fortran]
+\begin{minted}{fortran}
+subroutine shuffle (tab, n)
+    integer n, tab(*)
+    integer i, j, temp
+    real r
+
+    do 10 i = 2, n
+        call random_number(r)
+        j = int(r * i) + 1
+        if (j < i) then
+            temp = tab(j)
+            tab(j) = tab(i)
+            tab(i) = temp
+        endif
+10  continue
+    return
+lend
+\end{minted}
+\end{encadre}
+
+\begin{encadre}[code Go]
+\begin{minted}{go}
+func shuffle(tab []int) {
+    for i := 1; i < len(tab); i++ {
+        j := rand.Intn(i + 1)
+        if j < i {
+            tmp := tab[i]
+            tab[i] := tab[j]
+            tab[j] := tmp
+        } 
+    }
+}
+\end{minted}
+\end{encadre}
+
+\begin{encadre}[code Java]
+\begin{minted}{java}
+public static void shuffle (int[] tab) {
+    for (int i = 1; i < tab.length; i++) {
+        int j = gen.nextInt(i + 1);
+        if (j < i) {
+            int temp = tab[i];
+            tab[i] = tab[j];
+            tab[j] = temp;
+        }
+    }
+}
+\end{minted}
+\end{encadre}
+
+\begin{encadre}[code javascript]
+\begin{minted}{javascript}
+function shuffle(tab) {
+    for (var i = 1; i < tab.length; i++) {
+        var j = Math.floor((i + 1) * Math.random());
+        if (j < i) {
+            var temp = tab[rand];
+            tab[rand] = tab[i];
+            tab[i] = temp;
+        }
+    }
+}
+\end{minted}
+\end{encadre}
+
+\begin{encadre}[code kotlin]
+\begin{minted}{kotlin}
+fun shuffle(tab: Array<Int>) {
+    for (i in 1 until tab.size) {
+        val j = (0..i).random()
+        if (j < i) {
+            val tmp = tab[i]
+            tab[i] = tab[j]
+            tab[j] = tmp
+        }
+    }
+}
+\end{minted}
+\end{encadre}
+
+\begin{encadre}[code Ruby]
+\begin{minted}{ruby}
+def shuffle(tab)
+    tab.each_index do |i|
+        j = rand(i + 1)
+        if j < i
+            tab[i], tab[j] = tab[j], tab[i]
+        end
+    end
+end
+\end{minted}
+\end{encadre}
+
+\begin{encadre}[code Pascal]
+\begin{minted}{pascal}
+procedure shuffleList(var tab: tableau);
+var
+    i, j, tmp : integer;
+begin
+    for i := 1 to high(tab) - low(tab) do begin
+        j := random(i + 1);
+        if j < i then
+            tmp := tab[i + low(tab)];
+            tab[i + low(tab)] := tab[j + low(tab)];
+            tab[j + low(tab)] := tmp
+        end
+    end
+end;
+\end{minted}
+\end{encadre}
+
+\begin{encadre}[code Scala]
+\begin{minted}{scala}
+def shuffle(tab: Array[Int]) = {
+    for (i <- 1 to tab.size - 1) {
+        val j = util.Random nextInt(i + 1)
+        if (j < i) {
+            val tmp = tab(i)
+            tab(i) = tab(j)
+            tab(j) = tmpwd
+        }
+    }
+\end{minted}
+\end{encadre}
+\end{document}

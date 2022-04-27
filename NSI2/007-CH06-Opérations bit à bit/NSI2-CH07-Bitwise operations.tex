@@ -1,0 +1,252 @@
+\documentclass[a4paper,12pt,french]{book}
+\usepackage[margin=2cm]{geometry}
+\usepackage[thinfonts]{uglix2} % ou cmb % NE MARCHERA PAS EN PSTRICKS
+
+\setcounter{chapter}{5}
+
+\begin{document}
+\chapter{\large point technique\\[-1em]\fontsize{35pt}{42pt}\selectfont\titlefont Opérations bit à bit}
+\introduction{cinq et trois font un, cinq ou trois font sept}
+\begin{aretenir}
+	\begin{enumerate}[--]
+		\item 	les opérateurs \tw{\&} et \tw{|} procèdent bit à bit et diffèrent de \pythoninline{and} et \pythoninline{or};
+
+		\item 	on utilise très souvent \tw{|} lors d'appels de fonctions qui demandent des flags.
+	\end{enumerate}
+\end{aretenir}
+\section{De nouveaux opérateurs}
+
+
+Il n'y a qu'à lire la phrase d'introduction pour constater que \og et\fg{} et \og ou\fg{} sont deux nouvelles opérations qui n'ont rien à voir avec l'addition ou la multiplication usuelles.\\
+On dit que ce sont des opérations bit à bit (\textit{bitwise operations} en Anglais) car elles se basent sur les écritures binaires des entiers.
+
+
+\begin{definition}[ : opérateur \&]
+	Soient \tw{a} et \tw{b} deux \pythoninline{int} positifs, \tw{a \& b} est un \pythoninline{int} dont la représentation binaire s'obtient en faisant un \og et\fg{} logique sur les bits correspondants de \tw{a} et \tw{b}.
+\end{definition}
+
+
+
+\begin{exemple}[]
+	\begin{center}
+	\begin{tabular}{|c|>{\centering\arraybackslash}m{.5cm}|>{\centering\arraybackslash}m{.5cm}|>{\centering\arraybackslash}m{.5cm}|>{\centering\arraybackslash}m{.5cm}|}
+	\hline\rowcolor{UGLiGreen}
+	\color{white}\textbf{\'Ecriture décimale }& \multicolumn{4}{c|}{\color{white}\textbf{\'Ecriture binaire}} \\
+	\hline
+	13 & 1 & 1 & 0 & 1 \\
+	\hline
+	11 & 1 & 0 & 1 & 1 \\
+	\hline
+	13 \& 11 = 9 & 1 & 0 & 0 & 1 \\
+	\hline
+\end{tabular}
+	\end{center}
+De la même manière, $3=(011)_2$, $5=(101)_2$ de sorte que $3\,\&\,5=1$.
+\end{exemple}
+
+\begin{definition}[ : opérateur |]
+	Soient \tw{a} et \tw{b} deux \pythoninline{int} positifs, \tw{a | b} est un \pythoninline{int} dont la représentation binaire s'obtient en faisant un \og ou\fg{} logique sur les bits correspondants de \tw{a} et \tw{b}.
+\end{definition}
+
+
+
+\begin{exemple}[]
+	\begin{center}
+		\begin{tabular}{|c|>{\centering\arraybackslash}m{.5cm}|>{\centering\arraybackslash}m{.5cm}|>{\centering\arraybackslash}m{.5cm}|>{\centering\arraybackslash}m{.5cm}|}
+			\hline\rowcolor{UGLiGreen}
+			\color{white}\textbf{\'Ecriture décimale }& \multicolumn{4}{c|}{\color{white}\textbf{\'Ecriture binaire}} \\
+			\hline
+			13 & 1 & 1 & 0 & 1 \\
+			\hline
+			11 & 1 & 0 & 1 & 1 \\
+			\hline
+			13 | 11 = 15 & 1 & 1 & 1 & 1 \\
+			\hline
+		\end{tabular}
+	\end{center}
+	De la même manière, $3=(011)_2$, $5=(101)_2$ de sorte que $3\,|\,5=7$.
+\end{exemple}
+
+
+\begin{definition}[ : opérateur <<]
+	Soient \tw{a} et \tw{n } deux \pythoninline{int} positifs, \tw{a << n} est un \pythoninline{int} dont la représentation binaire est celle de \tw{a}, suivie de \tw{n} zéros.\\
+	Il s'agit d'un décalage vers la gauche des bits de \tw{a}, d'où le symbole \tw{<<}.\\
+	D'après ce que nous avons vu en première, \tw{a << n} vaut \tw{a * 2 ** n}.
+\end{definition}
+
+\begin{exemple}[s]
+	\begin{enumerate}[--]
+		\item 	\tw{7 << 3} vaut 56.
+		\item 	\tw{1 << 10} vaut \np{1024}.
+	\end{enumerate}
+\end{exemple}
+
+\begin{definition}[ : opérateur >>]
+	Soient \tw{a} et \tw{n } deux \pythoninline{int} positifs, \tw{a >> n} est un \pythoninline{int} dont la représentation binaire est celle de \tw{a} décalée de \tw{n} crans vers la droite avec troncature avant la virgule.
+	D'après ce que nous avons vu en première, \tw{ a >> n} vaut \tw{a // 2 ** n}.
+\end{definition}
+
+\begin{exemple}[]
+	On veut déterminer la valeur de \tw{147>>5} :
+	\begin{enumerate}[--]
+		\item 	on commence par déterminer que $147=(1001\,0011)_2$;
+		\item 	on décale de 5 crans vers la droite en oubliant les bits qui passent après la virgule, on obtient $(100)_2$;
+		\item 	\tw{147 >> 5} vaut donc 4.
+	\end{enumerate}
+\end{exemple}
+
+\begin{attention}
+	Les opérateurs \tw{\&} et \tw{|} ne doivent pas être confondus avec \pythoninline{and} et \pythoninline{or} :
+	\begin{enumerate}[--]
+		\item 	\tw{\&} et \tw{|} portent sur des \pythoninline{int} et renvoient des \pythoninline{int};
+		\item 	\pythoninline{and} et \pythoninline{or} portent traditionnellement sur des \pythoninline{bool};
+	\end{enumerate}
+	Ceci dit, \textsc{Python} accepte d'évaluer \pythoninline{5 or 3} :
+	\begin{enumerate}[--]
+		\item 	il évalue logiquement 5, qui ne vaut pas 0, donc est considéré comme \pythoninline{True};
+		\item 	puisqu'il procède paresseusement, il n'évalue pas 3 et renvoie... 5.
+	\end{enumerate}
+
+	De la même manière pour \pythoninline{0 or 3} :
+	\begin{enumerate}[--]
+		\item 	il évalue logiquement 0, qui vaut \pythoninline{False}
+		\item 	ensuite il évalue logiquement 3 qui vaut \pythoninline{True} et renvoie donc 3.
+	\end{enumerate}
+
+	On a le même phénomène avec \pythoninline{and}
+
+\end{attention}
+
+\begin{exercice}[]
+	Calculer à la main
+	\begin{enumerate}[\bfseries 1.]
+		\item 	\tw{(3 << 5) | (5 << 4) }
+		\item 	\tw{(120 \& 117) >> 2}
+	\end{enumerate}
+\end{exercice}
+
+\begin{exercice}[ rigoureusement inutile donc indispensable]
+	Peux-tu prédire la valeur des expressions suivantes ?
+	\begin{enumerate}[\bfseries 1.]
+		\item 	\pythoninline{2 or 7}
+		\item 	\pythoninline{2 and 7}
+		\item 	\pythoninline{0 and 7}
+		\item 	\pythoninline{2 or 0}
+	\end{enumerate}
+\end{exercice}
+
+\section{Applications}
+
+Sous Windows, le module \tw{pywin} offre un accès à l'API (interface de programmation) \link{https://fr.wikipedia.org/wiki/Windows_API}{Win 32}. Celle-ci, destinée à utiliser des fonctionnalités du système d'exploitation Windows, a vu le jour au début des années 90 et a été écrite en \textsc{C} / \textsc{C++}. On peut donc qualifier cette API d'\textit{archaïque}.\\
+Dans ce module, on trouve la fonction \tw{mouse\_event} qui permet de simuler des clics de divers boutons de souris, des déplacements, des glisser-déposer (\textit{drag-n-drop} en Anglais).\\
+Voici un morceau de documentation (elle aussi archaïque) de cette fonction :\\
+
+
+
+\begin{encadrecolore}{win32api.mouse\_event}{UGLiBlue}
+
+ \tw{mouse\_event(dwFlags, dx, dy, dwData, dwExtraInfo)}\\
+
+Simulate a mouse event\\
+
+
+\begin{center}
+	\begin{tabular}{|c|>{\centering\arraybackslash}m{1cm}|>{\raggedright\arraybackslash}m{11cm}|}
+		\hline\rowcolor{UGLiBlue}
+		\color{white}\textbf{name }& \color{white}\textbf{type}& \color{white}\textbf{comments} \\
+		\hline
+		\tw{dwFlags=0} & \tw{int} & \textbf{Flags} specifying various function options \\
+		\hline
+		\tw{dx} & \tw{int}	&	Horizontal position of mouse\\
+		\hline
+		\tw{dy} & \tw{int}	&	Vertical position of mouse\\
+		\hline
+		\tw{dwData} & \tw{int}&	Flag specific parameter\\
+		\hline
+		\tw{dwExtraInfo=0} & \tw{int}&		Additional data associated with mouse event\\
+		\hline
+	\end{tabular}
+\end{center}
+\tw{dwFlags} controls various aspects of mouse motion and button clicking. This parameter can be certain combinations of the following values.
+\begin{center}
+	\scriptsize
+	\begin{tabular}{|>{\raggedright\arraybackslash}m{3.5cm}|c|>{\raggedright\arraybackslash}m{10.7cm}|}
+		\hline\rowcolor{UGLiBlue}
+		\color{white}\textbf{name }& \color{white}\textbf{value}& \color{white}\textbf{meaning} \\
+		\hline
+		MOUSEEVENTF\_ABSOLUTE &0x8000 & The \tw{dx} and \tw{dy} parameters contain normalized absolute coordinates. If not set, those parameters contain relative data: the change in position since the last reported position. This flag can be set, or not set, regardless of what kind of mouse or mouse-like device, if any, is connected to the system. For further information about relative mouse motion, see the following Remarks section.\\
+		\hline
+		MOUSEEVENTF\_LEFTDOWN&
+		0x0002&
+		The left button is down.\\\hline
+		MOUSEEVENTF\_LEFTUP&
+		0x0004&
+		The left button is up.\\\hline
+		MOUSEEVENTF\_MIDDLEDOWN&
+		0x0020&
+		The middle button is down.\\\hline
+		MOUSEEVENTF\_MIDDLEUP&
+		0x0040&
+		The middle button is up.\\\hline
+		MOUSEEVENTF\_MOVE&
+		0x0001&
+		Movement occurred.\\\hline
+		MOUSEEVENTF\_RIGHTDOWN&
+		0x0008&
+		The right button is down.\\\hline
+		MOUSEEVENTF\_RIGHTUP&
+		0x0010&
+		The right button is up.\\\hline
+		MOUSEEVENTF\_WHEEL&
+		0x0800&
+		The wheel has been moved, if the mouse has a wheel. The amount of movement is specified in \tw{dwData}\\\hline
+		MOUSEEVENTF\_XDOWN&
+		0x0080&
+		An X button was pressed.\\\hline
+		MOUSEEVENTF\_XUP&
+		0x0100&
+		An X button was released.\\\hline
+		MOUSEEVENTF\_WHEEL&
+		0x0800&
+		The wheel button is rotated.\\\hline
+		MOUSEEVENTF\_HWHEEL&
+		0x01000&
+		The wheel button is tilted.\\\hline
+	\end{tabular}
+\end{center}
+\end{encadrecolore}
+Les \og flags\fg{} dont les valeurs sont données en hexadécimal sont en fait des puissances de 2, donc leur écriture binaire comporte un seul bit à 1.\\
+Les combinaisons dont parle la documentation s'obtiennent avec l'opérateur bit à bit \og ou\fg{} : \tw{|}.\\
+Voici par exemple comment on simule un clic de souris (bouton gauche), puis un déplacement de 100 pixels vers la droite et 15 vers le bas, puis un relâchement du bouton:
+
+\begin{pythoncode}
+from win32api import *
+from win32con import *
+
+mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_MOVE, 100, 15, 0, 0)
+mouse_event(MOUSEEVENTF_LEFTUP, 100, 15, 0, 0)
+
+\end{pythoncode}
+
+\begin{remarque}[]
+	On a utilisé 2 flags lors du premier appel : un pour dire qu'il y a mouvement, l'autre pour dire que le bouton gauche est pressé.\\
+	Bien qu'on veuille qu'il y ait ces deux flags en même temps, on utilise un \og ou\fg{} bit à bit et pas un \og et\fg{} :
+	\begin{tabbing}
+		\tw{MOUSEEVENTF\_LEFTDOWN | MOUSEEVENTF\_MOVE\ \ } \= vaut \tw{2 \& 1}\\
+														\> vaut \tw{0b10 \& 0b01}\\
+														\> vaut \tw{0b11}\\
+														\> vaut 3
+	\end{tabbing}
+	Si on avait utilisé un \og et \fg{}  on aurait obtenu zéro !
+\end{remarque}
+
+\begin{exercice}[]
+	On imagine une fonction qui prend (entre autres) en paramètre un \pythoninline{int} appelé \tw{flags} qui représente 8 flags qu'on peut combiner entre eux comme on le désire :
+	pour $n$ compris entre 0 et 7, le flag $f_n$ n'est autre que $2^n$.\\
+	Cela veut dire que si par exemple \tw{flags} vaut 28, alors puisque $28=(0011\,100)_2$, on a mis $f_2$, $f_3$ et $f_4$ à 1 et les autres flags à 0.
+	\begin{enumerate}[\bfseries 1.]
+		\item 	Comment à l'aide des seuls symboles \tw{1}, \tw{2}, \tw{7} et des opérateurs bit à bit, faire en sorte que \tw{flags} présente les deux seuls flags $f_2$ et $f_7$ ?
+		\item 	On imagine qu'on a récupéré une valeur de la variable \tw{flags}. Comment tester si $f_4$ est bien à 1 ? Comment tester si $f_5$ est à 0 ?
+	\end{enumerate}
+\end{exercice}
+\end{document}

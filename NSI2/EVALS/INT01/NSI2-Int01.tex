@@ -1,0 +1,63 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[margin=2cm]{geometry}
+\usepackage{uglix2}
+\pagestyle{empty}
+\usepackage{numprint}
+
+\begin{document}
+\titreinterro{Interrogation 01}{NSI2}{09/2021}
+
+
+\textbf{1. }Explique \textit{brièvement} (la réponse doit rentrer dans le cadre) et sans donner d'exemple ce qu'est une fonction récursive.\\
+
+% une fonction récursive peut renvoyer un résultat dans un cas d'arrête, sinon elle s'appelle elle-même une ou plusieurs fois avec un de ses paramètres qui devient plus petit. Une pile d'appels est utilisée
+\carreauxseyes{16.8}{6.4}\\
+
+\textbf{2. }\'Ecris ici une version \textsc{Python} de la fonction récursive \pythoninline{fibo} qui
+\begin{enumerate}[--]
+	\item 	en entrée prend un entier positif \pythoninline{n};
+	\item 	en sortie renvoie la valeur de $F_n$ définie par $$F_n=\begin{cases}
+		1 & \mbox{si } n=0\mbox{ ou }n=1\\
+		F_{n-1}+F_{n-2} &\mbox{sinon}
+	\end{cases}$$
+\end{enumerate}
+
+\carreauxseyes{16.8}{6.4}\\
+\newpage
+\textbf{3. }Voici une première fonction récursive :
+\pythonfile{scripts/mystere1.py}
+Calcule \pythoninline{mystery1(0)}, \pythoninline{mystery1(1)} et \pythoninline{mystery1(2)}.\\
+
+\carreauxseyes{16.8}{11.2}\\
+
+Explique ce que fait cette fonction.\\
+
+\carreauxseyes{16.8}{4}\\
+\newpage
+\textbf{4.} En voici une deuxième :
+\pythonfile{scripts/mystere2.py}
+Explique ce que renvoient \pythoninline{mystery2([])} et \pythoninline{mystery2([7, 3, 5])}.\\
+
+\carreauxseyes{16.8}{11.2}\\
+
+Explique ce que fait cette fonction.\\
+
+\carreauxseyes{16.8}{3.2}\\
+
+
+
+
+\newpage
+\textbf{5.} En voici une dernière :
+\pythonfile{scripts/mystere3.py}
+Explique ce que renvoient \pythoninline{mystery3([8])}, \pythoninline{mystery3([1,2])}  et \pythoninline{mystery3([4,1,2])}.\\
+
+\carreauxseyes{16.8}{9.6}\\
+
+Explique ce que fait cette fonction.\\
+
+\carreauxseyes{16.8}{2.4}\\
+
+
+
+\end{document}

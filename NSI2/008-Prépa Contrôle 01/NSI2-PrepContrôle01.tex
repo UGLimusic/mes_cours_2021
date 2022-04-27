@@ -1,0 +1,92 @@
+\documentclass[a4paper,12pt,french]{article}
+\usepackage[margin=2cm]{geometry}
+\usepackage[thinfonts,latinmath]{uglix2}
+\nouveaustyle
+\pagestyle{empty}
+\begin{document}
+\titre{Exercice type bac}{NSI2}{10/2021}
+
+On considère un tableau de nombres de $n$ lignes et $p$ colonnes.
+
+Les lignes sont numérotées de $0$ à $n−1$ et les colonnes sont
+numérotées de $0$ à $p−1$.
+
+La case en haut à gauche est repérée par $(0,\,0)$ et la case en bas à droite par $(n−1,\,p−1)$.\\
+
+On appelle \textit{chemin} une succession de cases allant de la case $(0,\,0)$ à la case $(n−1,\,p−1)$, en n’autorisant que des
+déplacements case par case : soit vers la droite, soit vers le bas.\\
+
+
+On appelle \textit{somme d'un chemin} la somme des entiers situés sur ce chemin. Par exemple, pour le tableau  $T$ suivant:
+
+$$T=
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{4}&\textbf{1}&\textbf{1}&3\\
+\hline
+2&0&\textbf{2}&1\\
+\hline
+3&1&\textbf{5}&\textbf{1}\\
+\hline
+\end{tabular}$$
+
+
+
+\begin{enumerate}[--]
+	\item 	un chemin est $(0,\,0),\,(0,\,1),\,(0,\,2),\,(1,\,2),\,(2,\,2),\,(2,\,3)$ (en gras sur le tableau);
+	\item 	La somme du chemin précédent est 14;
+    \item   $(0,\,0),\,(0,\,2),\,(2,\,2),\,(2,\,3)$ n’est pas un chemin.
+\end{enumerate}
+
+L’objectif de cet exercice est de déterminer la somme maximale pour tous les chemins possibles allant de la case $(0,\,0)$
+à la case $(n−1,\,p−1)$.
+
+\begin{enumerate}[\bfseries 1.]
+	\item 	On considère tous les chemins allant de la case $(0,\,0)$ à la case $(2,\,3)$ du tableau $T$ donné en exemple.
+	\item 	\begin{enumerate}[\bfseries a.]
+            	\item 	Un tel chemin comprend nécessairement 3 déplacements vers la droite. Combien de déplacements vers le bas comprend-il ?
+            	\item 	 La longueur d'un chemin est égal au nombre de cases de ce chemin. Justifier que tous les chemins allant de $(0,\,0)$ à $(2,\,3)$ ont
+                        une longueur égale à 6.
+             \end{enumerate}
+
+    \item En listant  les chemins possibles allant de $(0,\,0)$ à $(2\,,3)$ du tableau $T$, déterminer un chemin qui permet d'obtenir la somme maximale et donner la valeur de cette somme.
+    \item On veut créer le tableau $T_2$ où chaque élément $T_2[i][j]$ est la somme maximale pour tous les chemins possibles allant de $(0,\,0)$ à $(i,\,j)$.
+    \begin{enumerate}[\bfseries a.]
+    	\item 	Compléter sur votre copie le tableau $T_2$ ci-dessous associé au tableau $T$ suivant
+                $$T=
+                \begin{tabular}{|c|c|c|c|}
+                \hline
+                4&1&1&3\\
+                \hline
+                2&0&2&1\\
+                \hline
+                3&1&5&1\\
+                \hline
+                \end{tabular}\qquad\qquad\qquad T'=
+                                \begin{tabular}{|c|c|c|c|}
+                                \hline
+                                4&5&6&?\\
+                                \hline
+                                6&?&8&10\\
+                                \hline
+                                9&10&?&16\\
+                                \hline
+                                \end{tabular}$$
+    	   \item Justifier que si $j$ est différent de zéro alors :
+           $$T_2[0][j] = T[0][j] + T_2[0][j - 1]$$
+    \end{enumerate}
+    \item Justifier que si $i$ et $j$ sont différents de 0 alors :\\
+            $$T_2[i][j] = T[i][j]+\max(T_2[i-1][j],\, T_2[i][j-1])$$
+
+     \item On veut créer une fonction récursive \pythoninline{somme_max} qui
+     \begin{enumerate}[--]
+     	\item 	en entrée prend un tableau \pythoninline{T} (qui est une liste de lignes, elles-même des listes d'\pythoninline{int}), et 2 \pythoninline{int i} et \pythoninline{j};
+     	\item 	renvoie la somme maximale pour tous les chemins possibles allant de la case $(0,\,0)$ à la case $(i,\,j)$.
+      \end{enumerate}
+      \begin{enumerate}[\bfseries a.]
+        \item Quel est le cas d'arrêt, c'est-à-dire le cas qui est traité directement, sans appel récursif ? Que renvoie-t-on dans ce cas ?
+        \item À l'aide de la question précédente, écrire en Python la fonction récursive \pythoninline{somme_max}.
+        \item Quel appel de fonction doit-on faire pour résoudre le problème initial ?
+     \end{enumerate}
+\end{enumerate}
+\end{document}

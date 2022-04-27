@@ -1,0 +1,78 @@
+\input{../preambule/preambule.tex}
+\begin{center}
+		{\Huge\titlefont\color{UGLiBlue} Nombres Harshad}
+\end{center}
+
+\section*{\'Etape 1}
+
+
+\begin{enumerate}[\bfseries 1.]
+ 	\item	On considère le programme suivant
+ 			\pythonfile{scripts/script1.py}
+			\begin{enumerate}[\bfseries a.]
+   				\item 	Expliquer le rôle de la ligne \pythoninline{chiffre = int(chaine[i])} du programme.
+				\item 	Faire sur la copie à rendre un tableau d'étapes de ce programme pour $n=12$, $n=216$ et $n=8!$ (qui vaut $1\times 2\times 3\times \ldots\times 8$).
+			\end{enumerate}
+	\item  	Un nombre Harshad est un entier positif qui est divisible par la somme des chiffres de son écriture en base 10.\par
+			Par exemple 48 est un nombre Harshad : la somme de ses chiffres vaut $4+8=12$ et $48=4\times 12$ donc 48 est divisible par 12.	
+			\begin{enumerate}[\bfseries a.]
+				\item 			Vérifier que 12, 216 et 8! sont des nombres Harshad.
+				\item 			Montrer que 19, 155 et 2416 ne sont pas des nombres Harshad.	
+			\end{enumerate}
+	\item	Les premiers nombres Harshad avec plus d'un chiffre en base 10 sont :
+	
+	10, 12, 18, 20, 21, 24, 27, 30, 36, 40, 42, 45, 48, 50, 54, 60, 63, 70, 72, 80, 81, 84, 90, 100, 102, 108, 110, 111, 112, 114, 117, 120, 126, 132, 133, 135, 140, 144, 150, ...
+	
+	On peut constater que les entiers 110, 111, 112 sont trois nombres Harshad consécutifs.
+	
+	On se propose de chercher parmi les nombres Harshad inférieurs à \np{1000}, s'il existe d'autres séries de trois entiers consécutifs et de les afficher.
+	
+	Pour cela, on suppose que l'on a mis dans une liste nommée \texttt{H} les nombres Harshad inférieurs ou égaux à \np{1000}. On note \pythoninline{len(H)} le nombre de valeurs de cette liste (longueur de la liste).
+	
+	Pour tester s'il y a trois nombres consécutifs dans ce tableau on écrit le programme suivant :
+	
+    \pythonfile{scripts/script2.py}
+	Ce programme comporte deux erreurs. Corrigez-les.
+	\end{enumerate}
+\section*{\'Etape 2}
+\begin{enumerate}[\bfseries 1.]
+	\item Sur la clé qui vous a été donnée, ouvrir le fichier \texttt{somme.py}. Celui-ci contient le programme de l'étape 1.
+
+\item Transformez ce programme  en une fonction nommée \texttt{somme\_chiffres} qui 
+	\begin{enumerate}[--]
+		\item 	en entrée prend un \pythoninline{int} positif \pythoninline{n};
+		\item 	renvoie la somme des chiffres de \pythoninline{n}.
+	\end{enumerate}
+
+\item \'Ecrire une fonction \texttt{liste\_harshad} utilisant la fonction précédente,  qui 
+	\begin{enumerate}[--]
+	\item 	en entrée prend un \pythoninline{int} positif \pythoninline{n};
+	\item 	renvoie la liste des nombres Harshad inférieurs ou égaux à \texttt{n}. 
+\end{enumerate}
+
+\item  Construire une fonction  \texttt{trois\_harshad} qui utilise la fonction précédente et
+		\begin{enumerate}[--]
+			\item 	en entrée prend un \pythoninline{int} positif \pythoninline{n};
+			\item 	renvoie la liste des séries de trois nombres Harshad consécutifs inférieurs ou égaux à \tw{n}.
+		\end{enumerate}
+\item À l'aide de la fonction précédente, construire la fonction  \texttt{trois\_harshad\_bornes} qui 
+	\begin{enumerate}[--]
+		\item	en entrée prend en argument deux \pythoninline{int} positifs \tw{a} et \tw{b}; 
+		\item 	renvoie la liste des séries de trois nombres Harshad consécutifs compris entre \tw{a} et \tw{b} (inclus).
+	\end{enumerate}
+
+
+\item 	Quelles sont les séries de trois nombres Harshad consécutifs compris entre \np{1000} et \np{5000} ?
+
+\item Construire une nouvelle fonction \texttt{quatre\_harshad\_bornes} pour déterminer les séries de quatre nombres Harshad consécutifs entre deux entiers naturels \tw{a} et \tw{b} donnés.	
+
+\item 	Exécuter cette fonction
+		\begin{enumerate}[--]
+			\item 	pour \tw{a=10} et \tw{b=5000};
+			\item 	pour \tw{a=10000} et \tw{b=15000};
+		\end{enumerate}
+
+\item \textsc{Bonus :} Faire afficher la liste des nombres Harshad dont le chiffre des dizaines est 7. Faire afficher la liste des nombres Harshad non divisibles par 3.
+\end{enumerate}
+
+\end{document}

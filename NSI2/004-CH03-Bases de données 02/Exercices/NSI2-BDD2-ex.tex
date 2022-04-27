@@ -1,0 +1,62 @@
+\documentclass[a4paper,12pt,french]{article}
+\usepackage[margin=2cm]{geometry}
+\usepackage[thinfonts]{uglix2}
+\usepackage{ulem}
+\nouveaustyle
+\begin{document}
+	\titre{CH03 - BDD partie 2 - Exercices}{NSI2}{2021}
+
+
+\begin{exercice}[]
+Reprendre le MCD de l'exercice 3 du chapitre \og BBD partie 1\fg{} (\textbf{Hotel Reservation Client Chambre}) et donner le modèle relationnel
+\begin{itemize}
+	\item	sous la forme d'un schéma;
+	\item	sous forme écrite
+\end{itemize}
+\end{exercice}
+
+\begin{exercice}[]
+Reprendre le MCD de l'exercice 4 du chapitre \og BBD partie 1\fg{} (\textbf{Consultation Patient Medicament Medecin}) et donner le modèle relationnel
+\begin{itemize}
+	\item	sous la forme d'un schéma;
+	\item	sous forme écrite
+\end{itemize}
+\end{exercice}
+
+\begin{exercice}[]
+Donner la modélisation relationnelle d'un bulletin scolaire. Elle doit permettre de représenter
+\begin{enumerate}[--]
+	\item 	des élèves possédants un numéro d'identifiant alphanumérique unique;
+	\item 	des matières, qui grâce à la dernière réforme du lycée, varient d'un élève à l'autre;
+    \item 	au plus une note sur 20 par matière.
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}[]
+On modélise un annuaire téléphonique de la manière suivante :\\
+
+\texttt{\textbf{Annuaire}(nom TEXT, prenom TEXT, \uline{tel TEXT})}\\
+
+Dire si les ensembles suivants sont valides pour cette modélisation.
+\begin{enumerate}[\bfseries 1.]
+	\item 	\texttt{\{\}}
+	\item 	\texttt{\{('titi','toto', '0123456789')\}}
+    \item 	\texttt{\{('titi','toto', '0123456789'),('tata','tutu','0123456789')\}}
+    \item 	\texttt{\{('titi','toto', '0123456789'),('titi','toto','9876543210')\}}
+    \item 	\texttt{\{('titi','toto', '0123456789'),('tata','tutu')\}}
+    \item 	\texttt{\{('titi','toto', 0123456789)\}}
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}[]
+\begin{enumerate}[\bfseries 1.]
+	\item 	Proposer une modélisation des départements français. On veut pourvoir stocker le nom, le code, le chef-lieu et la liste de tous les départements voisins.\\
+    Attention les codes de départements ne sont pas tous des nombres : 2A et 2B pour la Corse et les départements d'Outre-Mer ont un code à 3 chiffres.\\
+	\item 	Proposer une contrainte utilisateur supplémentaire, non indiquée dans le schéma, pour éviter la redondance d'informations dans la liste des voisins.
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}[]
+Proposer une modélisation du réseau de bus d'une agglomération. Elle doit permettre de générer la liste des horaires passage de chaque bus de chaque ligne pour chaque jour de la semaine arrêt par arrêt.
+\end{exercice}
+\end{document}

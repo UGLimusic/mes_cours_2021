@@ -1,0 +1,9 @@
+#include <iostream> // nécessaire pour utiliser cout
+int main() // début de la fonction main
+{
+	char c1 = 120; // on définit une première variable
+	char c2 = 20; // puis une deuxième
+	char c3 = c1+c2; // on les ajoute
+	std::cout << (int) c3; // on affiche le résultat en base 10
+	return 0; // la fonction main renvoie traditionnellement zéro
+}

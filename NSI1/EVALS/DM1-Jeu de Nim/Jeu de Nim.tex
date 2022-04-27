@@ -1,0 +1,113 @@
+\documentclass[a4paper,12pt]{book}
+\usepackage[margin=2cm]{geometry}			
+\usepackage[thinfonts]{uglix2}
+\nouveaustyle
+\begin{document}
+\titre{Devoir maison 01}{NSI1}{10/2021}	
+
+\begin{center}
+\textit{\textbf{ATTENTION : } ce travail est à faire pendant les vacances et doit être rendu sur \textsc{pronote} pour \textbf{le lundi 8 novembre au plus tard}, même si nous n'avons cours que le mardi 9. Aucun délai ne sera accepté et entraînera la nullité de la note.}
+\end{center}
+
+\section*{Principe}
+On considère le jeu suivant :
+\begin{enumerate}[--]
+    \item N est un entier positif compris entre 10 et 25 (au choix ou au hasard, peu importe);
+	\item on dispose N jetons identiques sur une table ;
+	\item deux joueurs A et B jouent à tour de rôle, A commence ;
+	\item chacun d'eux, lorsque c'est son tour, prélève soit 1, soit 2, soit 3 jetons;
+    \item bien entendu, s'il reste 2 jetons on ne peut en prendre 3 \textit{et c\ae tera};
+    \item il est interdit de passer son tour;
+	\item le joueur qui prélève le(s) dernier(s) jeton(s) a perdu.
+    
+\end{enumerate}
+
+\section*{Exemple}
+On décide de démarrer la partie avec 14 jetons.
+\begin{enumerate}[--]
+	\item 	A commence par en prendre 1, il en reste 13;
+	\item 	B en prend 3 il en reste 10;
+	\item 	A en prend 1 il en reste 9;
+	\item 	B en prend 2 il en reste 7;
+	\item 	A en prend 2 il en reste 5;
+	\item 	B en prend 3 il en reste 2;
+	\item 	A en prend 1 il en reste 1;
+	\item  	B en prend 1 et donc B a perdu.
+\end{enumerate}
+
+\section*{Travail à faire}
+
+\subsection*{Premier programme}
+\textbf{1.} Au brouillon, écris toi-même au moins  deux exemples de partie en choisissant N entre 10 et 25, pour bien
+comprendre comment le jeu se déroule.\\
+	
+	
+\framebox{\textbf{Pour la suite de l'exercice on considère que A est l'ordinateur et B un être humain.}}\\
+	
+\textbf{2.} Tu vas devoir écrire en \textsc{Python} un programme dans lequel l'ordinateur et l'humain jouent l'un contre l'autre :
+\begin{enumerate}[--]
+	\item 	l'ordinateur joue pour l'instant au hasard, mais en veillant bien à respecter les règles;
+	\item   l'être humain fait des propositions mais le programme vérifie qu'il respecte lui aussi les règles.
+\end{enumerate}
+
+Tu \textbf{devras} utiliser les variables suivantes :
+\begin{enumerate}[--]
+    \item   \pythoninline{n}, de type \pythoninline{int}, qui représente le nombre de jetons restants;
+	\item 	\pythoninline{choix_ordi}, de type \pythoninline{int}, qui représentera à chaque tour de jeu le nombre
+            de jetons que l'ordinateur choisit de prendre;
+	\item 	 \pythoninline{choix_humain}, de type \pythoninline{int}, qui représentera à chaque tour de jeu le nombre
+                de jetons que l'humain choisit de prendre;
+    \item   \pythoninline{gagnant}, de type \pythoninline{str}, qui vaudra \pythoninline{"humain"} ou \pythoninline{"ordi"} 
+            à la fin de la partie (et que l'on affichera).
+\end{enumerate}
+Pour t'aider, voici une description du fonctionnement du programme :
+\begin{enumerate}[--]
+	\item 	Le programme commence par choisir un nombre de jetons au hasard;
+	\item 	ensuite tant qu'il reste des jetons
+    \begin{enumerate}[\textbullet]
+    	\item 	l'ordinateur joue;
+    	\item 	s'il n'y a plus de jetons le gagnant est l'humain;
+        \item   sinon, c'est à l'humain de jouer;
+        \item  s'il ne reste plus de jetons, c'est l'ordinateur qui gagne.
+    \end{enumerate}
+    \item on affiche le gagnant.
+\end{enumerate}
+Pour choisir un nombre au hasard entre \texttt{a} et \texttt{b} \textbf{inclus}, il faut d'abord inclure au début de ton programme :\\
+\pythoninline{from random import randint}\\
+
+Ensuite pour choisir un nombre entre 10 et 15, tu utilisera \pythoninline{randint(10, 25)}.\\
+
+\subsubsection*{Comment taper mon programme Python ?}
+
+\begin{enumerate}[\bfseries 1.]
+	\item 	 Tu peux utiliser des éditeurs en ligne : \link{https://www.onlinegdb.com/online_python_compiler}{https://www.onlinegdb.com/online\_python\_compiler} est très bien fait, tu peux taper ton code et l'exécuter.\\
+    Une fois le code terminé, tu le copieras ( \touche{CTRL} + \touche{C} ) et le colleras ( \touche{CTRL} + \touche{C} ) dans un fichier texte nommé \texttt{prog1.txt}.\\
+    Si tu sais le faire, tu peux le nommer \texttt{prog1.py} mais ce n'est pas obligé.\\
+    
+	\item  Tu peux aussi installer \textsc{edupython}, qui est très simple à prendre en main et qui se trouve à cette adresse :
+    \link{https://edupython.tuxfamily.org/}{https://edupython.tuxfamily.org/}
+\end{enumerate}
+
+Tu déposeras le fichier sur \textsc{pronote}.
+
+\subsection*{Deuxième programme}
+
+Pose-toi les questions suivantes et réponds-y :\\
+
+Quand il reste 4 jetons, combien faut-il en prendre pour être sûr de gagner ?\\
+De même  pour 3 jetons. De même pour 2 jetons.\\
+
+Modifie ton premier programme pour que l'ordinateur joue mieux en fin de partie.\\
+
+Tu l'enregistreras dans un fichier nommé \texttt{prog2.txt} ou \texttt{prog2.py} et tu déposeras sur \textsc{pronote}.
+
+\subsection*{Troisième programme}
+
+\begin{enumerate}[\bfseries 1.]
+	\item 	Donner les valeurs de \texttt{n} pour lesquelles A est sûr de gagner en un coup (c'est-à-dire laisser un seul jeton à B).
+	\item 	Donner les valeurs de \texttt{n} pour lesquelles A est sûr de gagner en deux coups, c'est-à-dire : A joue, B joue, A joue et B a obligatoirement perdu (se ramener à la question précédente).
+	\item 	En extrapolant, quel est l'ensemble $\mathcal{E}$ des valeurs de départ de N  (plus nécessairement compris entre 10 et 25) pour lesquelles A est sûr de gagner  (on ne demande pas de preuve) ?
+	\item 	Quand A est sûr de gagner, quelle est la stratégie gagnante ?
+	\item 	En déduire un troisième programme qui, si $N\in\mathcal{E}$, fait en sorte que A gagne. Tu le nommeras \texttt{prog3.txt} et tu le déposeras sur \texttt{pronote}.
+\end{enumerate}
+\end{document}

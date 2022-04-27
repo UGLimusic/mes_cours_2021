@@ -1,0 +1,66 @@
+\documentclass[10pt]{beamer}
+\usepackage{uglixbeamer}
+\metroset{block=fill}
+\title{Logarithme binaire}
+ \subtitle{Point technique}
+\author{NSI2}
+
+\begin{document}
+    
+    \maketitle
+\begin{frame}{Des égalités connues}
+
+On sait déjà que  :\pause
+\begin{itemize}
+\item 4 est une puissance de 2 car c'est $2^2$.\pause
+\item $0,125=\dfrac{1}{8}=2^{-3}$.\pause
+\item $\sqrt{2}=2^{\frac{1}{2}}$ puisque $\left(\sqrt{2}\right)^2=2^1$.\pause
+\end{itemize}
+
+Cela se généralise...
+\end{frame}
+\begin{frame}{Définition de la fonction logarithme binaire}
+On admet que tout réel strictement positif $x$ est une puissance de 2 (pas nécessairement entière).\\\pause
+\begin{block}{Définition}
+$\forall x\in\oii{0}$ il existe un unique réel $y$ tel que $x=2^y$.\\\pause
+On note ce réel $\log_2x$, ceci permet de définir la \alert{fonction logarithme binaire}.\pause
+$$ y = \log_2x\quad\Longleftrightarrow\quad x = 2^y$$
+\end{block}
+\end{frame}
+\begin{frame}{Représentation graphique}
+\begin{center}
+\begin{tikzpicture}[scale=.5]
+    \reperevl{-4}{-5}{17}{5}
+    \draw[domain=1/32:17, smooth, samples = 500,variable=\x, thick, beamerRed] plot ({\x}, {log2(\x))});
+        \draw (.125,-3)\ball(.25,-2)\ball(.5,-1)\ball(1,0)\ball (2,1)\ball (4,2)\ball(16,4)\ball;
+    \pointc{8}{3}{$8=2^3$}{$\log_28=3$}{}
+\end{tikzpicture}
+\end{center}
+\end{frame}
+\begin{frame}{Intérêt en informatique}
+Soit $n\in\N^*$. On sait que si $$2^{p-1}\leq n< 2^p$$ alors $n$ s'écrit avec $p$ bits en binaire.\pause
+\begin{exampleblock}{Exemple}
+$256\leq 441<512$, c'est-à-dire $2^8\leq 441< 2^9$ et ainsi $441$ s'écrit avec 9 bits en binaire.\\
+D'ailleurs $441=(1\ 1011\ 1001)_2$.
+\end{exampleblock}\pause
+On peut utiliser la fonction logarithme binaire pour retrouver ce résultat.
+\end{frame}
+\begin{frame}{Intérêt en informatique}
+\begin{alertblock}{Propriété}
+Soit $n\in\N$, le nombre de bits nécessaires pour écrire $n$ en binaire est $$\lfloor\log_2 n\rfloor +1$$
+\end{alertblock}
+\end{frame}
+\begin{frame}{Exemples}
+\begin{exampleblock}{Exemple 1}
+$\log_2441 \simeq 8,7$, la partie entière de $8,7$ est $8$, augmentée de 1, cela nous donne 9 bits.
+\end{exampleblock}
+\pause
+\begin{exampleblock}{Exemple 2}
+$\log_2131072 = 17$, augmenté de 1, cela nous donne 18 bits.
+\end{exampleblock}
+\end{frame}
+
+\begin{frame}{Calculer un logarithme binaire}
+Pour calculer un logarithme binaire on peut se servir de la fonction \alert{logarithme népérien}, notée $\ln$. En effet pour tout réel strictement positif $x$ on a $$\log_2 x = \dfrac{\ln x}{\ln 2}$$
+\end{frame}
+\end{document}

@@ -1,0 +1,69 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[margin=2cm]{geometry}
+\usepackage[thinfonts,latinmath]{uglix2}
+
+\nouveaustyle
+\pagestyle{empty}
+\begin{document}
+\titre{Devoir maison}{SIO1}{2022}
+
+\exo{}\\
+
+Soient $a$, $b$ et $c$ trois éléments d'une algèbre booléenne $\mathscr{B}$.
+
+\begin{enumerate}[\bfseries 1.]
+	\item 	Soient $A=ab+\barmin{c}$ et $B=\barmin{a}+bc$, montrer par le calcul que $$\barmaj{A}=\barmin{a}c+\barmin{b}c$$ et que $$\barmaj{B}=a\barmin{c}+a\barmin{b}$$
+	\item 	Soit $C=\barmin{a}\,\barmin{b}\,\barmin{c}+a\barmin{b}c+\barmin{a}\,\barmin{b}+a\barmin{b}\,\barmin{c}$.\\
+			Utiliser un diagramme de Karnaugh pour simplifier C.\\
+\end{enumerate}
+
+\exo{ - Métropole mai 2017}\\
+
+Une salle dédiée à l'informatique va être aménagée au lycée.\\
+Le réseau qui équipera cette salle doit satisfaire au moins l'une des conditions suivantes :
+
+\setlength\parindent{9mm}
+\begin{itemize}
+	\item[$\bullet~~$] le réseau compte 5 postes ou plus et il existe un poste qui ne reçoit pas de données en entrée
+	\item[$\bullet~~$] il existe un poste qui ne reçoit pas de données en entrée, et le réseau compte strictement moins  de 5 postes, et il comporte strictement plus de 12 connexions ;
+	\item[$\bullet~~$] le réseau comporte 12 connexions ou moins.
+\end{itemize}
+\setlength\parindent{0mm}
+
+\smallskip
+
+On définit les variables booléennes suivantes:
+
+\setlength\parindent{9mm}
+\begin{enumerate}
+	\item[$\bullet~~$] $a = 1$ si le réseau compte 5 postes ou plus, $a = 0$ sinon;
+	\item[$\bullet~~$] $b = 1$ s'il existe un poste qui ne reçoit pas de données en entrée, $b = 0$ sinon;
+	\item[$\bullet~~$] $c = 1$ si le réseau comporte 12 connexions ou moins, $c = 0$ sinon.
+\end{enumerate}
+\setlength\parindent{0mm}
+
+\medskip
+
+\begin{enumerate}[\bfseries 1.]
+	\item Cette question est une question à choix multiple. Une seule réponse est correcte. Recopier sur la copie seulement la réponse correcte. On ne demande pas de justification.
+
+	Parmi les quatre phrases suivantes, donner celle qui traduit la variable $\overline{b}$ :
+
+	\setlength\parindent{9mm}
+	\begin{enumerate}[\textbullet]
+		\item réponse A : \og il existe un poste qui reçoit des données en entrée \fg{} ;
+		\item réponse B : \og tout poste reçoit des données en entrée \fg{} ;
+		\item réponse C : \og il existe un poste qui envoie des données en sortie \fg{} ;
+		\item réponse D : \og aucun poste ne reçoit des données en entrée \fg.
+	\end{enumerate}
+	\setlength\parindent{0mm}
+
+	\item Donner l'expression booléenne E traduisant les critères voulus pour un réseau informatique.
+	\item À l'aide d'un tableau de Karnaugh ou par des calculs, exprimer $E$ comme somme de deux
+	variables booléennes.
+	\item Traduire les critères de sélection simplifiés, à partir de l'expression obtenue à la question 3.
+	\item Un réseau dans lequel 2 postes ne reçoivent pas de données en entrée et qui comporte 15
+	connexions répond-il aux critères voulus ? Justifier la réponse.\\
+\end{enumerate}
+
+\end{document}

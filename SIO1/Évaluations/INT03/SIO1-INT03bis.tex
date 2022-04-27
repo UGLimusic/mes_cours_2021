@@ -1,0 +1,125 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[margin=2cm,top=1cm,bottom=1cm]{geometry}
+\usepackage[thinfonts]{uglix2}
+\setlength{\columnseprule}{0.5pt}
+\pagestyle{empty}
+\begin{document}
+\titreinterro{Interrogation 02}{NSI1}{09/2021}
+\'Ecris $(1\ 0111\ 1011)_2$ en base 10 en exposant les calculs.\\
+
+\carreaux{16.8}{8}\\
+
+\'Ecris $356$ en base 2 en exposant les calculs.\\
+
+\carreaux{16.8}{8}
+\newpage
+Qu'affiche chacun des scripts suivants ?\\
+\begin{multicols}{2}
+\begin{pythoncode}
+login = 'treizelettres'
+print(login[:2])
+\end{pythoncode}
+\begin{enumerate}[\case\ \ a.]
+\item \pythoninline{'es'}
+\item \pythoninline{'eizelettres'}
+\item \pythoninline{'tr'}
+\end{enumerate}
+
+\begin{pythoncode}
+a = 5
+b = 7
+print(a > 7 or b < 2)
+\end{pythoncode}
+\begin{enumerate}[\case\ \ a.]
+\item 	\pythoninline{True}
+\item 	\pythoninline{False}
+\item 	Il génère une erreur
+\end{enumerate}
+\begin{pythoncode}
+a = 2
+print(a == 2 and a != 2)
+\end{pythoncode}
+\begin{enumerate}[\case\ \ a.]
+\item 	\pythoninline{True}
+\item 	\pythoninline{False}
+\item 	Il génère une erreur
+\end{enumerate}
+
+\begin{pythoncode}
+a = 2
+b = 3
+if a > 3:
+    b = b - 7
+if b > 0:
+    b = b + 1
+print(b)
+\end{pythoncode}
+\begin{enumerate}[\case\ \ a.]
+\item 	\pythoninline{3}
+\item 	\pythoninline{4}
+\item 	\pythoninline{-3}
+\end{enumerate}
+\columnbreak
+\begin{pythoncode}
+a = 5
+b = 8
+if a == 5 or b == 6:
+    b = b - 2
+b = b - 1
+print(b)
+\end{pythoncode}
+
+\begin{enumerate}[\case\ \ a.]
+\item 	\pythoninline{8}
+\item 	5
+\item 	rien
+\end{enumerate}
+\begin{pythoncode}
+a = 2
+b = 12
+if a == 2 and b == 10:
+    b = b + 2
+    a = a + 1
+    print(a)
+\end{pythoncode}
+\begin{enumerate}[\case\ \ a.]
+\item 	\pythoninline{2}
+\item 	\pythoninline{3}
+\item 	Rien
+\end{enumerate}
+\begin{pythoncode}
+prenom = 'Marguerite'
+if prenom[0] == ' K':
+    corr = 0
+elif prenom[1] == 'a':
+    corr = 1
+else:
+    corr = -1
+print(corr)
+\end{pythoncode}
+\begin{enumerate}[\case\ \ a.]
+\item 	\pythoninline{0}
+\item 	\pythoninline{1}
+\item 	\pythoninline{-1}
+\end{enumerate}
+\begin{pythoncode}
+a = 30
+b = 10
+if a > 40 and b > 5:
+    b = b + 10
+elif a > 20 and b < 5:
+    b = b + 20
+elif a > 10 and b > 2:
+    b = b + 30
+print(b)
+\end{pythoncode}
+\begin{enumerate}[\case\ \ a.]
+\item 	\pythoninline{40}
+\item 	\pythoninline{10}
+\item 	\pythoninline{30}
+\end{enumerate}
+\end{multicols}
+
+
+\end{document}
+

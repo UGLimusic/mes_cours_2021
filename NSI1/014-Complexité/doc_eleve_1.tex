@@ -1,0 +1,93 @@
+\documentclass[a4paper,10pt,french]{article}
+\usepackage[margin=1cm,top=2.5cm,landscape]{geometry}
+\usepackage[thinfonts,latinmath]{uglix2}
+\pagestyle{empty}
+\begin{document}
+
+\setlength\columnsep{2cm}
+\begin{multicols}{3}
+\begin{pythoncode}
+def tous_pairs1(lst: list) -> bool:
+    resultat = True
+    for x in lst:
+        if x % 2 == 1:
+            resultat = False
+    return resultat
+\end{pythoncode}
+
+\begin{pythoncode}
+def tous_pairs2(lst: list) -> bool:
+    for x in lst:
+        if x % 2 == 1:
+            return False
+    return True
+\end{pythoncode}
+
+\begin{pythoncode}
+def tous_pairs3(lst: list) -> bool:
+    produit = 1
+    for x in lst:
+        produit *= x
+    if produit % 2 == 1:
+        return False
+    else:
+        return True
+\end{pythoncode}
+\columnbreak
+\begin{pythoncode}
+def tous_pairs1(lst: list) -> bool:
+    resultat = True
+    for x in lst:
+        if x % 2 == 1:
+            resultat = False
+    return resultat
+\end{pythoncode}
+
+\begin{pythoncode}
+def tous_pairs2(lst: list) -> bool:
+    for x in lst:
+        if x % 2 == 1:
+            return False
+    return True
+\end{pythoncode}
+
+\begin{pythoncode}
+def tous_pairs3(lst: list) -> bool:
+    produit = 1
+    for x in lst:
+        produit *= x
+    if produit % 2 == 1:
+        return False
+    else:
+        return True
+\end{pythoncode}
+\columnbreak
+\begin{pythoncode}
+def tous_pairs1(lst: list) -> bool:
+    resultat = True
+    for x in lst:
+        if x % 2 == 1:
+            resultat = False
+    return resultat
+\end{pythoncode}
+
+\begin{pythoncode}
+def tous_pairs2(lst: list) -> bool:
+    for x in lst:
+        if x % 2 == 1:
+            return False
+    return True
+\end{pythoncode}
+
+\begin{pythoncode}
+def tous_pairs3(lst: list) -> bool:
+    produit = 1
+    for x in lst:
+        produit *= x
+    if produit % 2 == 1:
+        return False
+    else:
+        return True
+\end{pythoncode}
+\end{multicols}
+\end{document}

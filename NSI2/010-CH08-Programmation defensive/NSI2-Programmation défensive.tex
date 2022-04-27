@@ -1,0 +1,176 @@
+\documentclass[a4paper,12pt,french]{book}
+\usepackage[margin=2cm]{geometry}
+\usepackage[thinfonts]{uglix2}
+\newcommand{\file}[1]{\pythoninline{#1}}
+\setcounter{chapter}{7}
+\begin{document}
+\chapter{\large programmation\\[-1em]\fontsize{35pt}{42pt}\selectfont\titlefont Initiation à la\\programmation défensive}
+\introduction{Attrapez-les toutes !}
+
+\begin{aretenir}
+La \textit{programmation défensive} est un ensemble de règles pour concevoir des programmes assurés de fonctionner dans le pire des cas.\\
+Les principales sont
+\begin{enumerate}[--]
+	\item 	ne pas faire confiance aux données entrées par les utilisateurs;
+	\item 	gérer les exceptions avec \pythoninline{try} / \pythoninline{except};
+	\item 	écrire des tests avec \pythoninline{assert};
+	\item 	ne pas chercher à réinventer la roue : utiliser des modules qui ont fait leurs preuves.	
+\end{enumerate}
+\end{aretenir}
+
+
+\section{Gestion des exceptions}
+\subsection{L'utilisateur et ses facéties}
+On a malheureusement déjà vu ceci :
+\begin{pythoncode}
+def inverse(x : float) -> float :
+	return 1 / x
+\end{pythoncode}
+L'utilisateur évalue \pythoninline{inverse(0)} et obtient :\\
+
+{\color{red}\tw{Traceback (most recent call last):\\
+\hspace{2em}File "fonction1.py", line 4, in <module>\\
+\hspace{4em}inverse(0)\\
+\hspace{2em}File "fonction1.py", line 2, in inverse\\
+\hspace{4em}return 1 / x\\
+ZeroDivisionError: division by zero}}\\
+
+
+Le message d'erreur peut se lire ainsi : Il y a une erreur quand on appelle \pythoninline{inverse(0)} car lorsqu'on doit renvoyer \pythoninline{1/x} cela provoque une erreur de type \pythoninline{ZeroDivisionError}.\\
+
+De la même manière lorsque l'utilisateur évalue \pythoninline{inverse('chaussette')} il obtient :\\
+
+{\color{red}\tw{Traceback (most recent call last):\\
+		\hspace{2em}File "fonction1.py", line 4, in <module>\\
+		\hspace{4em}inverse(0)\\
+		\hspace{2em}File "fonction1.py", line 2, in inverse\\
+		\hspace{4em}return 1 / x\\
+TypeError: unsupported operand type(s) for /: 'int' and 'str'}}\\
+
+Effectivement l'opérateur \pythoninline{/} ne peut pas diviser un \pythoninline{int} par un \pythoninline{str}.\\
+
+\pythoninline{ZeroDivisionError} et \pythoninline{TypeError} sont deux représentants de ce qu'on appelle des \textit{exceptions}. On dit qu'\textit{une exception est levée} (\textit{an exception is raised} en Anglais) lorsque l'interpréteur \textsc{Python} rencontre un problème qu'il ne peut résoudre ou bien que le programme lui même indique que ce doit être le cas. Les exceptions les plus courantes sont ces deux premières ainsi que 
+\begin{enumerate}[--]
+	\item 	\pythoninline{NameError} pour une variable non définie;
+	\item 	\pythoninline{IndexError} pour un indice de liste trop grand;
+	\item 	\pythoninline{KeyError} pour une clé de dictionnaire inexistante;
+\end{enumerate}
+
+On pourra trouver la liste de toutes les exceptions \link{https://docs.python.org/fr/3.8/library/exceptions.html}{ici}.
+
+\begin{definition}[ : exception]
+	Une exception est un objet de \textsc{Python} servant à représenter une erreur.
+\end{definition}
+
+\subsection{Syntaxe de la gestion des exceptions}
+Ne pas faire confiance à l'utilisateur c'est prévoir ces exceptions. La syntaxe \textsc{Python} est simple :
+\begin{enumerate}[--]
+	\item 	la partie du code susceptible de lever une exception est mise dans un bloc \pythoninline{try};
+	\item 	si une exception est levée on la gère avec un bloc \pythoninline{except}.
+\end{enumerate}
+
+\pythonfile{scripts/fonction1.py}
+
+Dans l'exemple ci-dessus les erreurs de type et de division par zéro sont gérées par un message d'affichage et le renvoi de la valeur zéro (zéro n'est l'inverse d'aucun nombre).
+
+\begin{remarque}[]
+	La gestion des erreurs permet d'éviter que le programme s'arrête brusquement mais elle n'élimine pas les erreurs, elle fait en sorte de les signaler à l'utilisateur du programme (ou du module). C'est donc à lui de rectifier ce qui produit l'erreur.
+\end{remarque}
+
+\begin{encadrecolore}{Conseil}{UGLiOrange}
+	Quand on gère les exceptions, on doit toujours le faire en précisant le type de l'exception qui a été levée. Le programme suivant fonctionne mais n'est pas recommandé car lorsqu'une exception a lieu, on ne sait pas laquelle.
+\inputminted{python}{scripts/fonction2.py}
+\end{encadrecolore}
+
+
+\section{Tests unitaires}
+
+\begin{definition}[ : test unitaire]
+Un (ou des) test(s) unitaire(s) sert à vérifier qu'une partie d'un programme (une \textit{unité}) fonctionne comme on l'a prévu.
+\end{definition}
+
+\begin{encadrecolore}{Conseil}{UGLiOrange}
+Lorsqu'on écrit une partie d'un programme destinée à effectuer une tâche particulière, il est préférable d'écrire quelques tests \textit{avant même d'écrire le programme}.\\
+Les tests doivent être pensés pour aborder le cas général ainsi que les cas particuliers. Cette démarche aide à clarifier les idées pour programmer correctement.
+\end{encadrecolore}
+
+\subsection{Utilisation de \pythoninline{assert}}
+
+Le mot-clé \pythoninline{assert} sert à vérifier qu'une \textit{assertion} (un test de condition) est vraie. Si c'est le cas le programme continue, sinon une exception du type \pythoninline{AssertionError} est levée. Ainsi on peut la gérer avec une structure \pythoninline{try} / \pythoninline{except} comme vu précédemment.
+
+\pythonfile{scripts/assert1.py}
+\subsection{Un exemple}
+
+On veut coder une fonction \pythoninline{sort} (qui signifie \textit{trier} en Anglais) qui 
+\begin{enumerate}[--]
+	\item 	en entrée prend une liste d'\pythoninline{int};
+	\item 	en sortie renvoie une liste qui contient les mêmes valeurs que la liste d'entrée, mais triées dans l'ordre croissant.	
+\end{enumerate}
+
+La stratégie conseillée est d'écrire les tests d'abord :
+
+\pythonfile{scripts/assert2.py}
+
+Le premier test vérifie qu'il n'y a pas d'erreur avec une liste vide (cas particulier qui peut arriver). Le deuxième vérifie qu'il y a effectivement tri, le troisième vérifie que \pythoninline{sort} fonctionne sur une liste avec doublons.
+
+\begin{attention}
+	En mathématiques, on sait que \og quelques exemples ne peuvent servir à prouver une généralité\fg. De la même manière quelques tests ne constituent pas une \textit{preuve absolue} qu'un programme fonctionne correctement.
+\end{attention}
+
+\section{Utiliser des modules déjà écrits}
+
+C'est ce que l'on veut dire par \og ne pas chercher à réinventer la roue\fg{} : quand on doit écrire un programme, il est plus que probable que les fonctionnalités qu'on veut implémenter l'aient déjà été par quelqu'un d'autre, que la communauté l'utilise et en est satisfaite. Si c'est le cas, autant l'utiliser, à moins que
+\begin{enumerate}[--]
+	\item 	vous-même ne soyez pas satisfaits des performances du module (trop lent, trop gourmand en mémoire);
+	\item 	une situation technique particulière fait que vous ne pouvez pas l'utiliser dans votre projet;
+	\item 	vous êtes élève/étudiant et votre professeur\cdot e	vous a donné cet exercice/projet pour vous former.
+\end{enumerate}
+\exostart
+\begin{exercice}
+	On veut coder une fonction \pythoninline{age} qui demande à l'utilisateur majeur d'entrer son âge, on attend donc qu'il entre un entier entre 18 et 120.
+	\begin{enumerate}[--]
+		\item 	la fonction ne prend rien en entrée;
+		\item 	elle renvoie un \pythoninline{int} compris entre 18 et 120, et tant que l'utilisateur n'entre pas un âge valide elle lui demande d'entrer son âge.
+	\end{enumerate}
+	Programmer cette fonction de manière défensive (gérer les exceptions).
+\end{exercice}
+
+\begin{exercice}[]
+	On veut coder une fonction \pythoninline{is_sorted} qui 
+	\begin{enumerate}[--]
+		\item 	en entrée prend une liste d'\pythoninline{int} éventuellement vide;
+		\item 	renvoie \pythoninline{True} si elle est triée par ordre croissant (ou vide ou bien avec un seul élément) et \pythoninline{False} dans le cas contraire.	
+	\end{enumerate}
+	\'Ecrire un ensemble de tests pertinents pour cette fonction.
+\end{exercice}
+
+\begin{exercice}[]
+	Reprendre le module \pythoninline{fractions_custom} du chapitre précédent et gérer toutes les exceptions :
+	\begin{enumerate}[--]
+		\item 	l'utilisateur crée n'importe quoi;
+		\item 	l'utilisateur divise par zéro.
+	\end{enumerate}
+	On pourra utiliser la fonction \pythoninline{isinstance()} qui
+	\begin{enumerate}[--]
+		\item 	prend en entrée une variable et un type de variable;
+		\item 	renvoie \pythoninline{True} si la variable est bien ce ce type et \pythoninline{False} sinon.\\
+				Par exemple \pythoninline{isinstance(2,str)} renvoie \pythoninline{False}.
+	\end{enumerate}
+\end{exercice}
+\begin{exercice}[]
+	On veut créer une fonction \pythoninline{merge} (qui veut dire \textit{fusionner} en Anglais) qui
+	\begin{enumerate}[--]
+		\item 	prend en entrée 2 listes d'entiers triées par ordre croissant éventuellement vides;
+		\item 	renvoie une liste composée des valeurs des 2 listes, triées par ordre croissant.
+				Par exemple \pythoninline{merge([1, 3, 8], [4, 5, 10])} doit renvoyer \pythoninline{[1, 3, 4, 5, 8, 10]}	.
+	\end{enumerate}
+	\begin{enumerate}[\bfseries 1.]
+		\item 	\'Ecrire des tests pertinents pour cette fonction.
+		\item 	\textbf{Compliqué :} programmer cette fonction. Le plus simple est de la programmer de manière récursive. On peut la programmer de manière impérative mais c'est plus long et sans doute plus compliqué.
+	\end{enumerate}
+\end{exercice}
+
+\begin{encadrecolore}{Projet optionnel : module \pythoninline{kb_mouse}}{UGLiOrange}
+Reprendre le module \pythoninline{kb_mouse} du chapitre précédent et gérer les exceptions.
+\end{encadrecolore}
+\end{document}

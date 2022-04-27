@@ -1,0 +1,136 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[margin=2cm]{geometry}
+\usepackage[thinfonts]{uglix2}
+\pagestyle{empty}
+\setlength{\columnseprule}{.5pt}
+\begin{document}
+\titreinterro{Interrogation 02\bis}{NSI1}{09/2021}
+Qu'affiche chacun des scripts suivants ? Une seule réponse est valide.
+\begin{multicols}{2}
+
+\begin{pythoncode}
+a = 4
+b = a + 3
+a = 5
+print(b)
+\end{pythoncode}
+\begin{enumerate}[\case\ \ a.]
+\item \pythoninline{5}
+\item \pythoninline{8}
+\item    \pythoninline{7}
+
+\end{enumerate}
+
+\begin{pythoncode}
+prenom = 'Jean Raoul'
+print(prenom[3:7])
+\end{pythoncode}
+\begin{enumerate}[\case\ \ a.]
+\item    \pythoninline{n Ra}
+\item    \pythoninline{en Ra}
+\item    \pythoninline{en R}
+
+\end{enumerate}
+
+\begin{pythoncode}
+a = 3
+b = A + 4
+print(a)
+\end{pythoncode}
+
+\begin{enumerate}[\case\ \ a.]
+\item    Il génère une erreur.
+\item    3
+\item    7
+\end{enumerate}
+
+\columnbreak
+\begin{pythoncode}
+a = 2
+b = a - 7
+c = a + b
+b = c - a
+print(b)
+\end{pythoncode}
+\begin{enumerate}[\case\ \ a.]
+\item \pythoninline{-5}
+\item \pythoninline{3}
+\item \pythoninline{2}
+\end{enumerate}
+
+\begin{pythoncode}
+resultat = 1 - 5 % 4
+print(resultat)
+\end{pythoncode}
+
+\begin{enumerate}[\case\ \ a.]
+\item \pythoninline{-1}
+\item Il génère une erreur
+\item \pythoninline{0}
+
+\end{enumerate}
+
+\begin{pythoncode}
+nombre = input("Entre un nombre : ")
+# on admet que l'utilisateur entre 4
+print(nombre + 10)
+\end{pythoncode}
+
+\begin{enumerate}[\case\ \ a.]
+\item    \pythoninline{14}
+\item   Il génère une erreur.
+\item    \pythoninline{nombre + 10}
+\end{enumerate}
+\newpage
+\begin{pythoncode}
+variable ='12'
+print(type(variable))
+\end{pythoncode}
+\begin{enumerate}[\case\ \ a.]
+\item    \pythoninline {<class float>}
+\item    \pythoninline{<class int>}
+
+\item    \pythoninline{<class str>}
+\end{enumerate}
+
+\begin{pythoncode}
+a = 'mer'
+b = 'ci'
+c = b + a * 2 + b
+print(c)
+\end{pythoncode}
+\begin{enumerate}[\case\ \ a.]
+\item    \pythoninline{mercimerci}
+\item    Il génère une erreur
+\item    \pythoninline{cimermerci}
+\end{enumerate}
+
+
+\begin{pythoncode}
+variable = "(40-3)*20"
+print(variable)
+\end{pythoncode}
+\begin{enumerate}[\case\ \ a.]
+\item    \pythoninline{740}
+\item    \pythoninline{-20}
+\item    \pythoninline{(40-3)*20}
+\end{enumerate}
+
+
+\begin{pythoncode}
+a = '2'
+b = '3'
+print(a+b)
+\end{pythoncode}
+\begin{enumerate}[\case\ \ a.]
+\item    \pythoninline{5}
+\item    \pythoninline{23}
+\item    Il génère une erreur
+\end{enumerate}
+
+
+
+
+\end{multicols}
+\end{document}
+

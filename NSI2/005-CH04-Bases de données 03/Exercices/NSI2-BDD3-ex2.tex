@@ -1,0 +1,81 @@
+\documentclass[a4paper,11pt,french]{book}
+\usepackage[margin=2cm]{geometry}
+\usepackage[thinfonts]{uglix2}
+
+\pagestyle{empty}
+\nouveaustyle
+\begin{document}
+\titre{BDD - Feuille d'exercices 4}{NSI2}{2021}\\
+
+\exo{}
+
+Liste les différents attributs de cette
+relation. Donne le domaine de chaque
+attribut. Pour chaque attribut dire s'il peut jouer ou non le rôle de clef primaire et pourquoi.
+\begin{center}
+\textbf{Film}\\[1em]
+
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+\rowcolor{UGLiOrange} \textbf{\color{white}id} &\textbf{\color{white}titre}&\textbf{\color{white}realisateur}&\textbf{\color{white}ann\_sortie}&\textbf{\color{white}note\_sur\_10}\\
+\hline
+1&Alien, le huitième passager &Scott &1979 &10\\
+2&Dune&Lynch&1985&5\\
+3&2001 : l'Odysée de l'Espace&Kubrick&1968&9\\
+4&Blade Runner&Scott&1982&10\\
+\hline
+\end{tabular}\\[2em]
+\end{center}
+\exo{}
+
+Indique les attributs qui peuvent servir de lien entre ces deux relations.
+
+\begin{center}
+\textbf{Auteur}\\[1em]
+
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+\rowcolor{UGLiOrange} \textbf{\color{white}id} &\textbf{\color{white}nom}&\textbf{\color{white}prenom}&\textbf{\color{white}ann\_naiss}&\textbf{\color{white}langue\_ecriture}\\
+\hline
+1&Orwell&George&1903&anglais\\
+2&Herbert&Frank&1920&anglais\\
+3&Asimov&Isaac&1920&anglais\\
+4&Barjavel&René&1911&français\\
+5&Verne&Jules&1828&français\\
+...&...&...&...&...\\
+\hline
+\end{tabular}\\[2em]
+\end{center}
+
+\begin{center}
+\textbf{Livre}\\[1em]
+
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+\rowcolor{UGLiOrange} \textbf{\color{white}id} &\textbf{\color{white}titre}&\textbf{\color{white}id\_auteur}&\textbf{\color{white}ann\_publi}&\textbf{\color{white}note}\\
+\hline
+...&...&...&...&...\\
+34&La nuit des temps&4&1968&7\\
+35&De la Terre à la Lune&5&1865&10\\
+36&Les Robots&6&1950&9\\
+...&...&...&...&...\\
+\hline
+\end{tabular}\\[2em]
+\end{center}
+\exo{}
+
+\begin{enumerate}[\bfseries 1.]
+	\item 	En partant de la relation \textbf{Film} ci-dessus, crée
+    une relation \textbf{Realisateur} (attributs de la
+    relation: \tw{id}, \tw{nom}, \tw{prenom} et
+    \tw{ann\_naissance}, tu trouveras toutes les
+    informations nécessaires sur le Web).
+    Modifie ensuite la relation \textbf{Film} afin d'établir
+    un lien entre les relations \textbf{Film} et
+    \textbf{Realisateur}. Tu préciseras l'attribut qui
+    jouera le rôle de clef étrangère.
+
+	\item 	\'Ecris le code \textsc{SQL} permettant de générer les 2 tables.
+    \item   \'Ecris le code \textsc{SQL} pour insérer les films et les réalisateurs correspondants.
+\end{enumerate}
+\end{document}

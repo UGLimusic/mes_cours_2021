@@ -1,0 +1,57 @@
+\documentclass[a4paper,12pt,french]{book}
+\usepackage[margin=2cm]{geometry}
+\usepackage[thinfonts]{uglix2}
+\nouveaustyle
+
+\begin{document}
+\titre{Processus TP4}{NSI2}{2021}
+
+Nous avons constaté dans le premier TP que lorsque des processus s'exécutent de manière concurrente, il est impossible de savoir à l'avance quel processus aura la main à un moment donné.\\
+
+Nous avons également vu que lorsque des processus partagent des ressources exclusives, il peut y avoir interblocage.\\
+
+Nous allons illustrer cela une dernière fois en créant des \textit{threads} (processus légers). \textsc{Python} gère les threads très simplement.
+
+\begin{exercice}[]
+Ouvrir, lire, comprendre, puis lancer \texttt{thread1.py}.\\
+Comparer la situation avec celle du premier TP.
+\end{exercice}
+
+\begin{exercice}[]
+On a expliqué que les threads, contrairement aux processus \og lourds\fg{}, partagent les variables globales.
+\begin{enumerate}[\bfseries 1.]
+	\item 	Créer un script \texttt{thread2.py} qui comporte une variable globale \texttt{compteur}, initialisée à \texttt{0} et une fonction \texttt{f} qui
+            \begin{enumerate}[--]
+            	\item 	ne prend rien en entrée;
+            	\item 	ne renvoie rien mais à l'aide d'une boucle \pythoninline{for}, incrémente $1\,000\,000$ fois \texttt{compteur}.
+            \end{enumerate}
+	\item 	Créer 4 threads qui exécutent \pythoninline{f} en tâche de fond (ne pas définir la valeur de \texttt{args} lors de la création).
+    \item 	Lancer les threads (méthode \texttt{start}) et attendre qu'ils se terminent (avec la méthode \pythoninline{join}) puis afficher \texttt{compteur}.
+    \item 	Quelle devrait être la valeur de \texttt{compteur} ? Comment expliquer le phénomène ?
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}[]
+Pour éviter le problème de l'exercice précédent, il faut s'assurer que pendant l'exécution de \pythoninline{compteur += 1}, chaque thread ne sera pas interrompu.\\
+
+Pour ce faire il suffit, dans le programme principal, de créer un \og verrou \fg{} :\\
+\pythoninline{verrou = threading.Lock()}\\
+Ce verrou agit un peu comme une ressource exclusive : quand un thread acquiert le verrou, les autres threads qui cherchent à l'acquérir doivent attendre qu'il le libère.\\
+Pour acquérir le verrou on utilise \pythoninline{verrou.acquire()}.\\
+Pour le libérer on utilise \pythoninline{verrou.release()}.\\
+\begin{enumerate}[\bfseries 1.]
+	\item 	Créer un fichier \texttt{thread3.py} et copier le contenu de \texttt{thread2.py} dedans.
+	\item 	Créer un verrou et modifier \texttt{f} pour que l'instruction \pythoninline{compteur += 1} ne soit pas interrompue.
+    \item 	Constater le résultat
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}[]
+En définitive, les verrous apparaissant comme des ressources exclusive, on doit pouvoir simuler le phénomène d'interblocage du TP précédent (l'exercice 5 portant sur le robot).
+\begin{enumerate}[\bfseries 1.]
+	\item 	Ouvrir le fichier \texttt{thread4.py} et lire son contenu.
+	\item 	Compléter ce fichier.
+    \item 	Exécuter le programme plusieurs fois et commenter les résultats.
+\end{enumerate}
+\end{exercice}
+\end{document}

@@ -1,0 +1,99 @@
+\documentclass[a4paper,11pt,french]{book}
+\usepackage[margin=2cm]{geometry}
+\usepackage{uglix}
+\usepackage{colortbl}
+\pagestyle{empty}
+\nouveaustyle
+\begin{document}
+	\titre{Identifiants}{SIO}{12/2020}\\
+	
+\subsection{Principe}
+
+Une entreprise crée un identifiant pour chacun des employés de ses différentes succursales de Paris, Lyon, Marseille, Toulouse et Bordeaux. L’identifiant comporte 8 caractères :\\ 
+
+\double
+{
+	\begin{enumerate}[--]
+		\item 	le premier caractère est l’initiale du nom de l’employé;
+		\item 	le second caractère est '1' pour un homme et '2' pour une femme;
+		\item 	les troisième et quatrième caractères sont pour son année de naissance;
+		\item 	le cinquième caractère est le numéro de commune donné par le tableau ci-contre;
+		\item 	les trois derniers caractères sont pour le numéro d’enregistrement de l’employé.\\
+		
+	\end{enumerate}
+}
+{
+\begin{tabular}{|c|c|}
+	\hline
+	Paris & 1\\
+	\hline
+	Lyon & 2\\
+	\hline
+	Marseille & 3 \\
+	\hline
+	Toulouse & 4 \\
+	\hline
+	Bordeaux & 5 \\
+	\hline
+\end{tabular}
+}
+{3cm}
+Par exemple une femme appelée Mme AZERTY née en 1979 qui travaille à Toulouse et qui est la 37ème à s’enregistrer aura
+l’identifiant A2794036 car en décomposant on a 
+$$\underbrace{A}_{initiale}\underbrace{2}_{sexe}\underbrace{79}_{année}\underbrace{4}_{ville}\underbrace{36}_{enregistrement}$$
+Le numéro d'enregistrement est 36 et non 37 car le premier enregistré se voit attribuer le numéro 000 et ainsi de suite.
+
+\subsection{Travail sur table}
+
+Le tableau est représenté par une liste de listes : \\
+\pythoninline{T = [['Paris',1],['Lyon',2],['Marseille',3],['Toulouse',4],['Bordeaux',5]]}
+
+Pour les conversions on utilisera les fonctions suivantes :
+\begin{enumerate}[--]
+	\item 	\tw{entier} : prend une chaine de caractères et la convertit (si c'est possible) en entier;
+	\item 	\tw{chaine} : prend un entier et le convertit en chaine de caractères.
+\end{enumerate}
+
+\begin{enumerate}[\bfseries 1.]
+	\item 	On considère la fonction \tw{mystere} suivante qui prend en entrée une commune du tableau ci-dessus de type chaîne de caractères :
+\begin{pseudocode}\begin{lstlisting}[language=naturel]
+fonction mystere(x : chaine de caractères):
+variables
+	i entier
+début
+	i (<* $\leftarrow$ *>) 0
+	tant que T[i][0](<* $\neq$ *>) x faire
+		i (<* $\leftarrow$ *>) i + 1
+	fin tant que
+	renvoyer i + 1
+fin
+\end{lstlisting}\end{pseudocode}
+\begin{enumerate}[\bfseries a.]
+	\item 	Décrire le rôle de cet algorithme dans le contexte de l'énoncé et donner un nom plus parlant à la fonction.
+			Quel est le type de la variable renvoyée par la fonction ?
+	\item 	Modifier cette fonction pour que le type de la variable renvoyée soit une chaîne de caractère.	
+\end{enumerate}
+	\item \'Ecrire une fonction \tw{conversion} qui prend en entrée un entier compris entre 1 et 999 et qui renvoie la chaîne de 3 caractères formée par les chiffres de cet entier éventuellement complétés par des 0 à gauche.\\
+	Par exemple \tw{conversion(37)} renvoie \pythoninline{'37'}.
+	\item    L’entreprise compte 530 salariés et dispose d’une liste appelé \tw{listing} qui contient sur chaque ligne les données de ses employés de type chaîne de caractères au format suivant :\\
+	\pythoninline{['NOM', 'SEXE', 'NAISSANCE', 'COMMUNE']}.\\
+	La liste est donnée dans l'ordre d'inscription des employés.\\
+	Par exemple la ligne correspondant à Mme AZERTY est la ligne d'indice 36 et est :\\
+	\pythoninline{['AZERTY', 'femme', '1979', 'Toulouse']}.\\	
+	Écrire une fonction \tw{identifiants} qui prend en entrée une liste telle que \tw{listing} et qui y rajoute une colonne avec l’identifiant de chaque employé.
+	\item 	Pour détecter une erreur lors de la saisie d'un identifiant, on rajoute un neuvième caractère appelé clé, déterminé comme ceci :
+	\begin{enumerate}[--]
+		\item 	On calcule S, la somme de tous les chiffres de l'identifiant;
+		\item 	On calcule le reste de la division euclidienne de 66-S par 11. Si c'est 10 alors la clé vaut \pythoninline{'X'}, sinon on convertit ce chiffre en chaine de caractères.
+	\end{enumerate}
+		Par exemple avec l'identifiant \pythoninline{'A2794036'} on $S= 2 + 7 + 9 + 4 + 0 + 3 + 6=31$.\\
+	Ensuite $66-31=35$ et $35=3\times 11 + 2$ donc la clé est \pythoninline{'2'} et finalement l'identifiant avec clé est \pythoninline{'A27940362'}.\\
+	
+	\'Ecrire une fonction \tw{ajout\_cle} qui prend en entier un identifiant à 8 caractères et renvoie l'identifiant avec la clé.
+\end{enumerate}
+
+\subsection{Implémentation sur machine}
+	Implémenter les fonctions précédentes en \textsc{Python}.\\
+	
+	\textbf{\textsc{Bonus} :} \'Ecrire une fonction \tw{mise\_a\_jour} qui prend en entrée un listing de clients avec identifiants, regarde si leurs identifiants ont une clé, si c'est le cas vérifie qu'il n'y a pas d'erreur et s'il n'y a pas de clé, la crée.
+\end{document}

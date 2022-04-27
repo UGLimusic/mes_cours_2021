@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulaire</title>
+</head>
+<body>
+<form action="http://localhost:5000/resultat" method=post>
+    <table>
+        <tr>
+            <td>
+                <label for="champUserName">Nom d'utilisateur :</label>
+            </td>
+            <td>
+                <input id="champUserName" name="username" type="text" required>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="champPassword">Mot de passe :</label>
+            </td>
+            <td>
+                <input id="champPassword" name="password" type="password" required>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="champNom">Nom : </label>
+            </td>
+            <td>
+                <input id="champNom" name="nom" type="text" required>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="champPrenom">Prénom : </label>
+
+            </td>
+            <td>
+                <input id="champPrenom" name="prenom" type="text" required>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="champDate">Date de naissance :</label>
+
+            </td>
+            <td>
+                <input id="champDate" name="dateNaissance" type="date" required>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="champMail">email : </label>
+
+            </td>
+            <td>
+                <input id="champMail" name="mail" type="email" required>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="champAnneesExp">Nombre d'années d'expérience dans le gaming :</label>
+            </td>
+            <td>
+                <input id="champAnneesExp" name="anneesExp" type="number" required>
+            </td>
+        </tr>
+    </table>
+    <br>
+    Genre de jeu favori :<br>
+    <table>
+        <tr>
+            <td><label for="boutonFavFPS">FPS</label></td>
+            <td><input id="boutonFavFPS" name="genreFavori" type="radio" value="FPS" required></td>
+        </tr>
+        <tr>
+            <td><label for="boutonFavStrat">Stratégie</label></td>
+            <td><input id="boutonFavStrat" name="genreFavori" type="radio" value="Stratégie" required></td>
+        </tr>
+        <tr>
+            <td><label for="boutonFavRPG">RPG</label></td>
+            <td><input id="boutonFavRPG" name="genreFavori" type="radio" value="RPG" required></td>
+        </tr>
+        <tr>
+            <td>
+                <label for="boutonFavSports">Sports</label>
+            </td>
+            <td>
+                <input id="boutonFavSports" name="genreFavori" type="radio" value="Sport" required>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="boutonFavAutre">Autre</label>
+            </td>
+            <td>
+                <input id="boutonFavAutre" name="genreFavori" type="radio" value="Autre" required>
+            </td>
+        </tr>
+
+    </table>
+    <input type="submit">
+    <input type="reset">
+</form>
+</body>
+</html>

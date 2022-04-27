@@ -1,0 +1,13 @@
+#include <iostream> // bibliothèque d'affichage
+int main() // début de la fonction principale
+{
+	unsigned char c = 0; // on définit la variable c
+	for (int i = 0; i < 300; i++) // on fait une boucle pour
+	{
+		std::cout << "valeur de i : " << i; // on affiche la valeur de i
+		std::cout << "  et valeur de c : " << (int)c; // on affiche la valeur de c en base 10
+		std::cout << std::endl; // on revient à la ligne (END Line)
+		c++; // on augmente c de 1
+	}
+	return 0; // la fonction principale renvoie zéro par convention
+}

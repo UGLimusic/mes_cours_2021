@@ -1,0 +1,72 @@
+\documentclass[a4paper,12pt,french]{book}
+\usepackage[margin=2cm]{geometry}
+\usepackage[thinfonts]{uglix2}
+\nouveaustyle
+
+\begin{document}
+\titre{Du cours au programme Python}{SIO1-3}{11-2021}
+
+\begin{methode}[ 1 : passer de la base 2 à la base 10]
+Que vaut $(11101)_2$ ?
+\begin{center}
+	\begin{tabular}{|c|c|c|c|c|c|}
+		\hline 
+		Chiffre binaire & 1 & 1 & 1 & 0 & 1 \\ 
+		\hline 
+		Valeur & $2^4$ & $2^3$ & $2^2$ & $2^1$ & $2^0$ \\ 
+		\hline 
+	\end{tabular}
+\end{center}
+\begin{tabbing}
+		$(11101)_2$	\= 	$=1\times 2^4+1\times 2^3+1\times 2^2+0\times 2^1+1\times 2^0$	\\
+			\>	$=16+8+4+1$	\\	
+			\>	$=29$	
+	\end{tabbing}\nopagebreak
+\end{methode}
+\begin{exercice}[]
+Écrire une fonction \tw{methode1} qui
+\begin{enumerate}[--]
+	\item 	en entrée prend un \tw{str} composé de 0 et de 1 qui est l'écriture binaire d'un entier;
+	\item 	renvoie un \texttt{int} qui est cet entier (en décimal, donc).
+\end{enumerate}
+Tester la fonction.
+\end{exercice}
+
+\begin{methode}[ 2 : passer de la base 10 à la base 2]
+\begin{tabbing}
+	203	\= 	$=128+64+8+2+1$	\\
+	
+		\>	$=2^7+2^6+2^3+2^1+2^0$	\\
+		
+		\>	$=1\times 2^7+1\times 2^6+0\times 2^5 + 0\times 2^4 +1\times 2^3+0\times 2^2 + 1\times 
+		2^1+1\times 2^0$	\\
+		
+		\> $=(11001011)_2$
+\end{tabbing}
+\end{methode}
+
+\begin{exercice}[]
+\'Ecrire une fonction \texttt{methode2} qui :
+\begin{enumerate}[--]
+	\item 	en entrée prend  un entier positif ;
+	\item 	renvoie l'écriture en binaire de cet entier dans un \texttt{str} en utilisant la méthode 2.\\
+\end{enumerate}
+Tester la fonction.
+\end{exercice}
+
+\begin{methode}[ 3 : les divisions successives]
+Voici comment on trouve les chiffres de l'écriture \textit{binaire} de 203 :
+$$\division[2]{203}$$
+En définitive, $203=(11001011)_2$.
+\end{methode}
+
+
+\begin{exercice}[]
+\'Ecrire une fonction \texttt{methode3} qui :
+\begin{enumerate}[--]
+	\item 	en entrée prend  un entier positif ;
+	\item 	renvoie l'écriture en binaire de cet entier dans un \texttt{str} en utilisant la méthode 3.\\
+\end{enumerate}
+Tester la fonction.
+\end{exercice}
+\end{document}

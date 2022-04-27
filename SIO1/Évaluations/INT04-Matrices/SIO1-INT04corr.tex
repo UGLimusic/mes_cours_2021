@@ -1,0 +1,128 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[margin=2cm]{geometry}
+\usepackage[thinfonts]{uglix2}
+\nouveaustyle 
+\pagestyle{empty}
+\begin{document}
+\titreinterro{Interrogation 04}{SIO1}{12/2021}
+
+
+\exo{ - Calculs}\\
+
+On considère les matrices suivantes : 
+$A = \begin{pmatrix}
+1&2\\
+2 & -1\\
+0 & 1
+\end{pmatrix}$,
+$B = \begin{pmatrix}
+-1&3\\
+1 & -2\\
+4 & 0
+\end{pmatrix}$ et 
+$C = \begin{pmatrix}
+1&2 & -1\\
+2 & -1 & 1
+\end{pmatrix}$.\\
+
+Donner $a_{11}$, $b_{32}$ et $c_{23}$.\\
+
+\begin{encadre}[Réponse]
+$a_{11}=1$, $b_{32}=0$ et $c_{23}=1$.
+\end{encadre}
+
+Calculer ici $A + 2B$.
+
+\begin{encadre}[Réponse]
+$A+2B=\begin{pmatrix}
+1+2\times (-1)&2+2\times 3\\
+2+2\times 1 & -1 + 2\times(-2)\\
+0 + 2\times 4 & 1 + 2\times 0
+\end{pmatrix}
+=
+\begin{pmatrix}
+-1&8\\
+4 & -5\\
+8 & 1
+\end{pmatrix}$
+\end{encadre}
+
+Calculer ici $C\times A$.\\
+
+\begin{encadre}[Réponse]
+\begin{tabular}{cc}
+ & $\begin{pmatrix}
+ 1&2\\
+ 2 & -1\\
+ 0 & 1
+ \end{pmatrix}$\\
+ 
+ $\begin{pmatrix}
+ 1&2 & -1\\
+ 2 & -1 & 1
+ \end{pmatrix}$& $\begin{pmatrix}
+ 1\times 1 + 2 \times 2 + (-1)\times 0 & 1\times2 + 2 \times(-1)+ (-1)\times 1\\
+ 2\times 1 + (-1)\times 2 + 1 \times 0 & 2\times 2 + (-1)\times(-1)+1\times 1 
+ \end{pmatrix}$
+\end{tabular}\\
+
+Donc $C\times A = \begin{pmatrix}
+5 & -1 \\
+0 & 6
+\end{pmatrix}$
+\end{encadre}
+
+\exo{ - Problème}
+
+Une usine fabrique 3 types de matériel électronique $M_1$, $M_2$ et $M_3$. Chacun d'entre eux comporte 3 types de composants $C_1$, $C_2$, $C_3$ selon la répartition suivante :
+
+\begin{center}
+\includegraphics[width=8cm]{img/tableau}
+\end{center}
+
+Les prix et masses unitaires sont les suivants :
+
+\begin{center}
+\includegraphics[width=8cm]{img/tableau2}
+\end{center}
+
+On note 
+$A = \begin{pmatrix}
+2&1&3\\
+0 &2& 1\\
+1 & 5 & 2
+\end{pmatrix}$,
+$B = \begin{pmatrix}
+3&4&1\\
+5&15&10
+\end{pmatrix}$.\\
+
+Calculer $B\times A$.\\
+
+\begin{encadre}[Réponse]
+$B\times A = \begin{pmatrix}
+7 & 16 & 15\\
+20 & 85 & 50
+\end{pmatrix}$
+\end{encadre}
+
+On pose $C=B\times A$. Que représente $c_{12}$ ? Que représente $c_{23}$ ?\\
+
+\begin{encadre}[Réponse]
+$c_{12}$ est la masse d'un matériel $M_2$, $c_{23}$ est la prix d'un matériel $M_3$.
+\end{encadre}
+
+
+Le directeur de l'usine souhaite fabriquer 10 matériels $M_1$, 20 $M_2$ et 30 $M_3$. On pose $C = \begin{pmatrix}
+10\\20\\30
+\end{pmatrix}$
+
+Quelle opération matricielle permet d'obtenir le nombre de composants de chaque sorte pour réaliser les assemblages ? On ne demande pas d'effectuer l'opération.\\
+
+\begin{encadre}[Réponse]
+L'opération à réaliser est $M\times C$.
+\end{encadre}
+
+
+\end{document}
+

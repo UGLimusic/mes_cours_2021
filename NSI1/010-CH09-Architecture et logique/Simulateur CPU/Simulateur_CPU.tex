@@ -1,0 +1,75 @@
+\documentclass[a4paper,10pt,french]{article}
+\usepackage[margin=2cm]{geometry}
+\usepackage[thinfonts]{uglix2}
+\nouveaustyle
+\begin{document}
+\titreinterro{Simulateur de CPU}{NSI1}{2021}
+
+L'objectif de cette séance est de découvrir l'assembleur \textit{sans que ce soit trop compliqué}.\\
+
+La page sur laquelle tu vas travailler est adaptée d'un simulateur de microprocesseur écrit par Peter Higginson et disponible sur \url{http://www.peterhigginson.co.uk/RISC/}.\\
+Ce CPU fonctionne avec des mots de 16 bits. Chaque instruction (et ses données éventuelles) est donc codée sur 2 octets. Dans la mémoire centrale on a donc regroupé les octets par paquets de deux.\\
+
+Voici un programme ajoutant 2 nombres
+\begin{encadrecolore}{Code assembleur}{UGLiOrange}
+\begin{minted}{asm}
+INP R0,2        // Lire un nombre au clavier et le mettre dans R0.
+INP R1,2        // Lire un nombre au clavier et le mettre dans R1.
+ADD R2,R1,R0    // Mettre R0 + R1 dans R2.
+OUT R2,4        // Afficher R2 à l'écran.
+HLT             // Stop.
+\end{minted}
+\end{encadrecolore}
+
+
+\begin{exercice}[]
+	\begin{enumerate}[\bfseries 1.]
+		\item 		\'Ecrire ce programme dans la fenêtre \textit{Code assembleur}, puis cliquer sur \textit{ASSEMBLER}. Où voit-on les instructions machine ? Quelle est la longueur en octets de ce programme ?
+		\item 	Cliquer sur \textit{PAS} pour effectuer la première instruction en mode pas-à-pas. Observer la valeur de PC qui change et entrer la valeur dans la boîte de texte prévue à cet effet.
+		\item 	Continuer à exécuter le programme en mode pas-à-pas.
+	\end{enumerate}
+\end{exercice}
+
+Voici un deuxième programme :
+
+\begin{encadrecolore}{Code assembleur}{UGLiOrange}
+\begin{minted}{asm}
+            INP R0,2    // Lire un nombre au clavier et mettre dans R0.
+            INP R1,2    //Lire un nombre au clavier et mettre dans R1.
+            CMP R1,R0   // Comparer R1 à R0.
+            BGE pgrand  // Si R1 > R0 aller à pgrand.
+            OUT R0,4    // Sinon afficher R0.
+            BRA fini    // Et aller à fini.
+plusgrand:  OUT R1,4    // Afficher R1.
+fini:       HLT         // Stop.
+\end{minted}
+\end{encadrecolore}
+
+\begin{exercice}[]
+	\begin{enumerate}[\bfseries 1.]
+		\item 	Lire attentivement ce programme. BGE veut dire \og \textit{Branch if Greater or Equal}\fg{}, ce qui peut se traduire ici par \og si le résultat de la comparaison précédente indique  plus grand ou égal alors va à l'adresse spécifiée\fg{}.
+		\item 	Taper et exécuter ce programme.
+	\end{enumerate}
+\end{exercice}
+
+
+\begin{exercice}[]
+	\'Ecrire un petit programme qui demande un entier $n$ au clavier, le stocke dans R0, puis calcule dans R1 la
+	somme de tous les entiers de 1 à $n$ : il suffit de mettre R1 à 0 puis créer une boucle : on ajoute R0 à R1 et on enlève 1 à R0. Si R0 n'est pas nul on boucle, sinon on affiche le résultat et on s'arrête.\\
+
+\textbf{Lexique}:
+\begin{tabbing}
+\mintinline{asm}{MOV Rx,Ry} \hspace{3em}\=: dans Rx recopier Ry.\hspace{8em}\= Exemple : \mintinline{asm}{MOV R1,R2}\\
+\mintinline{asm}{MOV Rx,#val} \> : dans Rx, recopier la valeur val. \> Exemple : \mintinline{asm}{MOV R0,#0}\\
+\mintinline{asm}{BEQ adr} \> : Si le flag Z est à 1, aller à adr. \> Exemple : \mintinline{asm}{BEQ fin}\\
+\mintinline{asm}{BNE adr} \> : Si le flag Z est à 0, aller à adr. \> Exemple : \mintinline{asm}{BNE fin}
+
+\end{tabbing}
+Le flag Z est mis à 1 dès qu'une opération donne 0.
+\end{exercice}
+
+\textbf{Code Assembleur à écrire ici :}\\
+
+\carreauxseyes{16.8}{12}
+
+\end{document}

@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <title>Sécurisation des communications</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/reset.css">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/reveal.css">
+  <style>
+    .reveal .sourceCode {  /* see #7635 */
+      overflow: visible;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/theme/white.css" id="theme">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Sécurisation des communications</h1>
+  <p class="subtitle">principes</p>
+  <p class="date">25 avril 2022</p>
+</section>
+
+<section>
+<section id="vocabulaire" class="title-slide slide level1">
+<h1>Vocabulaire</h1>
+
+</section>
+<section class="slide level6">
+
+<ul>
+<li class="fragment"><strong>chiffrer</strong> : utiliser un algorithme
+pour transformer un message en un autre, incompréhensible sans
+clé/algorithme ;</li>
+<li class="fragment"><strong>déchiffrer</strong> : utiliser un
+algorithme et/ou un clé pour transformer un message incompréhensible en
+un autre, compréhensible ;</li>
+<li class="fragment"><strong>cryptographie</strong> : science du
+chiffrement/déchiffrement ;</li>
+<li class="fragment"><strong>décryptage</strong> : retrouver un message
+original <em>sans clé ni algorithme</em> ;</li>
+</ul>
+</section>
+<section class="slide level6">
+
+</section></section>
+<section>
+<section id="chiffrement-symétrique" class="title-slide slide level1">
+<h1>Chiffrement symétrique</h1>
+
+</section>
+<section class="slide level6">
+
+<figure>
+<img data-src="img/sym00.svg" alt="Alice et Bob disposent de la clé" />
+<figcaption aria-hidden="true">Alice et Bob disposent de la
+clé</figcaption>
+</figure>
+</section>
+<section class="slide level6">
+
+<figure>
+<img data-src="img/sym01.svg"
+alt="Alice veut envoyer un message à Bob" />
+<figcaption aria-hidden="true">Alice veut envoyer un message à
+Bob</figcaption>
+</figure>
+</section>
+<section class="slide level6">
+
+<figure>
+<img data-src="img/sym02.svg" alt="elle le chiffre avec la clé" />
+<figcaption aria-hidden="true">elle le chiffre avec la clé</figcaption>
+</figure>
+</section>
+<section class="slide level6">
+
+<figure>
+<img data-src="img/sym03.svg" alt="elle transmet" />
+<figcaption aria-hidden="true">elle transmet</figcaption>
+</figure>
+</section>
+<section class="slide level6">
+
+<figure>
+<img data-src="img/sym04.svg"
+alt="Bob récupère et déchiffre avec la clé" />
+<figcaption aria-hidden="true">Bob récupère et déchiffre avec la
+clé</figcaption>
+</figure>
+</section>
+<section class="slide level6">
+
+<ul>
+<li class="fragment"><p>Problème : comment faire pour transmettre la clé
+publique en toute sécurité ?</p></li>
+<li class="fragment"><p>Avantage : algorithmes rapides en
+général.</p></li>
+</ul>
+</section>
+<section class="slide level6">
+
+</section></section>
+<section>
+<section id="chiffrement-asymétrique" class="title-slide slide level1">
+<h1>Chiffrement asymétrique</h1>
+
+</section>
+<section class="slide level6">
+
+<figure>
+<img data-src="img/asym00.svg"
+alt="Alice veut envoyer un message à Bob, qui dispose de ses clés publiques et privées" />
+<figcaption aria-hidden="true">Alice veut envoyer un message à Bob, qui
+dispose de ses clés publiques et privées</figcaption>
+</figure>
+</section>
+<section class="slide level6">
+
+<figure>
+<img data-src="img/asym01.svg"
+alt="Bob donne sa clé publique à Alice (à tout le monde, en fait)" />
+<figcaption aria-hidden="true">Bob donne sa clé publique à Alice (à tout
+le monde, en fait)</figcaption>
+</figure>
+</section>
+<section class="slide level6">
+
+<figure>
+<img data-src="img/asym02.svg"
+alt="Alice s’en sert pour chiffrer son message" />
+<figcaption aria-hidden="true">Alice s’en sert pour chiffrer son
+message</figcaption>
+</figure>
+</section>
+<section class="slide level6">
+
+<figure>
+<img data-src="img/asym03.svg" alt="Elle transmet" />
+<figcaption aria-hidden="true">Elle transmet</figcaption>
+</figure>
+</section>
+<section class="slide level6">
+
+<figure>
+<img data-src="img/asym04.svg"
+alt="Bob utilise sa clé privée pour déchiffrer" />
+<figcaption aria-hidden="true">Bob utilise sa clé privée pour
+déchiffrer</figcaption>
+</figure>
+</section>
+<section class="slide level6">
+
+<ul>
+<li class="fragment">Avantage : Pas de problème de transmission de clé
+comme avec le chiffrement symétrique ;</li>
+<li class="fragment">Inconvénient : Algorithmes souvent plus lents
+(environ 1000 fois) que pour le chiffrement symétrique.</li>
+</ul>
+</section>
+<section class="slide level6">
+
+</section></section>
+<section>
+<section id="fonctions-de-hachage" class="title-slide slide level1">
+<h1>Fonctions de hachage</h1>
+
+</section>
+<section class="slide level6">
+
+<p>L’ensemble des fichiers est gigantesque mais « creux » :</p>
+<ul>
+<li class="fragment">1 ko = 8000 bits : il y a <span
+class="math inline">\(2^{8000}\)</span> fichiers de taille 1ko ;</li>
+<li class="fragment">cela fait de l’ordre de <span
+class="math inline">\(10^{2408}\)</span> fichiers ;</li>
+<li class="fragment">parmi tout ceux-là, seuls un nombre restreint sont
+de « vrais » fichiers.</li>
+</ul>
+</section>
+<section class="slide level6">
+
+<p>Une fonction de hachage transforme un fichier (de volume arbitraire)
+en signature de taille fixe, beaucoup plus petite avec les
+caractéristiques suivantes :</p>
+<ul>
+<li class="fragment">il est impossible de reconstituer le fichier à
+partir de l’empreinte ;</li>
+<li class="fragment">en pratique, des fichiers différents ont des
+empreintes distinctes ;</li>
+<li class="fragment">si on change un bit du fichier de départ,
+l’empreinte change du tout au tout.</li>
+</ul>
+</section>
+<section class="slide level6">
+
+</section></section>
+<section>
+<section id="signature-numérique" class="title-slide slide level1">
+<h1>Signature numérique</h1>
+
+</section>
+<section class="slide level6">
+
+<figure>
+<img data-src="img/sign00.svg"
+alt="Alice dispose de ses clé privées et publiques et veut signer un fichier" />
+<figcaption aria-hidden="true">Alice dispose de ses clé privées et
+publiques et veut signer un fichier</figcaption>
+</figure>
+</section>
+<section class="slide level6">
+
+<figure>
+<img data-src="img/sign01.svg"
+alt="elle fabrique une empreinte du fichier avec une fonction de hachage connue et chiffre l’empreinte (signature)" />
+<figcaption aria-hidden="true">elle fabrique une empreinte du fichier
+avec une fonction de hachage connue et chiffre l’empreinte
+(signature)</figcaption>
+</figure>
+</section>
+<section class="slide level6">
+
+<figure>
+<img data-src="img/sign02.svg"
+alt="elle transmet fichier,empreinte,signature et clé publique" />
+<figcaption aria-hidden="true">elle transmet fichier,empreinte,signature
+et clé publique</figcaption>
+</figure>
+</section>
+<section class="slide level6">
+
+<figure>
+<img data-src="img/sign03.svg"
+alt="Bob crée aussi l’empreinte du fichier reçu et vérifie que c’est la même : le fichier n’a pas été modifié entre temps" />
+<figcaption aria-hidden="true">Bob crée aussi l’empreinte du fichier
+reçu et vérifie que c’est la même : le fichier n’a pas été modifié entre
+temps</figcaption>
+</figure>
+</section>
+<section class="slide level6">
+
+<figure>
+<img data-src="img/sign04.svg"
+alt="Il déchiffre la signature et vérifie qu’il obtient l’empreinte : c’est bien Alice, seule détentrice de la clé privée, qui lui a envoyé le fichier" />
+<figcaption aria-hidden="true">Il déchiffre la signature et vérifie
+qu’il obtient l’empreinte : c’est bien Alice, seule détentrice de la clé
+privée, qui lui a envoyé le fichier</figcaption>
+</figure>
+</section>
+<section class="slide level6">
+
+</section></section>
+<section>
+<section id="https" class="title-slide slide level1">
+<h1>HTTPS</h1>
+
+</section>
+<section class="slide level6">
+
+<figure>
+<img data-src="img/https00.svg"
+alt="le serveur dispose d’un certificat X509 signé par une autorité de certification et une paire de clefs privée et publique" />
+<figcaption aria-hidden="true">le serveur dispose d’un certificat X509
+signé par une autorité de certification et une paire de clefs privée et
+publique</figcaption>
+</figure>
+</section>
+<section class="slide level6">
+
+<figure>
+<img data-src="img/https01.svg"
+alt="le navigateur demande et récupère le certificat du serveur avec sa clef publique." />
+<figcaption aria-hidden="true">le navigateur demande et récupère le
+certificat du serveur avec sa clef publique.</figcaption>
+</figure>
+</section>
+<section class="slide level6">
+
+<figure>
+<img data-src="img/https02.svg"
+alt="Le navigateur vérifie la signature du certificat attestant de sa validité. Ceci peut se faire via une autorité de certification en ligne ou localement avec des certificats préchargés dans le navigateur." />
+<figcaption aria-hidden="true">Le navigateur vérifie la signature du
+certificat attestant de sa validité. Ceci peut se faire <em>via</em> une
+autorité de certification en ligne ou localement avec des certificats
+préchargés dans le navigateur.</figcaption>
+</figure>
+</section>
+<section class="slide level6">
+
+<figure>
+<img data-src="img/https03.svg"
+alt="Le navigateur crée une clé de chiffrement symétrique et la chiffre avec la clé publique du serveur" />
+<figcaption aria-hidden="true">Le navigateur crée une clé de chiffrement
+symétrique et la chiffre avec la clé publique du serveur</figcaption>
+</figure>
+</section>
+<section class="slide level6">
+
+<figure>
+<img data-src="img/https04.svg"
+alt="le serveur récupère et déchiffre" />
+<figcaption aria-hidden="true">le serveur récupère et
+déchiffre</figcaption>
+</figure>
+</section>
+<section class="slide level6">
+
+<figure>
+<img data-src="img/https05.svg"
+alt="la session HTTP chiffrée symétriquement peut commencer" />
+<figcaption aria-hidden="true">la session HTTP chiffrée symétriquement
+peut commencer</figcaption>
+</figure>
+</section></section>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/reveal.js@^4//dist/reveal.js"></script>
+
+  <!-- reveal.js plugins -->
+  <script src="https://unpkg.com/reveal.js@^4//plugin/notes/notes.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/search/search.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/zoom/zoom.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/math/math.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+        // Display controls in the bottom right corner
+        controls: true,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: true,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'bottom-right',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: false,
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: false,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: true,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'default',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: true,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'fade',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'fade',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    </body>
+</html>

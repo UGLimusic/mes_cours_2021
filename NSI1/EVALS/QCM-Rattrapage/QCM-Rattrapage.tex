@@ -1,0 +1,201 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[margin=2cm,top=1cm]{geometry}		
+\usepackage[thinfonts]{uglix2}
+\pagestyle{empty}
+\nouveaustyle
+\begin{document}
+	\titreinterro{QCM (rattrapage)}{NSI1}{10/2021}
+\begin{center}
+\textit{Une seule bonne réponse par question.\\
+bonne réponse : +3 points, mauvaise réponse : -1 point, pas de réponse : 0 point.
+}\end{center}
+
+\ligne\\
+
+Sur combien d'octets le nombre $(AF7B)_{16}$ est-il codé ?
+	\begin{enumerate}[\case\ ]
+	\item 2
+	\item 4
+	\item 8
+	\item 64
+\end{enumerate}	
+\ligne\\
+
+En base 16, le nombre $(0010\,1101\,0101)_2$ s'écrit
+
+	\begin{enumerate}[\case\ ]
+	\item $(0010\,1101\,0101)_{16}$
+	\item $(5C2)_{16}$
+	\item $(2C5)_{16}$
+	\item $(2D5)_{16}$
+\end{enumerate}	
+ \ligne\\
+ 
+\begin{pythoncode}
+n = 3
+while n < 12:
+    n += 2
+print(n)
+\end{pythoncode}
+Ce script affiche
+\begin{enumerate}[\case\ ]
+	\item 11
+	\item 12
+	\item 13
+	\item rien du tout
+\end{enumerate}	
+\ligne\\
+
+Laquelle de ces boucles s'arrête ?
+
+\begin{enumerate}[\case\ ]
+    \item \begin{minted}{python}
+i = 1000
+while i > 10:
+    i += 1
+    print("salut")
+\end{minted}
+    \item \begin{minted}{python}
+i = 0
+while i < 10:
+    print("salut")  
+\end{minted}
+    \item \begin{minted}{python}
+i = 1000
+while i < 10:
+    i += 1
+    print("salut")
+\end{minted}
+    \item \begin{minted}{python}
+i = -1000
+while i < 10:
+    i -= 1
+    print("salut")
+\end{minted}
+\end{enumerate}
+\ligne\\
+
+\begin{pythoncode}
+a = 1
+for i in range(8):
+    a = a * 2
+\end{pythoncode}
+Ce script affiche
+
+\begin{enumerate}[\case\ ]
+    \item 16
+    \item 8
+    \item 256
+    \item 127
+\end{enumerate}	
+\ligne\\
+
+\begin{pythoncode}
+chaine = "Alors comment ça va ?"
+c = 0
+for lettre in chaine:
+    if lettre == "a":
+        c += 1
+print(c)
+\end{pythoncode}
+Que fait ce script ?
+\begin{enumerate}[\case\ ]
+	\item 	Il affiche 3
+	\item 	Il affiche \tw{Aaa}
+    \item   Il affiche 2
+    \item   Il produit une erreur
+\end{enumerate}
+\ligne\\
+
+\begin{pythoncode}
+chaine = "On m'appelle choupinou"
+c = 0
+n = len(chaine)
+for i in range(len(chaine)):
+    if chaine[i] == 'o':
+        c = i
+print(c)
+\end{pythoncode}
+Que fait ce script ?
+\begin{enumerate}[\case\ ]
+	\item 	Il produit une erreur
+	\item 	Il affiche \tw{o}
+    \item   Il affiche 15
+    \item   Il affiche 20
+\end{enumerate}
+\ligne\\
+
+On a
+\begin{minted}{python}
+age = 10
+prenom = "Titouan"
+\end{minted}
+Lequel de ces scripts provoque une erreur ?
+
+\begin{enumerate}[\case\ ]
+\item \begin{minted}{python}
+print("Je m'appelle", prenom, "et j'ai", age, "ans.")
+\end{minted}
+\item \begin{minted}{python}
+print("Je m'appelle " + prenom + " et j'ai ", age, "ans.")
+\end{minted}
+\item \begin{minted}{python}
+print("Je m'appelle " + prenom + " et j'ai " + age + " ans.")
+\end{minted}
+\item \begin{minted}{python}
+print("Je m'appelle", prenom,"et j'ai" + str(age) + " ans.")
+\end{minted}
+\end{enumerate}
+\ligne\\
+ 
+
+En complément à deux sur 8 bits, l'entier -2 est représenté par
+\begin{enumerate}[\case\ ]
+	\item 	$(0000\,0010)_2$
+	\item 	$(-0000\,0010)_2$
+    \item 	$(1000\,0010)_2$
+    \item 	$(1111\,1110)_2$
+\end{enumerate}
+\ligne\\
+\newpage 
+Qu'affiche ce script ?
+
+\begin{pythoncode}
+a = 1
+b = 2
+a = a + b
+b = b - a
+a = b - a
+print(a, b)
+\end{pythoncode}
+
+\begin{enumerate}[\case \ ]
+	\item 	2 et 1
+	\item 	1 et 2
+    \item   0 et 0
+    \item   -4 et -1
+\end{enumerate}
+\ligne\\
+
+\begin{pythoncode}
+a = 1
+b = a + 1
+if a < b and b < 1:
+    print("ok")
+elif a > b or b < 1:
+    print("d'accord")
+elif a > b and b < 1:
+    print("je vois")
+elif a < b and b > 1:
+    print("mais oui")
+\end{pythoncode}
+
+Qu'affiche ce script ?
+\begin{enumerate}[\case \ ]
+	\item 	\texttt{ok}
+	\item 	\texttt{d'accord}
+    \item   \texttt{je vois}
+    \item   \texttt{mais oui} 	
+\end{enumerate}
+\ligne
+\end{document}

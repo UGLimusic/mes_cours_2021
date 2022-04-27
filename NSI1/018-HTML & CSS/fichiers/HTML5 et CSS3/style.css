@@ -1,0 +1,31 @@
+div {
+	margin:				40px auto;
+	padding:			20px;
+	width:           	600px;
+	position:        	relative;
+	background-color:	#FFF;
+	text-align: 		justify;
+    text-justify: 		inter-word;
+	}
+
+h1 {
+   text-shadow: 		2px 2px 0 grey;
+   color: 				black;
+	}
+	
+h2 {
+   text-shadow: 		1px 1px 0 grey;
+   color: 				black;
+	}
+	
+h3 {
+   text-shadow: 		1px 1px 0 grey;
+   color: 				black;
+	}
+	
+body {
+	font-family: helvetica, sans-serif;
+	color:				black;
+	background-color:	#F0F0F0;
+	background-image:	url(background.jpg);
+	}

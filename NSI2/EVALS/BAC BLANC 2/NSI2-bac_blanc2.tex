@@ -1,0 +1,392 @@
+\documentclass[a4paper,12pt,french]{book}
+\usepackage[margin=2cm]{geometry}
+\usepackage[thinfonts]{uglix2}
+\usepackage{ulem}
+\nouveaustyle
+
+\begin{document}
+    \titre{NUM\'ERIQUE ET SCIENCES INFORMATIQUES}{}{}
+
+    \begin{center}
+        \Large
+        \vspace{6cm}
+        \textit{Durée de l'épreuve : 2 heures}\\[2em]
+
+        \textit{L'usage de la calculatrice n'est pas autorisé}\\[2em]
+
+
+        \textit{Le candidat traite au choix 3 exercices parmi les 4 exercices proposés}\\[2em]
+
+        \textit{Chaque exercice devra être traité sur une copie séparée}
+    \end{center}
+    \newpage
+
+    \section*{Exercice 1 \small{\hfill Bases de données}}
+
+    Dans cet exercice, on pourra utiliser les mots clés suivants du langage \textsc{SQL} :\\
+
+    \mintinline{SQL}{SELECT, FROM, WHERE, JOIN, ON, INSERT INTO, VALUES}
+
+    \mintinline{SQL}{MIN, MAX, OR, AND}\\
+
+    Les fonctions d’agrégation \mintinline{SQL}{MIN(propriete)} et \mintinline{SQL}{MAX(propriete)} renvoient respectivement
+    la plus petite et la plus grande valeur de l’attribut \texttt{propriete} pour les enregistrements
+    sélectionnés.\\
+
+    Des acteurs ayant joué dans différentes pièces de théâtre sont recensés dans une base de
+    données Theatre dont le schéma relationnel est donné ci-dessous :
+
+    \begin{enumerate}[--]
+        \item 	\texttt{\textbf{Piece}(\uline{idPiece}, titre, langue)}
+        \item 	\texttt{\textbf{Acteur}(\uline{idActeur}, nom, prenom, anneeNaiss)}
+        \item	\texttt{\textbf{Role}(\uline{\dashuline{idPiece, idActeur}, nomRole})}
+    \end{enumerate}
+    Dans ce schéma, les clés primaires sont soulignées en trait plein et les clés étrangères en pointillés.
+
+    L’attribut \texttt{idPiece} de la relation \texttt{Role} est une clé étrangère faisant référence à l’attribut
+    \texttt{idPiece} de la relation \texttt{Piece}.\\
+    L’attribut \texttt{idActeur} de la relation \texttt{Role} est une clé étrangère faisant référence à l’attribut
+    \texttt{idActeur} de la relation \texttt{Acteur}.\\
+    Tous les attributs dont le nom est préfixé par \texttt{id} sont des nombres entiers ainsi que l'attribut
+    \texttt{anneeNaiss}. Les autres attributs sont des chaînes de caractères.
+
+    \begin{enumerate}[\bfseries 1.]
+        \item 	Expliquer pourquoi il n'est pas possible d'insérer une entrée dans la relation \texttt{Role} si les
+        relations \texttt{Piece} et \texttt{Acteur} sont vides.
+        \item	Dans la pièce « Le Tartuffe », l'acteur Micha Lescot a joué le rôle de Tartuffe.\\
+        L’identifiant de Micha Lescot est 389761 et celui de cette pièce est 46721.\\
+        Écrire une requête SQL permettant d’ajouter ce rôle dans la table (ou relation) \texttt{Role}.
+        \item Expliquer ce que fait la requête SQL suivante.
+        \begin{sql}
+UPDATE Piece
+SET langue = "Anglais"
+WHERE langue = "Américain" OR langue = "Britannique";
+        \end{sql}
+        \item Pour chacun des quatre items suivants, écrire une requête SQL permettant d’extraire les
+        informations demandées.
+        \begin{enumerate}[\bfseries a.]
+            \item 	Le nom et prénom des artistes nés après 1990.
+            \item 	L’année de naissance du plus jeune artiste.
+            \item 	Le nom des rôles joués par l'acteur Vincent Macaigne.
+            \item 	Le titre des pièces écrites en Russe dans lesquelles l’actrice Jeanne Balibar a joué.
+        \end{enumerate}
+    \end{enumerate}
+
+    \section*{Exercice 2 \small{\hfill Piles et POO}}
+    On crée une classe \texttt{Pile} qui modélise la structure d'une pile d'entiers.\\
+    Le constructeur de la classe initialise une pile vide.\\
+    La définition de cette classe sans l’implémentation de ses méthodes est donnée ci-dessous.
+    \begin{pythoncode}
+class Pile:
+    def __init__(self):
+        """Initialise la pile comme une pile vide."""
+
+    def est_vide(self):
+        """Renvoie True si la liste est vide, False sinon."""
+
+    def empiler(self, e):
+        """Ajoute l'élément e sur le sommet de la pile,
+        ne renvoie rien."""
+
+    def depiler(self):
+        """Retire l’élément au sommet de la pile et le renvoie."""
+
+    def nb_elements(self):
+        """Renvoie le nombre d'éléments de la pile. """
+
+    def afficher(self):
+        """Affiche de gauche à droite les éléments de la pile, du fond
+        de la pile vers son sommet. Le sommet est alors l’élément
+        affiché le plus à droite. Les éléments sont séparés par une
+        virgule. Si la pile est vide la méthode affiche « pile
+        vide »."""
+    \end{pythoncode}
+    Seules les méthodes de la classe ci-dessus doivent être utilisées pour manipuler les objets de la classe
+    \texttt{Pile}.
+
+    \begin{enumerate}[\bfseries 1.]
+        \item
+        \begin{enumerate}[\bfseries a.]
+            \item 	Écrire une suite d’instructions permettant de créer une instance de la classe \texttt{Pile}
+            affectée à une variable \texttt{pile1} contenant les éléments 7, 5 et 2 insérés dans cet
+            ordre.\\
+            Ainsi, à l’issue de ces instructions, l’instruction \pythoninline{pile1.afficher()} produit
+            l’affichage : 7, 5, 2.
+            \item 	Donner l’affichage produit après l’exécution des instructions suivantes.
+            \begin{minted}{python}
+element1 = pile1.depiler()
+pile1.empiler(5)
+pile1.empiler(element1)
+pile1.afficher()
+            \end{minted}
+        \end{enumerate}
+        \item On donne la fonction \texttt{mystere} suivante :
+        \begin{pythoncode}
+def mystere(pile, element):
+    pile2 = Pile()
+    nb_elements = pile.nb_elements()
+    for i in range(nb_elements):
+        elem = pile.depiler()
+        pile2.empiler(elem)
+        if elem == element:
+            return pile2
+    return pile2
+        \end{pythoncode}
+
+        \begin{enumerate}[\bfseries a.]
+        	\item 	Dans chacun des quatre cas suivants, quel est l’affichage obtenu dans la
+            console ?
+            \begin{enumerate}[\textbullet]
+            	\item cas n°1
+\begin{minted}{python}
+>>>pile.afficher()
+7, 5, 2, 3
+>>>mystere(pile, 2).afficher()
+\end{minted}
+\ \\
+                \item cas n°2
+\begin{minted}{python}
+>>>pile.afficher()
+7, 5, 2, 3
+>>>mystere(pile, 9).afficher()
+\end{minted}
+\ \\
+            	\item 	cas n°3
+\begin{minted}{python}
+>>>pile.afficher()
+7, 5, 2, 3
+>>>mystere(pile, 3).afficher()
+\end{minted}
+\ \\
+            	\item 	cas n°4
+\begin{minted}{python}
+>>>pile.est_vide()
+True
+>>>mystere(pile, 3).afficher()
+\end{minted}
+\ \\
+            \end{enumerate}
+        	\item  Expliquer ce que permet d’obtenir la fonction \texttt{mystere}.
+        \end{enumerate}
+    \item Écrire une fonction \pythoninline{etendre(pile1, pile2)} qui prend en arguments deux objets
+    \texttt{Pile} appelés \pythoninline{pile1} et \pythoninline{pile2} et qui modifie \pythoninline{pile1} en lui ajoutant les éléments de
+    \pythoninline{pile2} rangés dans l'ordre inverse.\\
+    Cette fonction ne renvoie rien.\\
+    On donne ci-dessous les résultats attendus pour certaines instructions.
+\begin{minted}{python}
+>>>pile1.afficher()
+7, 5, 2, 3
+>>>pile2.afficher()
+1, 3, 4
+>>>etendre(pile1, pile2)
+>>>pile1.afficher()
+7, 5, 2, 3, 4, 3, 1
+>>>pile2.est_vide()
+True
+\end{minted}
+
+\item Écrire une fonction \pythoninline{supprime_toutes_occurences(pile, element)} qui prend en
+arguments un objet \pythoninline{Pile} appelé \pythoninline{pile} et un élément \pythoninline{element} et supprime tous les
+éléments \pythoninline{element} de \pythoninline{pile}.\\
+On donne ci-dessous les résultats attendus pour certaines instructions.
+\begin{minted}{python}
+>>>pile.afficher()
+7, 5, 2, 3, 5
+>>>supprime_toutes_occurences (pile, 5)
+>>>pile.afficher()
+7, 2, 3
+\end{minted}
+\end{enumerate}
+
+\section*{Exercice 3 \small{\hfill Diviser pour régner}}
+
+Dans un tableau \textsc{Python} d'entiers \pythoninline{tab}, on dit que le couple d’indices \pythoninline{(i, j)} forme une inversion
+lorsque \pythoninline{i < j} et \pythoninline{tab[i] > tab[j]}. On donne ci-dessous quelques exemples.
+\begin{enumerate}[--]
+	\item 	Dans le tableau \pythoninline{[1, 5, 3, 7]}, le couple d’indices \pythoninline{(1, 2)} forme une inversion car \pythoninline{5 > 3}.\\
+    Par contre, le couple \pythoninline{(1, 3)} ne forme pas d'inversion car \pythoninline{5 < 7}.\\
+    Il n’y a qu’une inversion dans ce tableau.
+	\item  Il y a trois inversions dans le tableau \pythoninline{[1, 6, 2, 7, 3]}, à savoir les couples d'indices
+    \pythoninline{(1, 2)}, \pythoninline{(1, 4)} et \pythoninline{(3, 4)}.
+    \item On peut compter six inversions dans le tableau \pythoninline{[7, 6, 5, 3]} : les couples d'indices
+    \pythoninline{(0, 1)}, \pythoninline{(0, 2)}, \pythoninline{(0, 3)}, \pythoninline{(1, 2)}, \pythoninline{(1, 3)} et \pythoninline{(2, 3)}.
+\end{enumerate}
+On se propose dans cet exercice de déterminer le nombre d’inversions dans un tableau
+quelconque.
+
+\subsection*{Questions préliminaires}
+
+\begin{enumerate}[\bfseries 1.]
+	\item 	Expliquer pourquoi le couple \pythoninline{(1, 3)} est une inversion dans le tableau \pythoninline{[4, 8, 3, 7]}.
+	\item 	Justifier que le couple \pythoninline{(2, 3)} n’en est pas une.
+\end{enumerate}
+\subsection*{Partie A : Méthode itérative}
+
+Le but de cette partie est d’écrire une fonction itérative \pythoninline{nombre_inversions} qui renvoie le
+nombre d’inversions dans un tableau.\\
+Pour cela, on commence par écrire une fonction \pythoninline{fonction1} qui sera ensuite utilisée pour écrire la fonction \pythoninline{nombre_inversions}.
+\begin{enumerate}[\bfseries 1.]
+	\item 	On donne la fonction suivante.
+    \begin{pythoncode}
+def fonction1(tab, i):
+    nb_elem = len(tab)
+    cpt = 0
+    for j in range(i+1, nb_elem):
+        if tab[j] < tab[i]:
+        cpt += 1
+    return cpt
+\end{pythoncode}
+    \begin{enumerate}[\bfseries a.]
+    	\item 	 Indiquer ce que renvoie \pythoninline{fonction1(tab, i)} dans les cas suivants.
+        \begin{enumerate}[\textbullet]
+        	\item 	  cas n°1 : \pythoninline{tab = [1, 5, 3, 7]} et \pythoninline{i = 0}.
+        	\item 	 cas n°2 : \pythoninline{tab = [1, 5, 3, 7]} et \pythoninline{i = 1}.
+            \item    cas n°3 : \pythoninline{tab = [1, 5, 2, 6, 4]} et \pythoninline{i = 1}.
+        \end{enumerate}
+
+    	\item Expliquer ce que permet de déterminer cette fonction.
+    \end{enumerate}
+	\item  En utilisant la fonction précédente, écrire une fonction \pythoninline{nombre_inversions(tab)} qui
+    prend en argument un tableau et renvoie le nombre d’inversions dans ce tableau.\\
+    On donne ci-dessous les résultats attendus pour certains appels.
+\begin{minted}{python}
+>>> nombre_inversions([1, 5, 7])
+0
+>>> nombre_inversions([1, 6, 2, 7, 3])
+3
+>>> nombre_inversions([7, 6, 5, 3])
+6
+\end{minted}
+
+\item  Quel est l’ordre de grandeur de la complexité en temps de l'algorithme obtenu ?\\
+    Aucune justification n'est attendue.
+\end{enumerate}
+\subsection*{Partie B : Méthode récursive}
+
+Le but de cette partie est de concevoir une version récursive de la fonction de la partie précédente.
+On définit pour cela des fonctions auxiliaires.
+
+\begin{enumerate}[\bfseries 1.]
+	\item 	Donner le nom d’un algorithme de tri ayant une complexité meilleure que quadratique.\\
+
+Dans la suite de cet exercice, on suppose qu’on dispose d'une fonction \pythoninline{tri(tab)} qui prend en
+argument un tableau et renvoie un tableau contenant les mêmes éléments rangés dans l'ordre
+croissant.
+
+	\item Écrire une fonction \pythoninline{moitie_gauche(tab)} qui prend en argument un tableau \pythoninline{tab} et
+    renvoie un nouveau tableau contenant la moitié gauche de \pythoninline{tab}. Si le nombre d'éléments
+    de \pythoninline{tab} est impair, l'élément du centre se trouve dans cette partie gauche.
+    On donne ci-dessous les résultats attendus pour certains appels.
+\begin{minted}{python}
+>>> moitie_gauche([])
+[]
+>>> moitie_gauche([4, 8, 3])
+[4, 8]
+>>> moitie_gauche ([4, 8, 3, 7])
+[4, 8]
+\end{minted}
+\ \\
+Dans la suite, on suppose qu’on dispose de la fonction \pythoninline{moitie_droite(tab)} qui renvoie la
+moitié droite sans l’élément du milieu
+
+\item On suppose qu’une fonction \pythoninline{nb_inv_tab(tab1, tab2)} a été écrite.\\
+Cette fonction renvoie le nombre d’inversions du tableau obtenu en mettant bout à bout les tableaux
+\pythoninline{tab1} et \pythoninline{tab2}, à condition que \pythoninline{tab1} et \pythoninline{tab2} soient triés dans l’ordre croissant.\\
+On donne ci-dessous deux exemples d’appel de cette fonction :
+\begin{minted}{python}
+>>> nb_inv_tab([3, 7, 9], [2, 10])
+3
+>>> nb_inv_tab([7, 9, 13], [7, 10, 14])
+3
+\end{minted}
+
+En utilisant la fonction \pythoninline{nb_inv_tab} et les questions précédentes, écrire une fonction
+récursive \pythoninline{nb_inversions_rec(tab)} qui permet de calculer le nombre d'inversions
+dans un tableau.\\
+Cette fonction renverra le même nombre que \pythoninline{nombre_inversions(tab)} de la partie A.\\
+On procédera de la façon suivante :
+\begin{enumerate}[--]
+	\item 	Séparer le tableau en deux tableaux de tailles égales (à une unité près).
+	\item 	Appeler récursivement la fonction \pythoninline{nb_inversions_rec} pour compter le nombre
+    d’inversions dans chacun des deux tableaux.
+    \item   Trier les deux tableaux (on rappelle qu'une fonction de tri est déjà définie).
+    \item   Ajouter au nombre d'inversions précédemment comptées le nombre renvoyé par la
+    fonction \pythoninline{nb_inv_tab} avec pour arguments les deux tableaux triés.
+\end{enumerate}
+\end{enumerate}
+
+\section*{Exercice 4 \small{\hfill Gestion des processus}}
+
+\begin{enumerate}[\bfseries 1.]
+	\item 	Les états possibles d’un processus sont : \textit{prêt}, \textit{élu}, \textit{terminé} et \textit{bloqué}.
+    \begin{enumerate}[\bfseries a.]
+    	\item 	Expliquer à quoi correspond l’état élu.
+    	\item 	Proposer un schéma illustrant les passages entre les différents états.
+    \end{enumerate}
+	\item 	 	On suppose que quatre processus C₁, C₂, C₃ et C₄ sont créés sur un ordinateur,
+    et qu’aucun autre processus n’est lancé sur celui-ci, ni préalablement ni pendant
+    l’exécution des quatre processus.\\
+
+    L’ordonnanceur, pour exécuter les différents processus prêts, les place dans une
+    structure de données de type file. Un processus prêt est enfilé et un processus
+    élu est défilé.
+
+    \begin{enumerate}[\bfseries a.]
+    	\item 	Parmi les propositions suivantes, recopier celle qui décrit le fonctionnement
+        des entrées/sorties dans une file :
+        \begin{enumerate}[--]
+        	\item   Premier entré, dernier sorti
+        	\item 	Premier entré, premier sorti
+            \item   Dernier entré, premier sorti
+        \end{enumerate}
+    \item  On suppose que les quatre processus arrivent dans la file et y sont placés
+    dans l’ordre C₁, C₂, C₃ et C₄.
+    \begin{enumerate}[--]
+    	\item 	Les temps d’exécution totaux de C₁, C₂, C₃ et C₄ sont respectivement
+            100 ms, 150 ms, 80 ms et 60 ms.
+    	\item 	Après 40 ms d’exécution, le processus C₁ demande une opération d’écriture
+            disque, opération qui dure 200 ms. Pendant cette opération d’écriture, le
+            processus C₁ passe à l’état bloqué.
+        \item   Après 20 ms d’exécution, le processus C₃ demande une opération d’écriture
+            disque, opération qui dure 10 ms. Pendant cette opération d’écriture, le
+            processus C₃ passe à l’état bloqué.
+    \end{enumerate}
+    Sur la frise chronologique donnée en annexe (à rendre avec la copie), les
+    états du processus C₂ sont donnés. Compléter la frise avec les états des
+    processus C1, C3 et C4.
+    \end{enumerate}
+    \item On trouvera ci- dessous deux programmes rédigés en pseudo-code.\\
+
+    Verrouiller un fichier signifie que le programme demande un accès exclusif au
+    fichier et l’obtient si le fichier est disponible.
+
+    \begin{multicols}{2}
+    \textbf{Programme 1}\\
+
+    Verrouiller fichier1\\
+    Calculs sur fichier1\\
+    Verrouiller fichier2\\
+    Calculs sur fichier1\\
+    Calculs sur fichier2\\
+    Calculs sur fichier1\\
+    Déverrouiller fichier2\\
+    Déverrouiller fichier1\\
+    \columnbreak
+
+    \textbf{Programme 2}\\
+
+    Verrouiller fichier2\\
+    Verrouiller fichier1\\
+    Calculs sur fichier1\\
+    Calculs sur fichier2\\
+    Déverrouiller fichier1\\
+    Déverrouiller fichier2
+    \end{multicols}
+    \begin{enumerate}[\bfseries a.]
+    	\item 	En supposant que les processus correspondant à ces programmes s’exécutent
+        simultanément (exécution concurrente), expliquer le problème qui peut être
+        rencontré.
+    	\item 	Proposer une modification du programme 2 permettant d’éviter ce problème.
+    \end{enumerate}
+\end{enumerate}
+\end{document}

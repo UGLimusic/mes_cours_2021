@@ -1,0 +1,133 @@
+\documentclass[a4paper,12pt,french]{article}
+\usepackage[margin=2cm]{geometry}
+\usepackage[thinfonts]{uglix2}
+\usepackage{ulem}
+\setminted{fontsize=\small}
+\nouveaustyle
+\begin{document}
+	\titre{CH48 - BDD partie 3 - Exercices}{NSI2}{2021}
+\begin{exercice}[]
+Ouvrir le fichier \texttt{create\_Auteurs.sql} qui a servi à créer la BDD du cours (avec le bloc-notes ou autre).
+\begin{enumerate}[\bfseries 1.]
+	\item 	Trouver une écriture compacte telle que vue dans le cours.
+	\item 	Trouver une écriture compacte qui n'avait pas été vue.
+    \item 	En fouillant \og à vue d'\oe il\fg{} dans les données
+    \begin{enumerate}[\bfseries a.]
+    	\item 	Combien y a-t-il de livres ?
+    	\item 	Combien y a t-il d'auteur ?
+        \item 	Où voit-on clairement qu'un auteur a écrit 2 livres ?
+    \end{enumerate}
+\end{enumerate}
+\end{exercice}
+\begin{exercice}[]
+\begin{enumerate}[\bfseries 1.]
+	\item Voici le modèle relationnel de l'exercice \textbf{Hotel Reservation Client Chambre} du chapitre précédent :\\
+
+    \textbf{Hotel}(\uline{nom\_hotel TEXT}, adresse TEXT)\\
+
+    \textbf{Chambre}(\uline{num\_ch INTEGER}, prix INTEGER, \dashuline{nom\_hotel TEXT})\\
+
+    \textbf{Client}(\uline{num\_client INTEGER}, nom\_client TEXT)\\
+
+
+    \textbf{Reservation}(\uline{num\_resa INTEGER}, date\_resa DATE,\dashuline{ num\_client INTEGER},\dashuline{ num\_chambre INTEGER})\\
+
+    Écrire le script SQL qui crée cette BDD.
+    \item Insérer 3 valeurs de votre choix dans chaque table.
+\end{enumerate}
+\end{exercice}
+\begin{exercice}[]
+On considère une base de données qui ne contient aucune table.\\
+Dire quelles erreurs produisent les séquences SQL suivantes (tout au moins ce qui n'est pas acceptable du point de vue du cours).
+\begin{enumerate}[\bfseries 1.]
+\item 	\begin{minted}{sql}
+DROP TABLE Client;
+CREATE TABLE Client
+(
+    cid             INTEGER,
+    nom             TEXT,
+    prenom          TEXT,
+    points_fidelite INTEGER NOT NULL,
+        PRIMARY KEY (cid),
+    CHECK (points_fidelite >= 0)
+);
+    \end{minted}
+\item 	\begin{minted}{sql}
+CREATE TABLE Client
+(
+    cid             INTEGER PRIMARY KEY,
+    nom             TEXT,
+    prenom          TEXT,
+    points_fidelite INTEGER NOT NULL,
+    CHECK (points_fidelite >= 0)
+);
+CREATE TABLE Commande
+(
+    cid  INTEGER PRIMARY KEY, -- variante plus rapide et valide
+    pid  INTEGER,
+    date TEXT NOT NULL,
+    FOREIGN KEY (cid) REFERENCES Client (cid),
+    FOREIGN KEY (pid) REFERENCES Client (pid)
+);
+CREATE TABLE Produit
+(
+    pid  INTEGER PRIMARY KEY,
+    nom  TEXT,
+    prix REAL(10, 2) -- 10 chiffres max avant la virgule, 2 après
+);
+\end{minted}
+
+\item \begin{minted}{sql}
+CREATE TABLE Client
+(
+    cid             INTEGER PRIMARY KEY,
+    nom             TEXT,
+    prenom          TEXT,
+    points_fidelite INTEGER NOT NULL,
+    CHECK (points_fidelite >= 0)
+);
+CREATE TABLE Produit
+(
+    pid  INTEGER PRIMARY KEY,
+    nom  TEXT,
+    prix REAL(10, 2)
+);
+CREATE TABLE Commande
+(
+    cid  TEXT REFERENCES Client (cid),
+    nomp  INTEGER REFERENCES Produit (nom),
+    date TEXT NOT NULL,
+    PRIMARY KEY (cid, pid)
+);
+\end{minted}
+
+\item	\begin{minted}{sql}
+CREATE TABLE Client
+(
+    cid             INTEGER PRIMARY KEY,
+    nom             TEXT,
+    prenom          TEXT,
+    points_fidelite INTEGER NOT NULL,
+    CHECK (points_fidelite >= 0)
+);
+CREATE TABLE Produit
+(
+    pid  INTEGER PRIMARY KEY,
+    nom  TEXT,
+    prix REAL(10, 2)
+);
+CREATE TABLE Commande
+(
+    cid  INTEGER,
+    pid  INTEGER,
+    date TEXT NOT NULL,
+    PRIMARY KEY (cid, nomp),
+    FOREIGN KEY (cid) REFERENCES Client (cid),
+    FOREIGN KEY (pid) REFERENCES Produit (pid)
+);
+
+INSERT INTO Commande VALUES(0, 0, '2020-03-02')
+\end{minted}
+\end{enumerate}
+\end{exercice}
+\end{document}

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+</head>
+    <!-- Corps du document -->
+    <body>
+		<!-- Voici une division -->
+		<div>
+			<!-- Voici un paragraphe -->
+			<p>
+				Voici un fichier écrit en HTML5.
+				Même lorsque dans le fichier HTML, on revient à la ligne, ce n'est pas le cas lors de l'affichage.<br />
+				Voici un retour à la ligne (doit être impérativement effectué dans un paragraphe) obtenu grâce à la balise orpheline &ltbr /&gt.<br />
+				Ce paragraphe a été obtenu à l'aide de la balise &ltp&gt.
+			</p>
+			<p>
+				Voici un autre paragraphe
+			</p>
+			<h1 id = "debut"> Voici un titre de niveau 1 obtenu avec la balise &lth1&gt.</h1>
+			<h2> Voici un titre de niveau 2 obtenu avec la balise &lth2&gt.</h2>
+			<h3> Voici un titre de niveau 3 obtenu avec la balise &lth3&gt.</h3>
+			<h4> Voici un titre de niveau 4 obtenu avec la balise &lth4&gt.</h4>
+			<h5> Voici un titre de niveau 5 obtenu avec la balise &lth5&gt.</h5>
+			<h6> Voici un titre de niveau 6 obtenu avec la balise &lth6&gt.</h6>
+			<p>
+				On peut avoir envie de mettre <em>en valeur</em> un certain passage avec &ltem&gt.<br />
+				On peut avoir envie de mettre <strong>encore plus en valeur</strong> un certain passage avec &ltstrong&gt.<br />
+				On peut aussi <mark>marquer du texte</mark> avec &ltmark&gt.
+			</p>
+			<h1>Listes</h1>
+				<p>Avec la balise &ltul&gt on peut créer des listes non ordonnées (unordered lists):
+					<ul>
+						<li>Un élément avec la balise &ltli&gt.</li>
+						<li>Un autre.</li>
+						<li><em>Et c&aeligtera.</em></li>
+					</ul>
+				</p>
+				<p>Avec la balise &ltol&gt on peut créer des listes ordonnées (ordered lists):
+					<ol>
+						<li>Le premier élément avec la balise &ltli&gt.</li>
+						<li>Un deuxeième.</li>
+						<li><em>Et c&aeligtera.</em></li>
+					</ol>
+				</p>
+			<h1>Liens</h1>
+				<p>
+					On peut créer un <a href = "index2.html">lien</a> grâce à la balise &lt;a&gt.<br />
+					Cliquer sur le lien pour l'explication.<br />
+					Les liens peuvent diriger vers une autre page du site (lien local) ou bien vers <a href="http://ustof.free.fr">un site distant</a> (et quel site !).<br />
+				</p>
+				<p>
+					On peut aussi utiliser cette balise pour <a href="mailto:dark@vad.or">envoyer un mail</a>.<br />
+					Le lien précédent a été obtenu avec la ligne :<br />
+					&lta href = "mailto:dark@vad.or"&gt envoyer un mail &lt/a&gt<br />
+				</p>
+				<p>
+					Certains liens peuvent aussi diriger vers des <em>ancres</em>: ce sont des attributs id que l'on a ajouté à des balises.<br />
+					Par exemple <a href = "#debut">ce lien</a> renvoie au premier <strong>Titre</strong> de ce document.
+				</p>
+				<p>
+					Enfin, un lien peut diriger vers un <a href="photo.zip">fichier</a> à télécharger.
+				</p>
+			<h1>Images</h1>
+				<h2>JPEG</h2>
+					<p>
+						Voici une image JPEG insérée à l'aide de la balise &ltimg /&gt:<br />
+						<img src = "photo.jpg" alt = "Une image JPEG" /><br />
+						Elle a été obtenue grâce à :<br />
+						&ltimg src = "photo.jpg" alt = "Une image JPEG" /&gt <br />
+						l'attribut alt est impératif, au cas où l'image ne pourrait être affichée (voici un exemple).<br />
+						<img src = "" alt = "Une image non affichée" /><br />
+					<p/>
+				<h2>PNG</h2>
+					<p></p>
+						Voici une image au format PNG :<br />
+						<img src="photo.png" alt = " Une image PNG" /><br />
+					</p>
+				<h2>GIF pour les petites animations</h2>
+					<p>
+						Voici une image au format GIF :<br />
+						<img src="photo.gif" alt = " Une image GIF" /><br />
+					</p>
+			<h1>Musique</h1>
+				<p>
+					On peut insérer des fichiers MP3 dans une page :<br />
+					<audio src="musique.mp3" controls></audio>
+				</p>
+			<h1>Vidéo</h1>
+				<p>
+					On peut aussi insérer des vidéos...<br />
+					<video src="movie.mp4" controls></video>
+				</p>
+			<!-- fin de la division -->
+		</div>
+		<!-- Fin du corps -->
+    </body>
+<!-- Fin HTML-->
+</html>

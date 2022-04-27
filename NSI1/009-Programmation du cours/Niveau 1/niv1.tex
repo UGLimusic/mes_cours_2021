@@ -1,0 +1,110 @@
+\documentclass[a4paper,12pt,french]{book}
+\usepackage[margin=2cm]{geometry}
+\usepackage[thinfonts]{uglix2}
+\nouveaustyle
+
+\begin{document}
+\textbf{NOMS DES \'ELÈVES:}\\
+
+\titre{Du cours au programme Python}{NSI1-2}{11-2021}
+
+\begin{methode}[ 1 : passer de la base 2 à la base 10]
+Que vaut $(11101)_2$ ?
+\begin{center}
+	\begin{tabular}{|c|c|c|c|c|c|}
+		\hline 
+		Chiffre binaire & 1 & 1 & 1 & 0 & 1 \\ 
+		\hline 
+		Valeur & $2^4$ & $2^3$ & $2^2$ & $2^1$ & $2^0$ \\ 
+		\hline 
+	\end{tabular}
+\end{center}
+\begin{tabbing}
+		$(11101)_2$	\= 	$=1\times 2^4+1\times 2^3+1\times 2^2+0\times 2^1+1\times 2^0$	\\
+			\>	$=16+8+4+1$	\\	
+			\>	$=29$	
+	\end{tabbing}\nopagebreak
+\end{methode}
+\begin{exercice}[]
+	\'Ecrire un programme à la main qui :
+\begin{enumerate}[--]
+	\item 	demande à l'utilisateur d'entrer un nombre en binaire sous la forme d'une chaine de caractères composées uniquement de 0 et de 1;
+	\item 	affiche l'écriture décimale du nombre binaire que l'utilisateur a entré.\\
+\end{enumerate}
+
+\textbf{Comment faire ?}\\
+
+En reprenant l'exemple de la méthode 1, on entre \tw{11101} dans une variable \tw{chaine} et
+\begin{enumerate}[--]
+	\item 	on voit que la longueur de cette chaine est 5;
+	\item 	donc \tw{chaine[0]} est le bit de $2^4$, \tw{chaine[1]} est le bit de $2^3$, ..., \tw{chaine[4]} est le bit de $2^0$;
+	\item 	ainsi on peut créer une variable \tw{nombre} qui vaut zéro et une boucle \tw{for} pour parcourir \tw{chaine};
+	\item 	si \tw{chaine[i]} vaut 1 on ajoute la valeur correspondante à \tw{somme} sinon on ne fait rien;
+	\item 	en sortie de boucle on affiche \tw{somme}.
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}[]
+	\'Ecrire le programme précédent sur ordinateur. Il devra s'appeler \texttt{methode1.py}
+\end{exercice}
+
+\begin{methode}[ 2 : passer de la base 10 à la base 2]
+\begin{tabbing}
+	203	\= 	$=128+64+8+2+1$	\\
+	
+		\>	$=2^7+2^6+2^3+2^1+2^0$	\\
+		
+		\>	$=1\times 2^7+1\times 2^6+0\times 2^5 + 0\times 2^4 +1\times 2^3+0\times 2^2 + 1\times 
+		2^1+1\times 2^0$	\\
+		
+		\> $=(11001011)_2$
+\end{tabbing}
+\end{methode}
+
+\begin{exercice}[]
+\'Ecrire un programme à la main qui :
+\begin{enumerate}[--]
+	\item 	demande à l'utilisateur un entier positif (avec \pythoninline{int(input(...))});
+	\item 	affiche l'écriture en binaire de cet entier;\\
+\end{enumerate}
+
+\textbf{Comment faire ?}\\
+
+Lors de la méthode 2, j'ai d'abord déterminé que 128 est la plus grande puissance de 2 inférieure à 203.
+
+J'ai commencé à faire une somme commençant à 128. Ensuite j'ai regardé (en faisant des comparaisons) et \textit{dans cet ordre} si 64, 32, 61, 8, 4, 2 et 1 \og rentrent aussi »  dans cette somme.\\
+Suivant les cas j'obtiens des bits à 1 ou à 0.\\
+Concrètement :
+\begin{enumerate}[--]
+	\item 	on suppose que l'entier est dans une variable \tw{nombre} et on définit une variable de type \pythoninline{str binaire};
+	\item 	d'abord on doit déterminer la plus grande puissance de 2 inférieure à \tw{nombre} (penser à une boucle pour le faire)
+	\item 	si on note \tw{n} cette puissance, alors on peut créer une boucle pour parcourir les entiers de n à 0 en descendant et regarder si les puissances de 2 sont plus grande que \tw{nombre};
+	\item 	si c'est le cas on enlève la puissance de 2 à \tw{nombre} et on ajoute un \pythoninline{'1'} à \tw{binaire}. Sinon on n'enlève rien et on ajoute un \pythoninline{'0'} à \tw{binaire};
+	\item 	en sortie de boucle on affiche binaire.
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}[]
+\'Ecrire le programme précédent sur machine, il devra s'appeler \texttt{methode2.py}
+\end{exercice}
+
+\begin{methode}[ 3 : les divisions successives]
+Voici comment on trouve les chiffres de l'écriture \textit{binaire} de 203 :
+$$\division[2]{203}$$
+En définitive, $203=(11001011)_2$.
+\end{methode}
+
+
+\begin{exercice}[]
+	Pour cet exercice il faut se \og débrouiller tout\cdot e seul\cdot e\fg{} en tirant les leçons des exercices précédents.
+\begin{enumerate}[\bfseries 1.]
+	\item 	\'Ecrire un programme à la main qui:
+	\begin{enumerate}[--]
+		\item 	demande un entier positif à l'utilisateur;
+		\item 	affiche son écriture en binaire en appliquant la méthode précédente.
+	\end{enumerate}
+	\item 	\'Ecrire le programme Python sur l'ordinateur, il devra s'appeler \texttt{methode3.py}	
+\end{enumerate}
+
+\end{exercice}
+\end{document}

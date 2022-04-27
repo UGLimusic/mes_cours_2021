@@ -1,0 +1,83 @@
+\documentclass[a4paper,10pt,french]{book}
+\usepackage[margin=2cm]{geometry}
+\usepackage[thinfonts]{uglix2}
+\setminted{fontsize=\small}\nouveaustyle
+\begin{document}
+\titre{DS 02 (suite et fin) corrigé}{NSI2}{11/2021}
+
+\exo{ - Analyse de code}
+
+
+Voici ce qui se passe lors de l'utilisation du script :
+
+\pythonfile{scripts/test_alarm.py}
+
+Donc les SMS envoyés sont
+\begin{enumerate}[\textbullet]
+	\item 	\texttt{'971971971 Loritz : 0002 Intrusion'}
+	\item 	\texttt{'971971971 Poincaré : 0004 Intrusion'}
+\end{enumerate}
+
+Et en définitive, \pythoninline{alarme1.journal} vaut :\\
+
+\texttt{['0001 Activation ', '0002 Intrusion envoi sms au 971971971', '0003 Désactivation ']}\\
+
+Dans le script donné en énoncé, on constate que la méthode \texttt{intrusion} est mal codée : on n'enregistre les évènements que lorsque l'alarme
+est active. Pour remédier à cela, il suffit de désindenter la ligne 20 : ainsi on consigne l'événement dans le journal quoi qu'il advienne.\\
+
+Pour en plus gérer les envois de SMS échoués on aboutit au code suivant pour la méthode \texttt{intrusion} :
+
+\begin{pythoncode}
+def intrusion(self):
+    evenement = date() + " Intrusion"
+    if self.active:
+        sms = self.lieu + ' : ' + evenement
+        if envoie_sms(self.telephone, sms):
+            evenement = evenement + " envoi sms au " + self.telephone
+        else:
+            evenement += " envoi au " + self.telephone + "échoué"
+    self.journal.append(evenement)
+\end{pythoncode}
+
+Et pour vider le journal voici la méthode la plus simple :
+
+\begin{pythoncode}
+def efface_journal(self):
+    self.journal = []
+\end{pythoncode}
+
+\exo{ - Cercles}\\
+
+La principale difficulté est se déterminer à quelle condition deux cercles se chevauchent (c'est-à-dire ont un point d'intersection) d'une part,
+et d'autre part à quelle condition un cercle est contenu dans l'autre.
+
+
+\begin{center}
+\def\uscl{.5}
+\begin{tikzpicture}[scale=\uscl]
+\draw[blue] (0,0)\ball node[above]{O} circle(3);
+\draw[red] (4,0)\ball node[above]{O'} circle (2);
+\draw(0,0)--(4,0);
+\draw[blue,<->] (0,0) --node[midway,above]{r} (3,0);
+
+\draw[red,<->] (4,0) -- node[midway,above]{r'}(6,0);
+\end{tikzpicture}
+\end{center}
+Quand les cercles se chevauchent on a $OO' < r + r'$ mais il ne faut pas non plus que $OO'$ soit trop petit :
+
+\begin{center}
+\def\uscl{.5}
+\begin{tikzpicture}[scale=\uscl]
+\draw[blue] (0,0)\ball node[above]{O} circle(3);
+\draw[red] (0.5,0)\ball node[above]{O'} circle (1);
+\draw (0,0) -- (0.5,0);
+\draw[<->,blue] (0,0) -- node[midway,above]{r}(3,0);
+\draw[red,<->] (.5,0) -- node[midway,above]{r'}(1.5,0);
+\end{tikzpicture}
+\end{center}
+Lorsque $OO' < r - r'$ les cercles ne se chevauchent plus mais le grand contient le petit
+
+On construit donc notre classe en faisant bien attention à ce que ces deux cas s'excluent :
+
+\pythonfile{scripts/Cercle.py}
+\end{document}

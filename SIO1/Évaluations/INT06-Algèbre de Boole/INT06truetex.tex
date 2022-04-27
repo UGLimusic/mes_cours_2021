@@ -1,0 +1,131 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[margin=2cm]{geometry}
+\usepackage[thinfonts,latinmath]{uglix2}
+
+\nouveaustyle
+\pagestyle{empty}
+\begin{document}
+    \titre{Interrogation 06}{SIO1}{2022}
+
+\section*{D'après métropole mai 2018}
+
+Sur une plateforme de vidéos en ligne, les vidéos sont notées de 0 à 5 par les utilisateurs.
+
+Après une période d'observation, les administrateurs de la plateforme décident de mettre une vidéo
+sur la page d'accueil lorsqu'elle satisfait à l'un au moins des critères suivants:
+\begin{enumerate}[--]
+    \item la vidéo a obtenu la note 5 et comptabilise un nombre de vues supérieur ou égal à 200 ;
+    \item la vidéo a obtenu la note 5 et elle est récente;
+    \item la vidéo comptabilise un nombre de vues strictement inférieur à 200 et elle est récente;
+    \item la vidéo n'a pas obtenu la note 5 et comptabilise un nombre de vues supérieur ou égal à 200.
+\end{enumerate}
+
+\smallskip
+
+On définit les trois variables booléennes $a$, $b$, $c$ de la façon suivante:
+
+\setlength\parindent{1cm}
+\begin{enumerate}[--]
+    \item $a = 1$ si la vidéo a obtenu la note 5, $a = 0$ sinon;
+    \item $b = 1$ si la vidéo comptabilise un nombre de vues supérieur ou égal à $200$, $b = 0$ sinon;
+    \item $c = 1$ si la vidéo est récente, $c = 0$ sinon.
+\end{enumerate}
+\setlength\parindent{0cm}
+
+\medskip
+
+\begin{enumerate}[\bfseries 1.]
+    \item L'administrateur de la plateforme a traduit les conditions pour qu'une vidéo soit mise sur la page
+    d'accueil par l'expression booléenne $E = ab + a c + \overline{b} c + \overline{a} b$.
+
+    Justifier chacun des termes de cette somme.
+    \item
+    \begin{enumerate}[\bfseries a.]
+        \item Représenter l'expression $E$ dans un diagramme de Karnaugh.
+        \item En déduire une expression simplifiée de $E$ sous la forme d'une somme de deux termes.
+        \item Retrouver cette expression par le calcul.
+        \item Interpréter cette expression simplifiée de $E$ dans le contexte de l'exercice.
+    \end{enumerate}
+    \item  Une vidéo qui n'est pas récente, qui n'a pas obtenu la note 5 et qui comptabilise un nombre de
+    vues strictement inférieur à 200 sera-t-elle mise sur la page d'accueil ?
+    \item  \begin{enumerate}[\bfseries a.]
+        \item 	Donner une expression de $\overline{E}$ à l'aide des variables booléennes précédemment définies en utilisant un diagramme de Karnaugh.
+        \item 	Retrouver ce résultat par le calcul.
+        \item 	Interpréter cette expression de $\overline{E}$ dans le contexte de l'exercice.
+    \end{enumerate}
+\end{enumerate}
+
+\section*{D'après métropole mai 2017}
+
+Le but de cet exercice est d'étudier une méthode de cryptage inventée par Gilbert Vernam en 1917, et appelée \og masque jetable \fg.
+
+Dans tout l'exercice, on note respectivement $M$ le mot initial, $K$ la clé de cryptage et $Y$ le mot crypté.
+
+Les trois nombres $M$, $K$, $Y$ sont des entiers naturels.
+
+\medskip
+
+\begin{center}\textbf{Partie 1 : Masque jetable}\end{center}
+
+La méthode décrite dans cette partie utilise le connecteur logique \og \emph{xor} \fg, appelé \og ou exclusif \fg, qui est défini par la table de vérité suivante :
+
+\begin{center}
+    \begin{tabularx}{0.5\linewidth}{|*{3}{>{\centering \arraybackslash}X|}}\hline
+        $P$ &$Q$ &$P\: xor\: Q$\\ \hline
+        0 &0 &0\\ \hline
+        0 &1 &1\\ \hline
+        1 &0 &1\\ \hline
+        1 &1 &0\\ \hline
+    \end{tabularx}
+\end{center}
+
+Par exemple les deux premières lignes signifient que $0\: xor\: 0 = 0$ et que $0\: xor\: 1 = 1$.
+
+\medskip
+
+\begin{enumerate}[\bfseries 1.]
+    \item Recopier intégralement la table de vérité ci-après et compléter la dernière colonne.
+    \begin{center}
+        \begin{tabularx}{0.7\linewidth}{|*{3}{>{\centering \arraybackslash}X|}c|}\hline
+            $P$ &$Q$ &$P\: xor\: Q$&$(P\: xor\: Q) \:xor\: Q$\\ \hline
+            0 &0 &0&\\ \hline
+            0 &1 &1&\\ \hline
+            1 &0 &1&\\ \hline
+            1 &1 &0&\\ \hline
+        \end{tabularx}
+    \end{center}
+
+    \item Parmi les quatre propositions $P$, $Q$, $(P\: xor\: Q)$ et $((P\: xor\: Q)\: xor\: Q)$, deux sont équivalentes.
+
+    À l'aide de la table 2 complétée, déterminer lesquelles, en expliquant la réponse.
+\end{enumerate}
+
+Dans la suite de l'exercice, on note $a_b$ l'écriture du nombre entier $a$ en base $b$.
+
+\begin{enumerate}[\bfseries 1.]
+    \setcounter{enumi}{2}
+    \item Donner la représentation binaire de l'entier qui s'écrit $26_{10}$ en décimal.
+    \item Soit $M$ et $K$ deux entiers naturels écrits en binaire, tels que la longueur de l'écriture de $K$ est supérieure ou égale à celle de $M$.
+
+    Pour crypter le mot $M$ avec la clé $K$, on procède comme suit : pour chaque chiffre $m$ du mot
+    initial $M$, on considère le chiffre $k$ de la clé $K$ qui a la même position que $m$ dans l'écriture.
+
+    On obtient alors le chiffre $y$ du mot crypté $Y$ qui a la même position que $m$ dans l'écriture du mot initial $M$, par la relation : $y = m \:xor\: k$.
+
+    L'écriture binaire du mot crypté $Y$ est la juxtaposition dans le même ordre des chiffres $y$ calculés pour chaque chiffre $m$ du mot $M$.\\
+
+        \emph{Exemple }:  avec $M = 01_2$ et $K = 10_2$\\
+        \begin{enumerate}[--]
+            \item Avec le chiffre de rang 1 en partant de la droite : $m = 1$ et $k = 0$
+            \item avec le chiffre de rang 2 :  $m = 0$ et $k = 1$ ; donc $y = 0 \:xor\: 1 = 1$.
+        \end{enumerate}
+        Donc le mot crypté est $Y = 11_2$ \\
+
+     \begin{enumerate}[\bfseries a.]
+         \item 	Avec le mot initial $M =  011_2$ et la clé $K = 101_2$, déterminer le mot crypté~$Y$.
+         \item 	Comment, étant donné un mot crypté $Y$ et une clé $K$, retrouver le mot initial $M$ ?
+     \end{enumerate}
+
+\end{enumerate}
+
+\end{document}

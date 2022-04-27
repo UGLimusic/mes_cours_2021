@@ -1,0 +1,104 @@
+\documentclass[a4paper,12pt,french]{book}
+\usepackage[margin=2cm]{geometry}
+\usepackage[thinfonts]{uglix2} % ou cmb % NE MARCHERA PAS EN PSTRICKS
+
+\begin{document}
+
+\chapter*{Récursivité et arithmétique}
+\introduction{La Mathématique est la reine des sciences et l'Arithmétique est
+	la reine des mathématiques.}
+
+\begin{definition}[ : division euclidienne dans \N]
+
+	Soient A et B deux entiers naturels, et $B\neq 0$. Il existe deux nombres uniques Q et R (vérifiant $0\leqslant R<B$) tels que l'on puisse écrire
+	$$A = Q\times B + R$$
+
+	C'est exactement la division que l'on a apprise à l'école primaire (celle où l'on s'arrête aux nombres entiers):
+	\begin{center}
+		\begin{tabular}{r|l}
+			A & B\\
+			\cline{2-2}
+			R & Q
+		\end{tabular}
+
+		\begin{enumerate}[\textbullet]
+			\item 	A est appelé le \textit{dividende};
+			\item 	B est le \textit{diviseur};
+			\item	Q est le \textit{quotient};
+			\item 	R est le \textit{reste}, il est \textit{impérativement} plus petit que B.
+		\end{enumerate}
+	\end{center}
+\end{definition}
+
+En \textsc{Python} on obtient \pythoninline{Q} en évaluant \pythoninline{A // B} et \pythoninline{R} en évaluant \mintinline{python}{A % B}, cette dernière opération se lit \og \pythoninline{A} modulo \pythoninline{B}\fg{}.Voici un exemple
+
+\begin{pythonshell}
+>>> 22 // 7
+3
+>>> 22 % 7
+1
+\end{pythonshell}
+
+\begin{exercice}[]
+\begin{enumerate}[\bfseries 1.]
+	\item 	En \textsc{Python}, écrire une fonction \pythoninline{units_digit} qui
+			\begin{enumerate}[--]
+				\item 	en entrée prend un \pythoninline{int} positif;
+				\item 	renvoie un \pythoninline{int} qui est son chiffre des unités.
+			\end{enumerate}
+	\item 	De même écrire une fonction \pythoninline{hundreds_digit} pour le chiffre des centaines.
+	\item 	De même pour une fonction \pythoninline{thousands_digit} qui renvoie le chiffre des milliers.
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}[]
+\'Ecrire une fonction récursive \pythoninline{decimal_length}  basée sur \pythoninline{//} et/ou  \mintinline{python}{%} qui
+\begin{enumerate}[--]
+	\item 	en entrée prend un \pythoninline{int} positif;
+	\item 	renvoie un \pythoninline{int} qui est le nombre de chiffres de l'écriture décimale de ce nombre.
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}[]
+	En s'inspirant de l'exercice précédent :
+	\'Ecrire une fonction récursive \pythoninline{binary_length}  basée sur \pythoninline{//} et/ou  \mintinline{python}{%} qui
+	\begin{enumerate}[--]
+		\item 	en entrée prend un \pythoninline{int} positif;
+		\item 	renvoie un \pythoninline{int} qui est le nombre de chiffres de l'écriture binaire de ce nombre.
+	\end{enumerate}
+\end{exercice}
+
+
+\begin{exercice}[]
+	On considère le procédé suivant :
+	\begin{enumerate}[--]
+	\item 	soit $m\in \N$ un entier écrit en écriture décimale $m = (a_p\cdots a_1a_0)_{10}$,\\
+	par exemple $m=\np{31976}$;\\
+	\item 	on \og coupe\fg{} cette écriture en deux au niveau des unités : avec $m$ on forme $m_1=(a_p\cdots a_1)_{10}$ et $m_2=(a_0)_{10}$,\\
+	pour notre exemple $m_1=\np{3197}$ et $m_2=6$;\\
+	\item	On calcule  $m'=m_1-2m_2$ ,\\
+	pour notre exemple cela donne $m'=\np{3197}-2\times 6 = 3185$\\
+	\end{enumerate}
+
+\begin{enumerate}[\bfseries 1.]
+	\item 	à l'aide de \pythoninline{//} et/ou  \mintinline{python}{%} écrire une fonction \pythoninline{f} qui
+			\begin{enumerate}[--]
+				\item 	en entrée prend un \pythoninline{int} positif \pythoninline{m};
+				\item 	en sortie renvoie \pythoninline{m'}.
+			\end{enumerate}
+	\item 	En fait, la fonction $f$ donne un critère de divisibilité par 7 pour un entier $m$ :
+			\begin{enumerate}[--]
+				\item 	si  $m\leqslant 70$ alors s'il appartient à {-7; 0; 7; 14; 21; 28; 35; 42; 49; 56; 63; 70}, $m$ est divisible par 7, sinon il ne l'est pas;
+				\item 	sinon on regarde si $f(m)$ est divisible par 7.
+			\end{enumerate}
+	Pour notre exemple on obtient $$31\,976 \mapsto 3\,197 - 2\times 6 = 3\, 185 \mapsto 318- 2\times 5 =308 \mapsto 30 - 2\times 8= 14$$ et on en conclut qu'il est divisible par 7.\\
+
+	Programmer une fonction récursive \pythoninline{is_divisible_by_7} qui
+	\begin{enumerate}[--]
+		\item 	en entrée prend un \pythoninline{int} positif;
+		\item 	en sortie renvoie \pythoninline{True} ou \pythoninline{False} selon que l'entier est divisible par 7.
+	\end{enumerate}
+	Cette fonction utilisera la fonction \pythoninline{f} définie précédemment.
+\end{enumerate}
+\end{exercice}
+\end{document}

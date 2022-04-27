@@ -1,0 +1,80 @@
+\documentclass[a4paper,12pt,french]{article}
+\usepackage[margin=2cm]{geometry}
+\usepackage[thinfonts]{uglix2}
+\nouveaustyle
+  
+\begin{document}
+\titre{Piles - Exercices}{NSI2}{2021} 
+
+\begin{exercice}[ : Implémentation objet]
+	\'Ecrire une classe \pythoninline{Stack} qui implémente la structure de pile vue en cours. Sauvegarder dans un module \texttt{Stack.py}. Celui-ci servira pour les exercices suivants.
+\end{exercice}
+
+\begin{exercice}[ : Les piles c'est renversant]
+\'Ecrire une fonction \pythoninline{reverse_with_stack} qui utilise une pile et
+\begin{enumerate}[--]
+	\item 	en entrée prend un \pythoninline{str};
+	\item 	en sortie renvoie un \pythoninline{str} qui est la chaîne passée en paramètre, mais dans l'autre sens.	
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}[ : Expressions bien parenthésées]
+L'expression $(a+b\times(c+(a+b)^2))^3$ est bien parenthésée. $(a-b)\times c)$ ne l'est pas.
+\begin{enumerate}[\bfseries 1.]
+	\item 	\'Ecrire une fonction \pythoninline{is_valid} qui utilise une pile et
+	\begin{enumerate}[--]
+		\item 	en entrée prend in \pythoninline{str} qui est l'expression à tester.
+		\item 	en sortie renvoie un \pythoninline{bool} : \pythoninline{True} si elle est bien parenthésée, \pythoninline{False} sinon.
+	\end{enumerate}
+	\item 	Proposer un ensemble de tests unitaires.	
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}[ : \'Egalité de deux piles]
+	\begin{enumerate}[\bfseries 1.]
+		\item 	\'Ecrire une fonction \pythoninline{are_equal} qui
+		\begin{enumerate}[--]
+			\item 	en entrée prend 2 piles.
+			\item 	en sortie renvoie un \pythoninline{bool} : \pythoninline{True} si les deux piles ont les mêmes éléments (même nombre et même ordre), \pythoninline{False} sinon.
+		\end{enumerate}
+		La fonction doit remettre les piles telles quelles.
+	\item 	Proposer un ensemble de tests unitaires.	
+	\end{enumerate}
+
+\end{exercice}
+
+\begin{exercice}[ : Notation polonaise inversée]
+La Notation Polonaise Inverse (NPI), ou notation post-fixée, est une marnière d’écrire les expressions mathématiques en se passant des parenthèses. Elle a été introduite par le mathématicien polonais Jan Lucasievicz dans les années 1920.\\
+Le principe de cette méthode est de placer chaque opérateur juste après ses deux opérandes.\\
+Par souci de simplicité nous ne considèrerons que des expressions mettant en jeu des entiers naturels.\\
+
+L’expression $2 + 3$ devient en NPI  2 3 +.
+\begin{itemize}
+	\item $2 + 6 − 1 $ s’écrit  2\ 6 + 1 −
+	\item $5 \times 3 + 4$ s’écrit  5\ 3 * 4 +
+	\item $((1 + 2) \times 4) + 3$ s’écrit 1 2 + 4 * 3 +
+\end{itemize}
+
+\'Evaluer une expression post-fixée est facile. Pour cela il suffit de lire l’expression de gauche à
+droite et d’appliquer chaque opérateur aux deux opérandes qui le précèdent. Si l’opérateur n’est
+pas le dernier symbole on replace le résultat intermédiaire dans l’expression et on recommence avec
+l’opérateur suivant.\\
+
+On peut écrire un programme en Python qui utilise une pile s pour évaluer les expressions en NPI en suivant cet exemple
+\begin{enumerate}[--]
+	\item 	on considère une chaine de caractères : \pythoninline{c = '23 6 + 1 -'};
+	\item 	on la transforme en une liste : \pythoninline{lst = c.split()};
+	\item 	la valeur de \pythoninline{lst} est alors \pythoninline{['23', '6', '+', '1', '-']};
+	\item 	on constate que \pythoninline{'23'} et \pythoninline{'6'} ne sont pas des symboles d'opérateurs donc sont convertibles en \pythoninline{int} et on empile ces deux entiers dans s;
+ 	\item 	le prochaine élément de \pythoninline{lst} est \pythoninline{'+'} donc on dépile les deux entiers 6 et 23, on les ajoute, et on empile le résultat 29;
+ 	\item	on continue : on empile 1;
+ 	\item	on arrive à \pythoninline{'-'}, on dépile les 2 entiers  1 et 29 et on les soustrait (dans le bon ordre) et on empile le résultat final 28.
+\end{enumerate}
+
+\'Ecrire une fonction \pythoninline{mpi_compute} qui
+\begin{enumerate}[--]
+	\item 	en entrée prend un \pythoninline{str} qui est une expression NPI;
+	\item 	en sortie renvoie un \pythoninline{float} qui est l'évaluation de cette expression (\pythoninline{float} car l'expression peut comporter des divisions).	
+\end{enumerate}
+\end{exercice}
+\end{document}

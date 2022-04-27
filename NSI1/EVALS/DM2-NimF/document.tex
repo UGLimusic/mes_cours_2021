@@ -1,0 +1,67 @@
+\documentclass[a4paper,12pt,french]{article}
+\usepackage[margin=2cm]{geometry}
+\usepackage[thinfonts,latinmath]{uglix2}
+\nouveaustyle
+\begin{document}
+\titre{Devoir facultatif }{NSI1}{11/2021}
+
+
+\textit{Ce travail \textbf{personnel} est à faire pendant les vacances et doit être rendu sur \textsc{pronote} pour \textbf{le jeudi 8 décembre au plus tard}. }
+
+\textit{Il est facultatif : seule la meilleure des deux notes comptera.}
+
+\textit{Aucun délai ne sera accepté et entraînera la nullité de la note.}
+
+\textit{L'unique programme à coder devra être rendu dans un fichier \texttt{.py} ou \texttt{.txt}, les formats \textsc{Word}, \textsc{OpenOffice} ou autres ne seront pas acceptés, les captures d'écran sont interdites.}
+
+
+
+\subsection*{Variante du Jeu de Nim}
+
+Deux joueurs A et B jouent à tour de rôle. A commence. Au début de la partie il y a 25 jetons.\\
+Le gagnant sera celui qui prendra le dernier jeton (c'est donc différent du jeu de Nim).
+\begin{enumerate}[--]
+	\item 	Au premier tour, A ne peut pas prendre tous les jetons, sinon il gagnerait immédiatement.\\
+			Il doit en prendre un au minimum et 24 au maximum.
+	\item 	Ensuite, alternativement, chaque joueur doit prendre au moins un jeton, et au plus le double du nombre de
+			jetons que l'autre joueur a pris au tour d'avant.
+\end{enumerate}
+
+\subsection*{Exemples de partie}
+
+Partie rapide :
+\begin{enumerate}[--]
+	\item 	A prend 10 jetons, il en reste 15.
+	\item 	B peut prendre entre 1 et 20 jetons (double de 10) : il en prend 15, il a gagné ! \\
+\end{enumerate}
+
+Partie moins rapide :
+\begin{enumerate}[--]
+	\item 	A prend 5 jetons, il en reste 20.
+	\item 	B peut en prendre entre 1 et 10, il en prend 6, il en reste 14.
+	\item 	A peut en prendre entre 1 et 12, il en prend 4, il en reste 10.
+	\item 	B peut en prendre entre 1 et 8, il en prend 3, il en reste 7.
+	\item 	A peut en prendre entre 1 et 6, il en prend 2, il en reste 5.
+	\item 	B peut en prendre entre 1 et 4, il en prend 1, il en reste 3.
+	\item 	A peut en prendre entre 1 et 2, il en prend 1, il en reste 2.
+	\item 	B peut en prendre entre 1 et 2, il en prend 2, il a gagné !
+\end{enumerate}
+
+\subsection*{Le programme à rendre}
+
+Tu devras écrire un programme dans lequel :
+\begin{enumerate}[--]
+	\item 	A est l'ordinateur et commence;
+	\item 	on fait jouer l'humain grâce à des \pythoninline{input};
+	\item 	à chaque fois qu'un joueur termine son tour, on affiche combien de jetons il a pris, combien il en reste 
+	et combien le prochain peut en prendre;
+	\item 	on affiche le gagnant à la fin.\\
+\end{enumerate}
+La stratégie de l'ordinateur est de jouer au hasard (sauf pour ceux qui ont des idées de stratégies gagnantes).
+
+
+Pour rappel, voici le corrigé du devoir précédent, vous pouvez vous en inspirer :\\
+
+\inputminted[fontsize=\scriptsize]{python}{prog1.py}
+
+\end{document}

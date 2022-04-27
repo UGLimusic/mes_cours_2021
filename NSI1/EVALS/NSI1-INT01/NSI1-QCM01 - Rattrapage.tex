@@ -1,0 +1,134 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[margin=2cm,top=1cm,bottom = 1cm]{geometry}		
+\usepackage{uglix}
+
+%\nocolumnrule
+\begin{document}
+\titreinterro{QCM 01\tiny (rattrapage)}{NSI1}{09/2020}
+
+Qu'affiche chacun des scripts suivants ?
+\begin{multicols}{2}
+\begin{enumerate}[\bfseries 1.]
+\item 
+
+\begin{python}
+a = 10 
+b = a - 4 
+c = a - b
+b = c + a
+print(b)
+\end{python}
+\begin{enumerate}[\case\ \ a.]
+\item \tw{3}
+\item \tw{14}
+\item \tw{4}
+\end{enumerate}	
+
+\item 	
+\begin{python}
+resultat = 22 // 7 + 1
+print(resultat)
+\end{python}
+\begin{enumerate}[\case\ \ a.]
+\item \tw{4}
+\item \tw{2}
+\item Il génère une erreur
+\end{enumerate}	
+
+\item 
+\begin{python}
+variable = ['a', 1]
+print(type(variable))
+\end{python}
+\begin{enumerate}[\case\ \ a.]
+\item 	\tw{<class 'list'>}
+\item 	\tw{<class 'str'>}
+\item 	\tw {<class 'int'>}
+
+\end{enumerate}	
+
+\item 
+\begin{python}
+a = 'ga'
+b = 'bu'
+c = a + b  + a * 3
+print(c)
+\end{python}
+\begin{enumerate}[\case\ \ a.]
+\item 	\tw{gagabububu}
+\item 	\tw{gabugagaga}
+\item 	Il génère une erreur
+\end{enumerate}	
+
+\item 
+\begin{python}
+variable = "(7-3)*2"
+print(variable)
+\end{python}
+\begin{enumerate}[\case\ \ a.]
+\item 	\tw{8}
+\item 	\tw{1}
+\item 	\tw{((7-3)*2}
+\end{enumerate}	
+
+\item 
+\begin{python}
+a = '20'
+b = '3'
+print(a+b)
+\end{python}
+\begin{enumerate}[\case\ \ a.]
+\item 	\tw{203}
+\item 	Il génère une erreur
+\item 	\tw{23}
+\end{enumerate}	
+
+\item 
+\begin{python}
+a = 2
+b = 3
+print(a + B)
+\end{python}
+\begin{enumerate}[\case\ \ a.]
+\item 	\tw{23}
+\item 	Il génère une erreur
+\item 	\tw{5}
+\end{enumerate}	
+
+\item 
+\begin{python}
+prenom = 'Coucou'
+print(prenom[2:5])
+\end{python}
+\begin{enumerate}[\case\ \ a.]
+\item 	\tw{ucou}
+\item 	\tw{oucou}
+\item 	\tw{uco}
+\end{enumerate}	
+
+\item 
+\begin{python}
+note = [12,13,16]
+print(note[13])
+\end{python}
+\begin{enumerate}[\case\ \ a.]
+\item 	\tw{1}
+\item 	\tw{2}
+\item 	Il génère une erreur
+\end{enumerate}
+
+\item 
+\begin{python}
+capitale = {'France':'Paris', 'Espagne':'Madrid', 'Italie':'Rome'}
+print(capitale['Italie'])
+\end{python}
+\begin{enumerate}[\case\ \ a.]
+\item 	\tw{Rome}
+\item 	\tw{Paris}
+\item 	Il génère une erreur
+\end{enumerate}
+
+\end{enumerate}	
+\end{multicols}
+\end{document}
+

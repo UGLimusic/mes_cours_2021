@@ -1,0 +1,52 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[margin=2cm]{geometry}		
+\usepackage[thinfonts]{uglix2}
+\begin{document}
+\nouveaustyle
+\titre{DS02-préparation}{NSI2}{11/2021}
+
+\exo{- POO}\\
+
+Dans cette exercice, vous travaillerez sur un fichier nommé \tw{bankAccount.py}.\\
+Vous construirez progressivement la classe, et en même temps effectuerez les tests proposés dans le programme principal (à la suite de la classe, dans le même fichier).
+
+\begin{enumerate}[\bfseries 1.]
+	\item 	Créer une classe \tw{BankAccount} avec pour attributs:
+            \begin{enumerate}[--]
+            	\item \tw{name} : le nom de la banque;
+            	\item \tw{balance} : la valeur en euros du compte;
+            \end{enumerate}
+	\item 	Coder une méthode permettant l'affichage d'un objet de la classe \tw{BankAccount}.
+    \item 	Dans le programme principal, créer 2 instances de cette classe :
+            \begin{enumerate}[--]
+            	\item 	l'instance \tw{A}, pour la banque LBP, avec un montant de 1250 \euro;
+            	\item 	l'instance \tw{B}, pour la banque CMB, avec un montant de 300 \euro.
+            \end{enumerate}
+    \item 	Créer une méthode d'instance \tw{transfer\_to} qui permet de transférer une somme d'argent donnée vers une autre instance de la classe.\\
+            Transférer 500 \euro de \tw{B} vers \tw{A}.
+    \item 	Créer une méthode d'instance \tw{overdraft} qui renvoie \pythoninline{True} si le solde du compte est strictement négatif et \pythoninline{False} sinon
+    \item 	Dans le programme principal, afficher \pythoninline{B.overdraft}.
+    \item 	Créer une méthode de classe \tw{replenish} qui :
+            \begin{enumerate}[--]
+            	\item 	prend en entrée 2 instances de la classe;
+            	\item 	renvoie un \pythoninline{bool} en procédant ainsi:
+                        \begin{enumerate}[--]
+                        	\item 	elle regarde si l'un des deux comptes est à découvert et si l'autre peut le renflouer (combler le découvert pour que le solde revienne à zéro) sans lui-même se mettre à découvert;
+                        	\item 	si c'est le cas, elle effectue les transferts et renvoie \pythoninline{True};
+                            \item 	si les 2 comptes sont positifs elle ne fait rien mais renvoie également \pythoninline{True};
+                            \item 	sinon, elle ne fait rien mais renvoie \tw{False}.
+                        \end{enumerate}
+            \end{enumerate}
+    \item 	Dans le programme principal, Renflouer \tw{B} avec \tw{A}.
+\end{enumerate}
+\textbf{Lexique}\\
+
+bank account : \textit{compte bancaire}\\
+name : \textit{nom}\\
+balance : \textit{solde}\\
+to transfer to : \textit{transférer vers}\\
+(bank) overdraft : \textit{découvert bancaire}\\
+to replenish (an account) : \textit{renflouer} (un compte)
+
+
+\end{document}

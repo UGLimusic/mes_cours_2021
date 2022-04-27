@@ -1,0 +1,135 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[margin=2cm]{geometry}
+\usepackage[thinfonts]{uglix2}
+\pagestyle{empty}
+\setlength{\columnseprule}{.5pt}
+\begin{document}
+\titreinterro{QCM 01\bis}{NSI1}{09/2021}
+
+Qu'affiche chacun des scripts suivants ? Une seule réponse est valide.
+\begin{multicols}{2}
+
+\begin{pythoncode}
+a = 2
+b = a - 7
+c = a + b
+b = c - a
+print(b)
+\end{pythoncode}
+\begin{enumerate}[\case\ \ a.]
+\item \tw{-5}
+\item \tw{2}
+\item \tw{3}
+
+\end{enumerate}
+
+\begin{pythoncode}
+x = 2
+y = 3 * x - 4
+z = (x + y ) // 2
+t = (x + y + 3 * z) // 5
+print(x + y + z - 3 * t)
+\end{pythoncode}
+
+\begin{enumerate}[\case\ \ a.]
+\item 	\texttt{-10}
+\item 	\texttt{2}
+\item 	\texttt{0}
+\end{enumerate}
+
+\begin{pythoncode}
+age = input('Entre ton âge : ')
+# l'utilisateur entre 16 au clavier
+print(f'Dans 10 ans tu auras {age +10} ans.')
+\end{pythoncode}
+
+\begin{enumerate}[\case\ \ a.]
+\item 	\tw{Dans 10 ans tu auras 26 ans.}
+\item 	Il génère une erreur.
+\item 	\tw{Dans 10 ans tu auras {age +10} ans.}
+\end{enumerate}
+
+
+\begin{pythoncode}
+resultat = 1 - 5 % 4
+print(resultat)
+\end{pythoncode}
+
+\begin{enumerate}[\case\ \ a.]
+\item \tw{0}
+\item Il génère une erreur
+\item \tw{-1}
+\end{enumerate}
+
+
+\begin{pythoncode}
+prenom = 'Jean Raoul'
+print(prenom[3:7])
+\end{pythoncode}
+\begin{enumerate}[\case\ \ a.]
+\item 	\tw{en R}
+\item 	\tw{n Ra}
+\item 	\tw{en Ra}
+\end{enumerate}
+
+\begin{pythoncode}
+a = '2'
+b = '3'
+print(a+b)
+\end{pythoncode}
+\begin{enumerate}[\case\ \ a.]
+\item 	\tw{5}
+\item 	\tw{23}
+\item 	Il génère une erreur
+\end{enumerate}
+\newpage
+\begin{pythoncode}
+a = 'mer'
+b = 'ci'
+c = b + a * 2 + b
+print(c)
+\end{pythoncode}
+\begin{enumerate}[\case\ \ a.]
+\item 	\tw{mercimerci}
+\item 	Il génère une erreur
+\item 	\tw{cimermerci}
+\end{enumerate}
+
+
+\begin{pythoncode}
+variable = "(40-3)*20"
+print(variable)
+\end{pythoncode}
+\begin{enumerate}[\case\ \ a.]
+\item 	\tw{-20}
+\item 	\tw{(40-3)*20}
+\item 	\tw{740}
+\end{enumerate}
+
+
+\begin{pythoncode}
+a = 4
+b = a + 3
+a = 5
+print(b)
+\end{pythoncode}
+\begin{enumerate}[\case\ \ a.]
+\item \tw{5}
+\item 	\tw{7}
+\item \tw{8}
+\end{enumerate}
+
+
+\begin{pythoncode}
+variable ='12'
+print(type(variable))
+\end{pythoncode}
+\begin{enumerate}[\case\ \ a.]
+\item 	\tw{<class 'int'>}
+\item 	\tw{<class 'str'>}
+\item 	\tw {<class 'float'>}
+\end{enumerate}
+
+\end{multicols}
+\end{document}
+

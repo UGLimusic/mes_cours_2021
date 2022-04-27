@@ -1,0 +1,166 @@
+\documentclass[a4paper,10pt,french]{book}
+\usepackage[margin=2cm]{geometry}
+\usepackage[thinfonts]{uglix2}
+\setminted{fontsize=\small}\nouveaustyle
+\begin{document}
+\titre{DS 02 (suite et fin)}{NSI2}{11/2021}
+
+\exo{ - Analyse de code}
+
+Tu viens d'être nommé développeur dans une entreprise qui gère les systèmes d'alarmes pour les maisons des particuliers.
+Ton prédécesseur a commencé à écrire une classe \pythoninline{Alarme}, qui doit normalement répondre aux exigences suivantes :
+
+\begin{enumerate}[--]
+	\item 	l'alarme peut être activée et désactivée;
+	\item 	chaque intrusion détectée doit être systématiquement consignée dans un journal;
+    \item   en cas d'intrusion, si l'alarme est activée, un SMS doit être envoyé au centre de télésurveillance.
+\end{enumerate}
+
+Voici son code:
+
+\begin{encadrecolore}{code Python}{python@color}
+\begin{minted}[linenos]{python}
+from utils import date, envoie_sms
+
+ACTIVE = True
+INACTIVE = False
+
+
+class Alarme:
+    def __init__(self, lieu, telephone, etat):
+        self.lieu = lieu
+        self.telephone = telephone
+        self.active = etat
+        self.journal = []
+
+    def intrusion(self):
+        evenement = date() + " Intrusion"
+        if self.active:
+            sms = self.lieu + ' : ' + evenement
+            envoie_sms(self.telephone, sms)
+            evenement = evenement + " envoi sms au " + self.telephone
+            self.journal.append(evenement)
+
+    def activer(self):
+        self.active = ACTIVE
+        evenement = date() + " Activation "
+        self.journal.append(evenement)
+
+    def desactiver(self):
+        self.active = INACTIVE
+        evenement = date() + " Désactivation "
+        self.journal.append(evenement)
+\end{minted}
+\end{encadrecolore}
+
+Le module \pythoninline{utils} permet d'importer les fonctions suivantes :\\
+
+La fonction date \pythoninline{date}
+\begin{enumerate}[\textbullet]
+	\item 	ne prend rien en entrée;
+	\item 	renvoie la date et l'heure sous la forme d'un \pythoninline{str}.
+\end{enumerate}
+
+La fonction \pythoninline{envoie_sms}
+\begin{enumerate}[\textbullet]
+	\item 	prend en entrée \pythoninline{numero} et \pythoninline{sms}, qui sont deux \pythoninline{str}, et envoie le sms au numéro du centre de télésurveillance.
+	\item 	renvoie \pythoninline{True} si l'envoi est réussi, \pythoninline{False} sinon.\\
+\end{enumerate}
+\medskip
+Pour ce devoir, on va considérer que la fonction \pythoninline{date} renvoie
+\begin{enumerate}[\textbullet]
+	\item 	\pythoninline{'0000'} au premier appel;
+	\item 	\pythoninline{'0001'} au deuxième appel;
+    \item   et ainsi de suite.\\
+\end{enumerate}
+\medskip
+
+\textbf{1.} On exécute le script suivant :
+
+\begin{pythoncode}
+from alarme import Alarme
+
+alarme1 = Alarme("Loritz", "971971971", False)
+alarme2 = Alarme("Poincaré", "971971971", True)
+alarme1.intrusion()
+alarme1.activer()
+alarme1.intrusion()
+alarme1.desactiver()
+alarme2.intrusion()
+\end{pythoncode}
+
+Donner les contenus des SMS envoyés.\\
+
+\medskip
+
+\textbf{2.} Que contient \pythoninline{alarme1.journal} à la fin du script ?\\
+
+\medskip
+
+\textbf{3.} En testant le code, on constate que lorsque l'alarme est désactivée les intrusions ne sont pas enregistrées dans le journal.\\
+D'où vient l'erreur ? Proposer une correction.\\
+
+\medskip
+
+\textbf{4.} On constate que le journal de bord consigne parfois des envois de SMS que le centre n'a jamais reçus : le système a bien tenté de les envoyé mais l'envoi a échoué.\\
+Proposer une correction du code telle que si l'envoi d'un SMS échoue, cela soit consigné dans le journal.\\
+
+\medskip
+
+\textbf{5.} \'Ecrire une méthode d'instance \pythoninline{efface_journal} qui efface le journal de l'instance.\\
+
+\newpage
+
+\exo{ - Cercles}\\ 
+
+On considère les 3 cercles suivants :
+
+\begin{center}
+\def\uscl{.5}
+\begin{tikzpicture}[scale=\uscl]
+\reperevl{-4}{-3}{8}{9}
+\draw[blue] (0,0)\ball node[below=1*\uscl cm,right=.8*\uscl cm]{$\mathcal{C}_1$} circle (1);
+\draw[red] (2,3)\ball node[above=5*\uscl cm,right=2*\uscl cm]{$\mathcal{C}_2$} circle (5);
+\draw[green] (-1,4)\ball node[above=2*\uscl cm,right=1*\uscl cm]{$\mathcal{C}_3$} circle (2);
+\end{tikzpicture}
+\end{center}
+
+\'Ecrire la classe \pythoninline{Cercle} pour qu'on puisse s'en servir de la sorte :
+
+\begin{pythoncode}
+from Cercle import *
+
+c1 = Cercle(0, 0, 1)  # crée un cercle c1 de centre (0,0) et de rayon 1
+c2 = Cercle(3, 1, 5)  # idem
+c3 = Cercle(-1, 4, 1)  # idem
+
+c2.decale(-1, 2)  # décale le centre ce c2 de (-1,2)
+c3.dilate(2)  # multiplie le rayon de c3 par 2
+
+print(c1)  # affiche correctement c1
+print(c2)  # idem
+print(c3)  # idem
+
+print(c2.contient(c1))  # va afficher True car c1 est « à l'intérieur de c2 »
+print(c2.contient(c3))  # False
+print(c1.chevauche(c3))  # False car c1 et c2 n'ont aucun point commun
+print(c2.chevauche(c3))  # True
+\end{pythoncode}
+
+\textbf{Résultat :}
+\begin{verbatim}
+Cercle : centre(0, 0) rayon 1.
+Cercle : centre(2, 3) rayon 5.
+Cercle : centre(-1, 4) rayon 2.
+True
+False
+False
+True
+\end{verbatim}
+
+On suppose que tu as à ta disposition la fonction \pythoninline{distance} qui
+\begin{enumerate}[\textbullet]
+	\item 	prend en entrée 4 \pythoninline{float}  \pythoninline{xa}, \pythoninline{ya}, \pythoninline{xb} et \pythoninline{yb} qui sont les coordonnées de points A et B;
+	\item 	renvoie la distance AB. 	
+\end{enumerate}
+\end{document}

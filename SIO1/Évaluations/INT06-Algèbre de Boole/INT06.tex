@@ -1,0 +1,92 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[margin=2cm]{geometry}
+\usepackage[thinfonts,latinmath]{uglix2}
+
+\nouveaustyle
+\pagestyle{empty}
+\begin{document}
+    \titre{Préparation au contrôle}{SIO1}{2022}
+
+\section*{Métropole mai 2015}
+Une association sportive souhaite recruter une personne pour animer son site internet et dynamiser
+son image. Le candidat recruté devra remplir l'une au moins des quatre conditions suivantes :
+
+
+\begin{enumerate}[--]
+    \item avoir des connaissances en informatique et être sous contrat avec la mairie ;
+    \item ne pas avoir de connaissances particulières en informatique, mais être membre de l'association
+    et être sous contrat avec la mairie ;
+    \item ne pas être membre de l'association mais être sous contrat avec la mairie ;
+    \item ne pas être sous contrat avec la mairie, mais être membre de l'association.\\
+\end{enumerate}
+
+On définit les trois variables booléennes $a,\: b,$ et $c$ de la manière suivante :
+
+
+\begin{enumerate}[--]
+    \item $a = 1$ si la personne est membre de l'association et $a =  0$ sinon ;
+    \item $b = 1$ si la personne a des connaissances en informatique, et $b = 0$ sinon ;
+    \item $c = 1$ si la personne est en contrat avec la mairie, et $c = 0$ sinon.\\
+\end{enumerate}
+
+\begin{enumerate}[\bfseries 1.]
+    \item Écrire une expression booléenne $E$ traduisant globalement les  conditions de recrutement.
+    \item À l'aide d'un calcul booléen ou d'un tableau de Karnaugh, simplifier l'expression $E$ sous la
+    forme d'une somme de deux termes, puis interpréter cela à l'aide d'une phrase.
+    \item Un candidat ayant des connaissances en informatique se présente, mais il est écarté car il ne
+    correspond pas eux critères de recrutement.
+    Que peut-on en déduire sur le profil de ce candidat ?
+\end{enumerate}
+
+\section*{Exercice}
+
+La connexion à un site Internet nécessite la saisie d'un mot de passe comportant de
+8 à 12 caractères.\\
+ Ces caractères peuvent être des lettres majuscules de l'alphabet
+français, ou des chiffres, ou des caractères spéciaux (tels que \&,*,/,§ etc).\\
+Un mot de passe est valide si l'une au moins des trois conditions suivantes est
+réalisée:
+\begin{enumerate}[--]
+    \item 	Il comporte au moins trois chiffres et trois caractères spéciaux.
+    \item 	Il comporte au moins cinq lettres.
+    \item 	Il comporte moins de trois chiffres mais au moins cinq lettres et trois caractères
+    spéciaux.
+\end{enumerate}
+\subsection*{Partie A - ReconnaÎtre si un mot de passe est valide}
+
+\begin{enumerate}[\bfseries 1.]
+    \item 	 Parmi les mots de passe suivants, quels sont ceux qui sont valides ?\\
+
+    \texttt{H32EXZ\&K5=}\hspace{6em}  \texttt{LUC230598**}\hspace{6em} \texttt{123(M*K<4}
+    \item 	 	Alice veut créer un mot de passe avec quatre lettres, quatre chiffres et quatre
+    caractères spéciaux. Ce mot de passe sera-t-il accepté ? Et un mot de passe de huit
+    lettres ?
+\end{enumerate}
+
+\subsection*{Partie B - Écriture d'une expression booléenne}
+
+On définit trois variables booléennes $a$, $b$ et $c$ de la façon suivante :
+\begin{enumerate}[--]
+    \item 	$a = 1$ si le mot de passe contient au moins trois chiffres, sinon $a = O$.
+    \item 	$b = 1$ si le mot de passe contient au moins cinq lettres, sinon $b = O$.
+    \item 	$c = 1$ si le mot de passe contient au moins trois caractères spéciaux, sinon $c = O$.
+\end{enumerate}
+
+ainsi que la variable $A$ telle que $A = 1$ si le mot de passe est valide, $A = 0$ sinon.
+
+\begin{enumerate}[\bfseries 1.]
+    \item 	Traduire chacune des trois conditions de validité d'un mot de passe à l'aide des
+    variables $a$, $b$ et $c$. En déduire l'expression de $A$.
+   \item 	Représenter $A$ avec un tableau de Karnaugh. En déduire une expression simplifiée
+   de $A$.
+   \item Par le calcul, retrouver la forme simplifiée de $A$.
+   \item Exprimer par une phrase la plus simple possible la condition pour qu'un mot de passe soit valide.
+\end{enumerate}
+\subsection*{Partie C - Les mots de passe non valides}
+
+\begin{enumerate}[\bfseries 1.]
+    \item 	En utilisant le tableau de Karnaugh, déterminer l'expression de $\barmaj{A}$ .
+    \item 	Retrouver le résultat par le calcul.
+    \item 	Exprimer par une phrase la condition pour qu'un mot de passe soit refusé.
+\end{enumerate}
+\end{document}

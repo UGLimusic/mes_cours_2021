@@ -1,0 +1,143 @@
+\documentclass[a4paper,10pt,french]{article}
+\usepackage[margin=2cm,top=1cm,bottom=1.5cm]{geometry}
+\usepackage[thinfonts]{uglix2}
+\pagestyle{plain}
+\nouveaustyle
+\makeatletter
+\def\FV@DefineFindStop{%
+	\ifx\FancyVerbStopString\relax
+	\ifnum\FancyVerbStopNum<\@ne
+	\let\FV@FindStartStop\FV@@PreProcessLine
+	\else
+	\let\FV@FindStartStop\FV@FindStopNum
+	\fi
+	\else
+	\let\FV@FindStartStop\FV@FindStopString
+	\fi}
+\makeatother
+\begin{document}
+\titreinterro{Contrôle}{NSI1}{26/11/2021}
+
+\exo{ - Bases, représentation des nombres}\\
+
+
+Quelle est l'écriture en base 2 de 45 ? Détailler les calculs.\\
+
+\carreauxseyes{16.8}{4}\\
+
+Que vaut $(1111\,1011)_2$ en base 10 ? Détailler les calculs.\\
+
+\carreauxseyes{16.8}{4}\\
+
+Que vaut $(1111\,1011)_2$ en base 10 ? Détailler les calculs.\\
+
+\carreauxseyes{16.8}{4}\\
+
+Comment représente-t-on -7 en complément à 2 sur 8 bits ? Détailler les calculs.\\
+
+\carreauxseyes{16.8}{4} \\
+\newpage
+Que vaut $(110,011)_2$ en base 10 ? Détailler les calculs.\\
+
+\carreauxseyes{16.8}{4} \\
+
+\'Ecrire 15,75 en base 2. Détailler les calculs.\\
+
+\carreauxseyes{16.8}{4} \\
+
+Explique \textbf{sommairement} pourquoi en \textsc{Python} \pythoninline{0.1 + 0.1 + 0.1} ne vaut pas \pythoninline{0.3}.\\
+
+\carreauxseyes{16.8}{4} \\
+
+
+\exo{ - Représentation du texte}\\
+
+
+Comment s'appelle le premier format historique d'encodage du texte ?\\
+
+\carreauxseyes{16.8}{1.6} \\
+
+Explique ce qu'est le test par bit de parité sur un octet et donne deux exemples.\\
+
+\carreauxseyes{16.8}{4.8}\\
+
+\carreauxseyes{16.8}{4}\\
+
+Quel est l'avantage de l'encodage UTF-8 par rapport aux autres encodages tels que l'ISO ou Windows-1252 vus en cours ?\\
+
+\carreauxseyes{16.8}{4} \\
+
+
+\exo{ - Méthodes de programmation}\\
+
+Donne un exemple de valeur de chaque type que nous avons rencontré en \textsc{Python}.\\
+
+\carreauxseyes{16.8}{3.2} \\
+
+Quels sont les 2 types de boucles et quelle est leur différence principale ? \\
+
+\carreauxseyes{16.8}{4} \\
+
+Dans le code suivant, une ligne est inutile. Laquelle et pourquoi ?
+
+\begin{encadrecolore}{Code Python}{python@color}
+\begin{minted}[linenos]{python}
+for i in range(100):
+    if i % 3 == 0 :
+        print(i)
+    i = i + 1
+\end{minted}
+\end{encadrecolore}
+
+\carreauxseyes{16.8}{4} \\
+
+Explique en une phrase ce qu'affiche le programme précédent.\\
+
+\carreauxseyes{16.8}{4} \\
+
+
+\newpage 
+
+\exo{ - \'Ecriture de programmes}
+
+Écrire un programme qui 
+\begin{enumerate}[--]
+	\item 	demande d'abord à l'utilisateur de choisir un nombre entier compris entre 1 et 10;
+	\item 	choisit un nombre au hasard entre 1 et 10 et l'affiche;
+	\item 	recommence tant que ce n'est pas le nombre choisi par l'utilisateur;
+	\item 	affiche le nombre d'essais nécessaires pour trouver le nombre de l'utilisateur
+\end{enumerate}
+
+\begin{exemple}[ ]
+\begin{verbatim}
+Choisis un nombre entre 1 et 10 : 7
+2
+4
+2
+9
+7
+Il m'a fallu 5 tirages aléatoires pour retrouver ton 7.
+\end{verbatim}	
+\end{exemple}
+
+\carreauxseyes{16.8}{16.8} \newpage
+\'Ecrire un programme qui
+\begin{enumerate}[--]
+	\item 	demande à l'utilisateur combien d'ami\cdot  e \cdot s il a;
+	\item 	demande d'entrer le prénom de chacun\cdot e;
+	\item 	affiche une phase du type : « Vos amis sont ... ».
+\end{enumerate}
+
+\begin{exemple}[ ]
+	\begin{verbatim}
+Combien d'ami(e)s as-tu ? : 4
+Entre un prénom : Elouan
+Entre un prénom : Mehdi
+Entre un prénom : Paul
+Entre un prénom : Kilian
+Tes amis sont Elouan, Mehdi, Paul, Kilian.
+\end{verbatim}	
+\end{exemple}
+
+\carreauxseyes{16.8}{16.8}
+\end{document}

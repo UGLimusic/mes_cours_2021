@@ -1,0 +1,171 @@
+\documentclass[10pt]{beamer}
+\usepackage{uglixbeamer}
+\usepackage{animate}
+\title{Tris}
+\subtitle{Algorithmique}
+\author{NSI1}
+\metroset{block=fill}
+
+\begin{document}
+    \maketitle
+    
+
+\begin{frame}{Introduction}
+Dans ce document nous allons
+\begin{enumerate}[--]
+	\item étudier quelques tris simples ;
+    \item déterminer leur complexité.
+\end{enumerate}
+\end{frame}
+\section{Tri par sélection}
+\begin{frame}{Illustration}
+        \begin{center}
+       \animategraphics[step,width=6cm]{0.2}{img/sel/sel}{0}{18}
+    \end{center}
+\end{frame}
+\begin{frame}{Principe}
+On dispose d'une liste \pythoninline{lst}.\\
+On trouve le plus petit élément de \pythoninline{lst}.\\
+On l'échange avec le premier élément de \pythoninline{lst}.\\
+Le premier élément de \pythoninline{lst} est en place et ne bougera plus, on recommence avec les éléments restants (du deuxième au dernier).\\
+Quand on a bien placé l'avant dernier élément, on s'arrête car tous les éléments sont rangés.
+\end{frame}
+\begin{frame}[fragile]{Algorithme}
+On peut l'écrire ainsi :
+\begin{verbatim}
+fonction tri_selection(lst)
+    n = longueur(lst)
+    pour i allant de 0 à n - 2
+        p = indice_minimum(lst,i)
+        échanger lst[p] et lst[i]
+\end{verbatim}
+Où \pythoninline{indice_minimum} est une fonction qui 
+\begin{enumerate}[--]
+	\item en entrée prend une liste et un entier qui est un indice de cette liste ;
+    \item renvoie l'indice du plus petit élément de la liste situé à partir de l'indice i.
+\end{enumerate}
+\end{frame}
+\begin{frame}[fragile]{Fonction \texttt{indice\_minimum}}
+\begin{verbatim}
+fonction indice_minimum(lst,i)
+    n = longueur(lst)
+    mini = lst[i]
+    i_mini = i
+    pour j allant de i à n - 1
+        si lst[j] < mini
+            mini = lst[j]
+            i_mini = j
+    renvoyer i_mini
+\end{verbatim}
+\end{frame}
+\begin{frame}[fragile]{Complexité}
+On décide que les \textsc{opel} ne sont que les accès en lecture / écriture aux éléments de la liste.\\
+On considère la complexité dans le pire des cas.
+\begin{verbatim}
+fonction indice_minimum(lst,i)
+    n = longueur(lst)               
+    mini = lst[i]                   # 1 opel
+    i_mini = i                      
+    pour j allant de i à n - 1      
+        si lst[j] < mini            # 1 opel
+            mini = lst[j]           # 1 opel
+            i_mini = j              
+    renvoyer i_mini
+\end{verbatim}
+Puisque la boucle est appelée n - 1 - i fois, la complexité de cette fonction est $2(n-1-i)+1$
+\end{frame}
+\begin{frame}[fragile]{Complexité}
+\small
+\begin{verbatim}
+fonction tri_selection(lst)
+    n = longueur(lst)               
+    pour i allant de 0 à n - 2      
+        p = indice_minimum(lst,i)   # 2(n-1-i)+1 opels
+        échanger lst[p] et lst[i]   # 2 opels
+\end{verbatim}
+\normalsize
+Ce qui nous donne une complexité de $$\sum_{0}^{n-2} 2(n-1-i) +3$$
+C'est-à-dire $$ \sum_{0}^{n-2} 2(n-i) + 1$$
+\end{frame}
+
+\begin{frame}{Calcul à ne pas noter}
+\begin{tabbing}
+$\sum_{0}^{n-2} 2(n-i) + 1$ \= $=2n(n-1)-2\left(\sum_{0}^{n-2}i\right) + (n-1)$\\
+\\
+\> $= 2n(n-1)-(n-2)(n-1)+(n-1)$\\
+\\
+\> $= (2n-n+2+1)(n-1)$\\
+\\
+\> $= (n+3)(n-1)$\\
+\\
+\> $= n^2+2n-3$\\
+\end{tabbing}
+Donc quand $n$ est grand, seul $n^2$ prévaut et on dira que la complexité du tri par sélection est en $n^2$.
+\end{frame}
+\section{Tri par insertion}
+
+
+\begin{frame}{Principe}
+On considère une liste (d'entiers ou d'éléments de tout type triable)  \pythoninline{lst}.
+
+\begin{enumerate}[--]
+    \item 	la liste composée de \pythoninline{lst[0]} est (évidemment) triée ;
+    \item 	on regarde si \pythoninline{lst[1]} est plus petit que \pythoninline{lst[0]}, si c'est le cas échange ces deux éléments ;
+    \item 	on peut donc dire que la liste composée des élements \pythoninline{lst[0]} et \pythoninline{lst[1]} est triée.
+    \item 	on continue ainsi : à chaque étape, la liste composée des i premiers éléments de \pythoninline{lst} est déjà triée, on va alors \og insérer \fg{} \pythoninline{lst[i]} dans cette sous-liste, et ainsi on aboutira à une liste des i+1 éléments triée ;
+    \item 	concrètement pour insérer \pythoninline{lst[i]} au bon endroit, on le compare avec l'élément précédent : tant qu'il est plus petit on l'échange avec celui-ci.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Algorithme}
+On peut déjà produire la fonction \pythoninline{place} qui
+\begin{enumerate}[--]
+    \item 	prend en entrée une liste \pythoninline{lst} et un entier \pythoninline{i} avec les \textit{préconditions} suivantes
+            \begin{enumerate}[\textbullet]
+                \item i est inférieur à la longueur de la liste ;
+                \item  les i premiers éléments de \pythoninline{lst} sont déjà triés dans l'ordre croissant ;
+            \end{enumerate}
+    \item	ne renvoie rien mais place le i\eme élément à la bonne place pour que les i+1 premiers éléments de \pythoninline{lst} soient triés.
+\end{enumerate}
+\end{frame}
+\begin{frame}[fragile]{Algorithme de la fonction \texttt{place}}
+\begin{verbatim}
+fonction place(lst : liste, i : entier):
+    tant que i > 0 et que lst[i-1] > lst[i]:
+        echange lst[i] et lst[i-1]
+        i = i - 1
+\end{verbatim}
+\end{frame}
+\begin{frame}[fragile]{Algorithme de tri par insertion}
+\begin{verbatim}
+fonction tri_insertion( lst : liste): 
+    n = longueur(lst)
+    pour i allant de 1 à n-1:
+        place(lst,i)
+\end{verbatim}
+\end{frame}
+
+\begin{frame}{Complexité}
+Tout comme le tri par sélection, on peut montrer que la complexité temporelle pire cas du tri par insertion est $2n^2-2n$, et donc de l'ordre de $n^2$.
+\end{frame}
+
+\section{Tri à bulles}
+\begin{frame}{Principe}
+On dispose toujours d'une liste \pythoninline{lst} d'éléments que l'on peut comparer.\\
+\begin{enumerate}[--]
+	\item on parcourt la liste du premier élément à l'avant-dernier : si cet élément est plus grand que le suivant, on les échange ;
+    \item tant qu'on a fait au moins un échange, on recommence.
+\end{enumerate}
+\end{frame}
+\begin{frame}{Algorithme}
+Il est à trouver par toi-même.
+\end{frame}
+\begin{frame}{Complexité}
+Elle est encore de l'ordre de $n^2$, (presque proportionnelle à $n^2$ quand $n$ est grand) mais on peut baisser le \og facteur de proportionnalité\fg{} en optimisant l'algorithme (voir activités).
+\end{frame}
+\end{document}
+
+
+    
+
+

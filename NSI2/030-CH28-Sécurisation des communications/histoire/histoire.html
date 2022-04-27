@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <title>Sécurisation des communications</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/reset.css">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/reveal.css">
+  <style>
+    .reveal .sourceCode {  /* see #7635 */
+      overflow: visible;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/theme/white.css" id="theme">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Sécurisation des communications</h1>
+  <p class="subtitle">petite Histoire</p>
+  <p class="date">25 avril 2022</p>
+</section>
+
+<section class="slide level6">
+
+<p>Un concept « vieux comme le monde »…</p>
+</section>
+<section class="slide level6">
+
+</section>
+<section>
+<section id="avant-j.c.-peuple-hébreu" class="title-slide slide level1">
+<h1>500 avant J.C., peuple Hébreu</h1>
+
+</section>
+<section class="slide level6">
+
+<p>Code Atbash</p>
+<p><img data-src="img/atbash.png" /></p>
+</section>
+<section class="slide level6">
+
+</section></section>
+<section>
+<section id="avant-j.c.-grèce" class="title-slide slide level1">
+<h1>400 avant J.C., Grèce</h1>
+
+</section>
+<section class="slide level6">
+
+<p>Scytale</p>
+<p><img data-src="img/scytale.png" style="width:50.0%" /></p>
+</section>
+<section class="slide level6">
+
+</section></section>
+<section>
+<section id="avant-j.c.-rome" class="title-slide slide level1">
+<h1>50 avant J.C., Rome</h1>
+
+</section>
+<section class="slide level6">
+
+<p>Code de César</p>
+<p><img data-src="img/cesar.png" style="width:75.0%" /></p>
+</section>
+<section class="slide level6">
+
+</section></section>
+<section>
+<section id="fin-xvie-siècle-france" class="title-slide slide level1">
+<h1>Fin XVIe Siècle, France</h1>
+
+</section>
+<section class="slide level6">
+
+<p>Chiffre de Vigenère</p>
+<p><img data-src="img/vigenere.png" style="width:30.0%" /></p>
+<ul>
+<li class="fragment">inventé par le diplomate Blaise Vigenère ;</li>
+<li class="fragment">cassé 2 siècles plus tard.</li>
+</ul>
+</section>
+<section class="slide level6">
+
+</section></section>
+<section>
+<section id="fin-xixe-pays-bas" class="title-slide slide level1">
+<h1>Fin XIXe, Pays-bas</h1>
+
+</section>
+<section class="slide level6">
+
+<p><img data-src="img/kerckhoffs.jpg" style="width:15.0%" /></p>
+<p>Principe de Kerckhoffs :</p>
+<p><em>« la sécurité d’un système ne doit pas dépendre de la
+préservation du secret de l’algorithme, mais reposer sur le secret de la
+clef »</em></p>
+</section>
+<section class="slide level6">
+
+</section></section>
+<section>
+<section id="etats-unis" class="title-slide slide level1">
+<h1>1917, Etats-Unis</h1>
+
+</section>
+<section class="slide level6">
+
+<p>Technique du <em>masque jetable</em></p>
+<p>Principe:</p>
+<ul>
+<li class="fragment">créer un masque <em>aléatoire</em> à usage unique
+de même taille que le message à coder ;</li>
+<li class="fragment">appliquer une opération de type XOR.</li>
+</ul>
+</section>
+<section class="slide level6">
+
+<ul>
+<li class="fragment">seul système théoriquement sûr : pas d’autre moyen
+que la force brute.</li>
+<li class="fragment">en pratique, comment échanger le masque ?</li>
+<li class="fragment">utilisé par Ché Guevarra et Fidel Castro pour
+communiquer entre eux.</li>
+</ul>
+</section>
+<section class="slide level6">
+
+</section></section>
+<section>
+<section id="allemagne" class="title-slide slide level1">
+<h1>1918, Allemagne</h1>
+
+</section>
+<section class="slide level6">
+
+<p>Création de la machine Enigma</p>
+<p><img data-src="img/enigma.png" style="width:20.0%" /></p>
+<ul>
+<li class="fragment">Utilisée par l’Allemagne nazie ;</li>
+<li class="fragment">cassée par A. Turing et M. Rejewski.</li>
+</ul>
+</section>
+<section class="slide level6">
+
+</section></section>
+<section>
+<section id="etats-unis-1" class="title-slide slide level1">
+<h1>1975, Etats-Unis</h1>
+
+</section>
+<section class="slide level6">
+
+<p>DES : Data Encryption Standard</p>
+<ul>
+<li class="fragment">système de chiffrement <em>symétrique</em> ;</li>
+<li class="fragment">clé privée de 56 bits ;</li>
+<li class="fragment">créé pour sécuriser les communications
+d’entreprises.</li>
+</ul>
+</section>
+<section class="slide level6">
+
+<p>Symétrique ?</p>
+</section>
+<section class="slide level6">
+
+<p>Tous les systèmes précédents sont symétriques :</p>
+<ul>
+<li class="fragment">la clé pour chiffrer est la même que celle qui sert
+à déchiffrer.</li>
+</ul>
+</section>
+<section class="slide level6">
+
+</section></section>
+<section>
+<section id="etats-unis-2" class="title-slide slide level1">
+<h1>1976, Etats-Unis</h1>
+
+</section>
+<section class="slide level6">
+
+<p>Chiffrement asymétrique</p>
+<p><img data-src="img/Diffie.webp" style="width:40.0%" /></p>
+<ul>
+<li class="fragment">Diffie et Hellman introduisent l’idée de <em>clé
+privée</em> et <em>clé publique</em> ;</li>
+<li class="fragment">principe établi, mais pas vraiment concrétisé…</li>
+</ul>
+</section>
+<section class="slide level6">
+
+</section></section>
+<section>
+<section id="etats-unis-3" class="title-slide slide level1">
+<h1>1977, Etats-Unis</h1>
+
+</section>
+<section class="slide level6">
+
+<p>RSA</p>
+<p><img data-src="img/rsa.jpg" style="width:40.0%" /></p>
+<ul>
+<li class="fragment">chiffrement asymétrique ;</li>
+<li class="fragment">crée par Rivest, Shamir et Adleman ;</li>
+<li class="fragment">LAAARGEMENT utilisé encore aujourd’hui : cartes
+bancaires, protocole HTTPS…</li>
+</ul>
+</section>
+<section class="slide level6">
+
+</section></section>
+<section>
+<section id="etats-unis-4" class="title-slide slide level1">
+<h1>1991, Etats-Unis</h1>
+
+</section>
+<section class="slide level6">
+
+<p>MD5</p>
+<p>Créé par Rivest (le R de RSA).</p>
+<p>Fonction de hachage servant à</p>
+<ul>
+<li class="fragment">générer des empreintes de fichiers ;</li>
+<li class="fragment">générer des mots de passes ;</li>
+<li class="fragment">signer numériquement des documents.</li>
+</ul>
+</section>
+<section class="slide level6">
+
+<p>MD5 est abandonné aujourd’hui au profit de SHA-256 (par exemple).</p>
+</section>
+<section class="slide level6">
+
+</section></section>
+<section>
+<section id="section" class="title-slide slide level1">
+<h1>1994</h1>
+
+</section>
+<section class="slide level6">
+
+<p>HTTPS</p>
+<p>Netscape crée une version sécurisée de HTTP basée sur</p>
+<ul>
+<li class="fragment">un système de chiffrement asymétrique de type RSA
+;</li>
+<li class="fragment">un système de chiffrement symétrique.</li>
+</ul>
+</section>
+<section class="slide level6">
+
+</section></section>
+<section>
+<section id="section-1" class="title-slide slide level1">
+<h1>2000</h1>
+
+</section>
+<section class="slide level6">
+
+<p>AES : Advanced Encryption Standard</p>
+<p><img data-src="img/aes.png" style="width:30.0%" /></p>
+</section>
+<section class="slide level6">
+
+<ul>
+<li class="fragment">système de chiffrement <em>symétrique</em>
+successeur de DES utilisant une clef de 128 à 256 bits ;</li>
+<li class="fragment">utilisé dans les routeurs WIFI (WPA2), les chaînes
+TV cryptées et dans HTTPS également;</li>
+</ul>
+</section>
+<section class="slide level6">
+
+</section></section>
+<section>
+<section id="début-xxie-siécle" class="title-slide slide level1">
+<h1>Début XXIe siécle</h1>
+
+</section>
+<section class="slide level6">
+
+<p>Utilisation de la physique quantique pour la cryptographie</p>
+<p><img data-src="img/quint.webp" style="width:50.0%" /></p>
+</section>
+<section class="slide level6">
+
+</section></section>
+<section>
+<section id="section-2" class="title-slide slide level1">
+<h1>2009</h1>
+
+</section>
+<section class="slide level6">
+
+<p>BITCOIN</p>
+<p><img data-src="img/bc.webp" style="width:50.0%" /></p>
+<p>Apparition de la première cryptomonnaie basée (entre autres) sur la
+fonction de hachage SHA-256.</p>
+</section></section>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/reveal.js@^4//dist/reveal.js"></script>
+
+  <!-- reveal.js plugins -->
+  <script src="https://unpkg.com/reveal.js@^4//plugin/notes/notes.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/search/search.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/zoom/zoom.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/math/math.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+        // Display controls in the bottom right corner
+        controls: true,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: true,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'bottom-right',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: false,
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: false,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: true,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'default',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: true,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'slide',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'fade',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    </body>
+</html>

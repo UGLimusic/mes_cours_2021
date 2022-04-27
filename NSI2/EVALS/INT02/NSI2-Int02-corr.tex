@@ -1,0 +1,103 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[margin=2cm]{geometry}
+\usepackage[thinfonts]{uglix2}
+\pagestyle{empty}
+\usepackage{ulem}
+\nouveaustyle
+\begin{document}
+\titre{Interrogation 02 - Corrigé}{NSI2}{09/2021}
+
+\exo{}\\
+
+La SA Bulot utilise la base de données \textbf{GestSalar} pour gérer son personnel. Elle vous communique le schéma relationnel relatif à la base de données :\\
+
+\textbf{Etablissement}(\uline{id\_etab}, ville\_etab)\\
+
+\textbf{Employe}(\uline{id\_emp}, nom\_emp, qualif\_emp, date\_embauch\_emp,\dashuline{id\_etab}, \dashuline{id\_poste})\\
+
+\textbf{Poste} (\uline{id\_poste}, libelle\_poste, \dashuline{id\_cat})\\
+
+\textbf{Categorie}(\uline{id\_cat}, libelle\_cat)\\
+
+\begin{enumerate}[\bfseries 1.]
+	\item 	Un établissement se situe-t-il dans une et une seule ville ? Justifie ta réponse.
+
+    \begin{encadre}[Réponse]
+    Puisque id\_etab est la clé primaire de \textbf{Etablissement}, chacun d'entre eux ne peut apparaître qu'une fois dans cette table, avec par conséquent une unique valeur de ville\_etab : un établissement ne peut se situer dans deux villes différentes.
+    \end{encadre}
+	\item 	Dans les faits, chaque employé occupe un poste de travail précis. Le schéma relationnel traduit-il bien ce fait ? Justifie ta réponse.
+            \begin{encadre}[Réponse]
+            Chaque employé apparaît une fois et une seule dans la relation \textbf{Employe} car id\_emp est la clé primaire de cette relation. Ainsi chacun d'eux a un unique id\_poste et donc un unique poste.
+            \end{encadre}
+
+    \item   On voudrait ajouter une relation \textbf{Salaire}, qui permettrait d'intégrer les salaires de chaque employés \textbf{pour chaque mois} de la manière suivante :
+            \begin{enumerate}[--]
+            	\item 	le salaire de base;
+            	\item 	les primes pour le mois;
+            \end{enumerate}
+            Écrire la relation \textbf{Salaire}.
+
+            \begin{encadre}[Réponse]
+            \textbf{Salaire}(\uline{\dashuline{id\_emp}, annee, mois}, base, prime)\\
+
+            La clé primaire est le triplet (id\_emp, annee, mois) : on ne peut guère faire autrement pour stocker les informations de chaque employé, mois par mois.\\
+
+            id\_emp est une clé étrangère, faisant référence à la valeur id\_emp de \textbf{Employe}.
+            \end{encadre}
+\end{enumerate}
+
+\exo{}\\
+
+Son professeur a demandé à Jules Le Men, étudiant en Licence d'Informatique, de produire un script SQL pour créer une base de données permettant de
+stocker des informations sur un étudiant et les diplômes qu'il prépare.
+
+Voici ce que Jules a implémenté :
+
+\begin{sql}
+DROP TABLE IF EXISTS Etudiant;
+DROP TABLE IF EXISTS Diplome;
+
+CREATE TABLE Diplome
+(
+    id_dip INTEGER PRIMARY KEY,
+    nom_dip TEXT
+);
+
+CREATE TABLE Etudiant(
+    nom_etu TEXT PRIMARY KEY,
+    date_naiss_etu TEXT,
+    diplome_etu TEXT REFERENCES Diplome(id_dip)
+);
+
+INSERT INTO Diplome VALUES
+    (1, "Licence d'Informatique"),
+    (2, "BTS SIO");
+
+INSERT INTO Etudiant VALUES
+    ("Le Men", "2000-07-28",1),
+    ("Desloges", "2002-11-20",2);
+\end{sql}
+
+
+\begin{enumerate}[\bfseries 1.]
+	\item 	Explique pourquoi selon ce modèle, Antoine Le Men, le frère de Jules, ne peut pas préparer de diplôme.
+    \begin{encadre}[Réponse]
+    Malheureusement la clé primaire de \textbf{Etudiant} est le nom de l'étudiant, ce qui interdit à deux étudiants ayant le même patronyme d'être en même temps dans la BDD.
+    \end{encadre}
+	\item 	Explique pourquoi Killian Desloges ne peut pas s'incrire pour préparer une licence de philosophie en plus de son cursus actuel.\\
+    \begin{encadre}[Réponse]
+    Telle que conçue, un étudiant, identifié de manière unique par son nom, ne peut être associé qu'à une valeur de diplome\_etu, et donc ne peut préparer qu'un seul diplôme.
+    \end{encadre}
+    \item   Reprend le schéma relationnel décrit par le SQL et modifie-le pour que les 2 problèmes précédents soient réglés .Tu dois donc écrire un modèle relationnel (pas besoin d'indiquer les types), pas un script SQL.\\
+        \begin{encadre}[Réponse]
+        \textbf{Diplome}(\uline{id\_dip}, nom\_dip)\\
+
+        \textbf{Etudiant}(\uline{id\_etu}, nom\_etu, date\_naiss\_etu)\\
+
+        \textbf{Prepare}(\uline{\dashuline{id\_etu}, \dashuline{id\_dip}})
+
+        \end{encadre}
+
+
+\end{enumerate}
+\end{document}

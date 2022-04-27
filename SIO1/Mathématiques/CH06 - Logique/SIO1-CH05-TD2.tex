@@ -1,0 +1,43 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[margin=2cm,top=1cm]{geometry}		
+\usepackage[thinfonts]{uglix2}
+\usepackage{numprint}
+\nouveaustyle
+\pagestyle{empty}
+\begin{document}
+\titre{Calcul des prédicats}{SIO1}{}
+
+\exo{}
+
+Dans chercher à démontrer quoi que ce soit, donner les négations des propositions suivantes
+
+\begin{enumerate}[\bfseries 1.]
+	\item 	$\forall x\in R,\, \forall y\in\R,\, \exists z\in \R,\, x<z<y$
+	\item 	$\exists x\in R,\, \exists y\in\R,\, x+y>3$
+	\item 	$\forall n\in N^*,\, \exists p\in\N^*$ n divise p ou p divise n\\
+\end{enumerate}
+
+\exo{}
+\begin{methode}
+	\begin{enumerate}[\textbullet]
+		\item 	Pour prouver qu'une proposition quantifiée par $\forall$ est fausse, il suffit de donner un \textit{contre exemple}.
+		\item 	Pour prouver qu'une proposition quantifiée par $\exists x...$ est vraie, on peut déterminer la valeur de $x$ qui convient.
+		\item 	Pour prouver qu'une proposition quantifiée par $\forall$ est vraie on a souvent recours à un raisonnement ou au calcul littéral.
+		\item 	De même pour prouver qu'une proposition quantifiée par $\exists x...$ est fausse.
+	\end{enumerate}
+\end{methode}
+
+\begin{enumerate}[\bfseries 1.]
+	\item 	A : $\forall n \in \N$ 3 divise n ou 2 divise n\\
+			Montrer que A est fausse
+	\item 	B : $\exists n \in \N$, 3 divise n et 4 divise n\\
+			Montrer que B est vraie
+	\item 	C : \og Quand on prend trois nombres entiers qui se suivent, leur somme est toujours un multiple de 3 \fg.\\
+			Montrer que C est vraie.
+	
+	\item 	D : \og Quand on prend quatre nombres entiers qui se suivent, leur somme est toujours un multiple de 4 \fg.\\
+				Montrer que D est fausse.
+	\item 	E : \og Il existe deux entiers k et n plus grands que 1 tels que k divise à la fois n et n+1.\\
+				Montrer que E est fausse. 
+\end{enumerate}
+\end{document}

@@ -1,0 +1,77 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[margin=2cm]{geometry}
+\usepackage[thinfonts,latinmath]{uglix2}
+\pagestyle{empty}
+\nouveaustyle
+\begin{document}
+\titre{Logique TD1}{SIO1}{}
+
+\exo{}
+
+En utilisant les tables de vérités, montrer que, quelles que soient les valeurs de vérité de P et Q, on a $$\neg P \wedge \neg Q \Leftrightarrow \neg(P\vee Q)$$
+
+Compléter
+
+\begin{center}
+
+	\begin{tabular}{|c|c|c|c|c|c|c|}
+		\hline
+		P & Q & $\neg P$ & $\neg Q$ & $\neg P \wedge \neg Q$  & $P\vee Q$ & $\neg(P\vee Q)$ \\
+		\hline
+		&  &  &  &  &  &\\
+		\hline
+&		&  &  &  &  &  \\
+		\hline
+&		&  &  &  &  &  \\
+		\hline
+&		&  &  &  &  &  \\
+		\hline
+	\end{tabular}
+\end{center}
+Indiquer les colonnes identiques qui permettent de conclure.\\[2em]
+
+\exo{}
+
+En utilisant les tables de vérités, montrer que, quelles que soient les valeurs de vérité de P et Q, on a $$(P\vee Q)\wedge (P\vee \neg Q)\Leftrightarrow P$$
+
+Compléter
+
+\begin{center}
+
+	\begin{tabular}{|c|c|c|c|c|c|c|}
+		\hline
+		P & Q & $\neg P$ & $\neg Q$ & $P \vee Q$  & $P\vee \neg Q$ & $(P\vee Q)\wedge (P\vee \neg Q)$\\
+		\hline
+		&  &  &  &  &  &\\
+		\hline
+		&  &  &  &  &  &\\
+		\hline
+		&  &  &  &  &  &\\
+		\hline
+		&  &  &  & 	&  &  \\
+		\hline
+	\end{tabular}
+\end{center}
+Indiquer les colonnes identiques qui permettent de conclure.\\[2em]
+
+
+\exo{ - Lois de De Morgan}
+
+En utilisant des tables de vérité, montrer que, quelles que soient les valeurs de vérité de P et Q, on a $$\barmaj{P\vee Q}=\barmaj{P}\wedge\barmaj{Q}$$
+De même  montrer que $$\barmaj{P\wedge Q}=\barmaj{P}\vee\barmaj{Q}$$
+\newpage
+\exo{ - On peut retrouver tous les opérateurs à partir du nor}
+
+Pour toutes propositions $A$ et $B$ on définit l'opération \og nor\fg{}, notée $\downarrow$ par : $$A\downarrow B \Longleftrightarrow\barmaj{A\vee B}$$
+
+Cette opération est dite \textit{universelle} car elle permet de retrouver toutes les autres opérations.
+
+\begin{enumerate}[\bfseries 1.]
+	\item 	Montrer que $A\downarrow A \Longleftrightarrow \barmaj{A}$ (on peut donc retrouver l'opération « non »).
+	\item 	En déduire que l'on peut retrouver l'opération « et » ainsi : $$(A\downarrow B)\downarrow(A\downarrow B) = A\vee B$$ 
+	\item 	Comment à partir de $A$, $B$ et $\downarrow$ obtenir $A\wedge B$ (penser aux lois de De Morgan) ?
+\end{enumerate}
+
+
+
+\end{document}

@@ -1,0 +1,126 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[margin=2cm,top=1cm]{geometry}
+\usepackage[thinfonts]{uglix2}
+\pagestyle{empty}
+\setlength{\columnseprule}{0.5pt}
+\setminted{fontsize=\small}
+\begin{document}
+\titreinterro{Interrogation 03}{NSI1}{09/2021}
+
+\begin{multicols}{2}
+\begin{pythoncode}
+n = 2
+while n < 13:
+    n += 3
+print(n)
+        \end{pythoncode}
+%
+    \begin{enumerate}[\case\ \ a.]
+        \item 2
+        \item 11
+        \item 14
+    \end{enumerate}
+
+
+\begin{pythoncode}
+n = 7
+while n > 7:
+    n = n + 4
+print(n)
+\end{pythoncode}
+Ce script affiche
+    \begin{enumerate}[\case\ \ a.]
+        \item 7
+        \item 8
+        \item 11
+    \end{enumerate}
+
+\begin{pythoncode}
+n = 0
+for i in range(10):
+    n += 2
+print(n)
+        \end{pythoncode}
+    \columnbreak
+
+    \begin{enumerate}[\case\ \ a.]
+        \item 10
+        \item 20
+        \item 18
+    \end{enumerate}
+
+\begin{pythoncode}
+s = "bonjour"
+c = 0
+for e in s:
+    c += 1
+print(c)
+        \end{pythoncode}
+Ce script affiche
+    \begin{enumerate}[\case\ \ a.]
+        \item Il génère une erreur
+        \item 6
+        \item 3
+    \end{enumerate}
+
+\begin{pythoncode}
+n_e = 0
+c = "la matiere revee"
+for l in c:
+    if l == "e":
+            n_e += 1
+print(ne)
+          \end{pythoncode}
+
+    \begin{enumerate}[\case\ \ a.]
+        \item 3
+        \item 5
+        \item Il génère une erreur
+    \end{enumerate}
+\newpage
+\begin{pythoncode}
+c = "la vache mache"
+r = ""
+for l in c:
+    if l == "a":
+        r = r + "o"
+    else:
+        r = r + l
+print(r)
+          \end{pythoncode}
+    Qu'affiche ce script ?\\
+
+    \carreauxseyes{7.2}{2.4}
+
+
+
+\begin{pythoncode}
+c = "C'est dur la vie."
+r = ""
+i = 0
+while i < len(c) and c[i] != "u":
+    r = r + c[i]
+    i += 1
+print(r)
+        \end{pythoncode}
+    Qu'affiche ce script ?\\
+
+\carreauxseyes{7.2}{2.4}
+\end{multicols}
+
+Quelles doivent être les valeurs de \pythoninline{a}, \pythoninline{b} et \pythoninline{c} pour que la plage de valeurs \pythoninline{range(a, b, c)} soit\\
+
+\pythoninline{0, 1, 2, 3, 4, 5} ? \\
+
+\carreauxseyes{16.8}{1.6}\\
+
+\pythoninline{2, 5, 8, 11, 14,  ... , 998} ? \\
+
+\carreauxseyes{16.8}{1.6}\\
+
+\pythoninline{100, 98, 96, ... , 2, 0} ? \\
+
+\carreauxseyes{16.8}{1.6}\\
+
+\end{document}
+

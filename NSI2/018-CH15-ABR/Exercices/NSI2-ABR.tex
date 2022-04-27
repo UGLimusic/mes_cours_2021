@@ -1,0 +1,36 @@
+\documentclass[a4paper,12pt,french]{article}
+\usepackage[margin=2cm]{geometry}
+\usepackage[thinfonts]{uglix2}
+\nouveaustyle
+
+\begin{document}
+\titre{ABR - Exercices}{NSI2}{2020} 
+
+\begin{exercice}
+Donner tous les ABR formé des n\oe uds 1, 2 et 3.
+\end{exercice}
+
+
+\begin{exercice}
+Quel parcours d'un ABR donne la liste de éléments dans l'ordre croissant ?
+\end{exercice}
+
+\begin{exercice}
+Créer une classe \pythoninline{NodeBST} dans un fichier \pythoninline{node_bst.py}. BST est un sigle signifiant de \textit{binary search tree}.\\
+Elle se compose de tout ce qu'il y a dans la classe \pythoninline{Node} avec en plus :
+\begin{enumerate}[--]
+	\item une méthode \pythoninline{add_value}, pour ajouter un élément comme vu dans le cours;
+    \item la méthode spéciale \pythoninline{___contains__} qui permet de vérifier si un élément est présent ou non dans l'arbre à l'aide du mot-clé \pythoninline{in}
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}
+Où se trouve le minimum des n\oe uds ABR ? Où est le maximum ?\\
+En déduire deux méthodes \pythoninline{smallest} et \pythoninline{greatest} pour la classe \pythoninline{NodeBST}.
+\end{exercice}
+
+\begin{exercice} [ hors programme]
+Implementer la méthode \pythoninline{delete_value} qui enlève le n\oe ud contenant la valeur correspondante de l'ABR comme vu en cours.
+\end{exercice}
+
+\end{document}

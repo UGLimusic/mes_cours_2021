@@ -1,0 +1,57 @@
+\documentclass[a4paper,12pt,french]{book}
+\usepackage[margin=2cm]{geometry}
+\usepackage[thinfonts]{uglix2}
+
+\setminted{fontsize=\small}\nouveaustyle
+\begin{document}
+\titre{Exercices de programmation}{NSI1}{10/2021} 
+
+\begin{exercice}
+On considère une liste \texttt{L}.\\
+\'Ecrire un programme qui enlève tous les 2 de la liste.\\
+
+Par exemple, si la valeur de \texttt{L} avant le programme est \begin{center}
+\texttt{[1, 1, 2, 2, 2, 4, 3, 2, 2, 1]}
+\end{center} alors après l'exécution du programme \texttt{L} devra valoir \begin{center}
+\texttt{[1, 1, 4, 3, 1]}
+\end{center}
+\end{exercice}
+
+\begin{exercice}
+\'Ecrire une fonction \texttt{enleve\_2} qui \begin{enumerate}[--]
+	\item en entrée prend une liste;
+    \item en sortie renvoie une liste, composée des éléments de la liste d'entrée, dans le même ordre mais sans les 2.
+\end{enumerate}
+Par exemple si \texttt{L} vaut \texttt{[1, 2, 2, 3, 2]} alors \texttt{enleve\_2(L)} vaut \texttt{[1, 3]} et le fait d'avoir appelé la fonction n'a pas modifié \texttt{L}.
+\end{exercice}
+
+\begin{exercice}
+\'Ecrire une fonction \texttt{renverse} qui \begin{enumerate}[--]
+	\item en entrée prend une liste;
+    \item en sortie renvoie une liste, composée des éléments de la liste d'entrée mais dans l'ordre inverse.
+\end{enumerate}
+Par exemple si \texttt{L} vaut \texttt{[1, 2, 3, 4]} alors \texttt{renverse(L)} vaut \texttt{[4, 3, 2, 1]} et le fait d'avoir appelé la fonction n'a pas modifié \texttt{L}.\\
+
+\textbf{Attention :} on n'a pas le droit d'utiliser \pythoninline{L.reverse()}.
+\end{exercice}
+
+\begin{exercice}
+\'Ecrire une fonction \texttt{renverse\_en\_place} qui
+\begin{enumerate}[--]
+	\item en entrée prend une liste;
+    \item ne renvoie rien mais renverse les éléments de la liste.
+\end{enumerate}
+Par exemple si \texttt{L} vaut \texttt{[3, 4, 5]}, alors après l'appel de \texttt{renverse\_en\_place(L)}, \texttt{L} vaut \texttt{[5,4,3]}.\\
+
+\textbf{Attention :} on n'a pas le droit de créer une deuxième liste dans la fonction.
+\end{exercice}
+
+\begin{exercice}
+Compléter
+\begin{minted}[breaklines]{python}
+def doublon(L : list) -> bool :
+    """ Renvoie True si une valeur de la liste apparaît au moins deux fois et False si chaque valeur est unique """
+\end{minted}
+\end{exercice}
+
+\end{document}

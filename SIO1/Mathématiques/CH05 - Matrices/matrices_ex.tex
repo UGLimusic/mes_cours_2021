@@ -1,0 +1,140 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[margin=2cm]{geometry}		
+\usepackage[thinfonts]{uglix2}
+\usepackage{graphicx}
+\usepackage{array}
+\newcommand{\tabstrut}{\vrule height 1.25em depth 0.5em width 0pt}
+\nouveaustyle
+\begin{document}
+\titre{Matrices - Exercices}{\textsc{BTSSIO}}{}
+	
+	
+\exo{}
+
+Dans un parc d’une ville, deux marchands ambulants vendent des beignets,
+des crêpes et des gaufres. On a noté les ventes de chacun pour samedi et dimanche derniers.
+
+\begin{multicols}{2}
+\begin{center}
+Marchand 1\\[1em]
+
+\begin{tabular}{|c|c|c|c|}
+\hline
+ & beignets & crêpes & gaufres \\
+\hline
+samedi & 20 & 36 & 12 \\
+\hline
+dimanche & 26 & 40 & 18 \\
+\hline
+\end{tabular}
+\columnbreak
+
+
+Marchand 2\\[1em]
+
+\begin{tabular}{|c|c|c|c|}
+\hline
+ & beignets & crêpes & gaufres \\
+\hline
+samedi & 30 & 40 & 22 \\
+\hline
+dimanche & 30 & 48 & 38 \\
+\hline
+\end{tabular}
+\end{center}
+\end{multicols}
+
+On peut retenir l’information donnée par un tableau en conservant uniquement les
+nombres disposés de la même façon. On représente le 1er tableau par la matrice A :
+$$A=\begin{pmatrix}
+20&36&12\\
+26&40&18
+\end{pmatrix}$$
+
+\begin{enumerate}[\bfseries 1.]
+	\item 	Donner la matrice B représentant le deuxième tableau.
+	\item 	Que valent $a_{12}$, $a_{11}$, $a_{23}$ et $b_{11}$ ?
+	\item 	Calculer $A+B$ et donner la signification de la matrice.
+	\item 	Calculer $A-B$ et donner la signification de la matrice.
+	\item  	Samedi et dimanche prochains, weekend de fête, on prévoit que les ventes vont augmenter de 50\%.\\ 
+			Par quel nombre k faut-il multiplier chacune des ventes du 1\er marchand ? \'Ecrire la matrice  kA.\\
+			Donner la matrice kB correspondant aux ventes du 2\eme marchand.
+	\item 	Un beignet est vendu 2 euros, une crêpe 1 euro et une gaufre 1,50 euro.\\
+			On note V la matrice des prix de vente
+			$$V=\begin{pmatrix}
+			2\\
+			1\\
+			1,5
+			\end{pmatrix}$$
+			Quelle opération matricielle donne le montant des ventes par jour pour le 1\er marchand ? Pour le 2\eme ?
+	\item 	 Les deux marchands travaillent pour le compte du même patron, qui leur demande	de calculer les coûts d’achats et les revenus pour chaque jour. Le coût d’achat d’un
+			beignet est 0,40 euro, d’une crêpe 0,25 euro, d’une gaufre 0,30 euro. On note T la matrice donnant prix d’achat et prix de vente par catégorie
+			$$T=\begin{pmatrix}
+						0,4 & 2\\
+						0,25 & 1\\
+						0,3 & 1,5
+						\end{pmatrix}$$
+			Quelle opération matricielle permet le calcul des coûts d’achat et revenus par jour
+			pour le 1\er marchand ?\\
+			Calculer, de même, les coûts d’achats et les revenus par jour pour le 2\eme marchand
+			puis, globalement, pour le patron.			
+\end{enumerate}
+
+\exo{- Calculs à la main}
+
+On considère les matrice $A=\begin{pmatrix}
+-5&2\\
+-3&1
+\end{pmatrix}$ et $B=\begin{pmatrix}
+1&-2\\
+3&-5
+\end{pmatrix}$.
+
+\begin{enumerate}[\bfseries 1.]
+	\item 	Montrer \textit{à la main} que A et B sont inverses.
+	\item 	On considère le système (S) suivant :
+			$$\begin{cases}
+				-5x+2y	&=7	\\
+				-3x+y	&=8
+			\end{cases}$$
+			
+			Montrer que ce système peut se réécrire matriciellement $$AX=Y$$ et préciser $X$ et $Y$
+	\item 	En déduire \textit{à la main} les solutions du système (S).\\
+\end{enumerate}
+
+
+\exo{- Avec calculatrice}
+
+On considère les matrice $A=\begin{pmatrix}
+8&11&3\\
+4&7&2\\
+1&3&1\\
+\end{pmatrix}$ et $B=\begin{pmatrix}
+1&-2&1\\
+-2&5&-4\\
+5&-13&12
+\end{pmatrix}$.
+
+\begin{enumerate}[\bfseries 1.]
+	\item 	Comment avec la calculatrice vérifie-t-on que A et B sont inverses ?
+	\item 	On considère le système (S) suivant :
+			$$\begin{cases}
+				8x+11y+3z	&=1	\\
+				4x+7y+2z	&=2 \\
+				x+3y+z&=3
+			\end{cases}$$
+			
+			Montrer que ce système peut se réécrire matriciellement $$AX=Y$$ et préciser $X$ et $Y$
+	\item 	En déduire \textit{à la main} les solutions du système (S).\\
+\end{enumerate}
+
+\exo{}
+
+À la papeterie:
+\begin{enumerate}[--]
+	\item 	3 stylos, 2 cahiers et 4 gommes coûtent 6,30€;
+	\item 	5 stylos, 7 cahiers et 1 gomme coûtent 15€;
+	\item 	10 stylos, 1 cahier et 6 gommes coûtent 6€.
+\end{enumerate}
+À l'aide de la calculatrice et en expliquant la démarche, déterminer le prix de chaque article.
+\end{document}
