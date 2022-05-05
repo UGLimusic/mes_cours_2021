@@ -1,0 +1,58 @@
+\documentclass[a4paper,10pt,french]{article}
+\usepackage[margin=2cm]{geometry}
+\usepackage[thinfonts,latinmath]{uglix2}
+\pagestyle{empty}
+\nouveaustyle
+\begin{document}
+
+\titreinterro{Rendu de monnaie glouton}{NSI1}{2022}	
+
+On veut rendre la monnaie en euros\textbf{avec le moins de pièces et de billets possible}.\\
+Il suffit de commencer par les plus gros billets ou les plus grosses pièces.\\
+
+Comment rends-tu 59 € ?\\
+
+\carreauxseyes{16.8}{2.4}\\
+
+Comment rends-tu 28,81 € ?\\
+
+\carreauxseyes{16.8}{2.4}\\
+
+On va essayer d'écrire l'algorithme associé à cette méthode.\\
+
+Pour que ce soit facile :
+\begin{enumerate}[--]
+	\item 	on va écrire toutes les valeurs des pièces et des billets en centimes ;
+	\item 	on va trier dans l'ordre décroissant, ce qui nous aidera à « commencer par les plus gros ».
+\end{enumerate}
+On crée donc la variable suivante\\ 
+
+\mintinline[fontsize=\scriptsize]{python}{liste_pieces = [20_000, 10_000, 5_000,2_000,1_000, 500, 200, 100, 50, 20, 10, 5, 2, 1]} \\
+
+Tu vas expliquer en détail comment tu procèdes pour rendre 59 € : 
+\begin{enumerate}[--]
+	\item 	On considère la variable \pythoninline{montant} valant \pythoninline{5_900} (on l'a convertie en centimes) ;
+	\item 	Que faire avec avec \pythoninline{liste_pieces} ?
+    \item 	Y a-t-il une ou plusieurs boucles ?
+    \item  	A-t-on besoin d'autres variables ?\\
+\end{enumerate}
+ 
+\carreauxseyes{16.8}{3.2}\\
+
+\carreauxseyes{16.8}{3.2}\\
+
+\'Ecris maintenant cet algorithme (en langage naturel ou en Python).\\
+
+\carreauxseyes{16.8}{8}\\
+
+\textbf{Pour les expert.e.s}\\
+
+Pour prouver cet algorithme on a besoin 
+\begin{enumerate}[--]
+	\item 	d'un variant de boucle pour la terminaison ;
+	\item 	d'un invariant de boucle pour la correction.
+\end{enumerate}
+Donne ces deux éléments.\\
+
+\carreauxseyes{16.8}{8}
+\end{document}

@@ -1,0 +1,240 @@
+\documentclass[a4paper,12pt,french]{article}
+\usepackage[margin=2cm]{geometry}
+\usepackage[thinfonts,latinmath]{uglix2}
+\usepackage{ulem}
+\nouveaustyle
+\begin{document}
+\titre{Titre}{classe}{date}
+
+\exo{}
+
+\textbf{Partie A : Réseau}
+
+\begin{enumerate}[\bfseries 1.]
+\item 	Le terme \textit{architecture} fait référence au matériel. Lors d'une communication, les données sont découpées en \textit{paquets}.
+Le terme qui désigne l'ensemble des règles de communication utilisées pour réaliser un service particulier sur le
+réseau est \textit{protocole}.
+\item 	L'élément A joue le rôle de \textit{passerelle} entre un réseau local et le réseau global : c'est un \textit{routeur}.
+B et C sont quant à eux des \textit{switch}.
+\item Le poste 3 est sur le réseau local, 192.168.11.0, donc la ligne peut être :
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{Matériel} &\textbf{Adresse IP}& \textbf{Masque}&\textbf{Passerelle}\\
+\hline 
+
+Poste 3  & 192.168.11.xx & 255.255.255.0 & 192.168.11.1 \\
+\hline
+\end{tabular}
+\end{center}
+
+où xx est n'importe quel nombre compris entre 2 et 9 inclus, et 22 et 253 inclus.
+
+22 semble être le choix logique.\\ 
+
+\end{enumerate}
+
+\textbf{Partie B : Routage réseaux}
+
+\begin{enumerate}[\bfseries 1.]
+\item 	 Les réseaux \textit{directement connectés }à R1 sont ceux qui sont à distance nulle. Leurs IP sont
+\begin{enumerate}[--]
+\item 	10.0.0.0
+\item 	 172.16.0.0
+\item	192.168.0.0
+\end{enumerate} 
+\item 		Il suffit de repérer à quels réseaux les adresses IP appartiennent :
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Adresse IP destination}&\textbf{Interface Machine ou Port}\\
+\hline
+192.168.1.55            & 192.168.0.1\\
+\hline
+172.18.10.10            & 172.15.0.1 \\               
+\hline
+\end{tabular}
+\end{center}
+\item	Il s'agit bien du protocole RIP puisqu'on a aucune information sur les débits des connexions.
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Routeur}&\textbf{Métrique}&\textbf{Route}\\
+\hline
+R2 & 0 & R1 - R2 \\
+\hline
+R3 & 0 & R1 - R3 \\
+\hline
+R4 & 1 & R1 - R2 - R4 \\
+\hline
+R5 & 1 & R1 - R3 - R4 \\
+\hline
+R6 & 1 & R1 - R3 - R6 \\
+\hline
+R7 & 2 & R1 - R2 - R4 - R7 \\
+\hline
+\end{tabular}
+\end{center}
+Pour la ligne de R7 on aurait tout aussi bien pu indiquer R1 - R3 - R6 - R7.
+
+\end{enumerate}
+
+
+\exo{}
+
+\begin{enumerate}[\bfseries 1.]
+\item 	La liaison n'est pas valide car dans cette liste figure \pythoninline{["Luchon", "Muret"]}, qui n'est pas une \textit{liaison directe}.
+\item 	\begin{minted}{python}
+liaisonJoueur1 = [["Tarbes", "St Gaudens"],
+                  ["Toulouse", "Castres"],
+                  ["Toulouse", "Castelnaudary"],
+                  ["Castres", "Mezamet"],
+                  ["Castelnaudary", "Carcassonne"]] 
+\end{minted}
+\item \begin{enumerate}[\bfseries a.]
+\item 	\pythoninline{assert listeLiaisons, "la liste est vide"} 
+\item 	 \pythoninline{construireDict(listeLiaison)} renvoie
+\begin{minted}{python}
+{
+    'Toulouse': ['Muret', 'Montauban'],
+    'Gaillac': ['St Sulpice'],
+    'Muret': ['Pamiers']
+}
+\end{minted}
+Ce n'est pas la bonne valeur, car il manque des clés.
+
+En fait, telle que la fonction est programmée, les villes figurant en deuxième position ne sont jamais mises en clé.
+\item On peut procéder de plusieurs manières.
+
+On peut rendre le code symétrique en rajoutant ce bloc en ligne 16 :
+
+\begin{minted}{python}
+if not villeB in Dict.keys():
+    Dict[villeB] = [villeA]
+else:
+    destinationsB = Dict[villeB]
+    if not villeA in destinationsB:
+        destinationsB.append(villeA)
+\end{minted}
+
+Toutefois, une solution bien plus courte et élégante consiste à remplacer la ligne 7 par :
+
+\begin{minted}[fontsize=\small]{python}
+for liaison in listeLiaisons + [[y, x] for [x, y] in listeLiaisons]:
+\end{minted}
+Ce qui « symétrise » la liste sur laquelle on itère.
+\end{enumerate}
+\end{enumerate}
+
+\exo{}
+
+\begin{enumerate}[\bfseries 1.]
+	\item 	Le langage utilisé est le SQL (\textit{Simple Query Language}).
+	\item   \begin{enumerate}[\bfseries a.]
+	           \item 	\texttt{ATOMES} a pour attributs
+                        \begin{enumerate}[--]
+                            \item 	Z : INT
+                            \item nom : VARCHAR
+                            \item Sym : VARCHAR
+                            \item  L : INT
+                            \item C : INT
+                            \item  masse\_atom : DECIMAL
+                        \end{enumerate}
+                        \textbf{VALENCE} a pour attributs
+                        \begin{enumerate}[--]
+                           	\item 	Col : INTEGER
+                           	\item 	Couche : TEXT
+                        \end{enumerate}
+            	\item 	Les attributs \texttt{Z}, \texttt{nom} et \texttt{Sym} peuvent jouer le rôle de clé primaire car chacun de ces attributs identifie de manière
+                        unique un élément.
+
+                        C peut être une clé étrangère faisant réference à \texttt{Col}, clé primaire de \texttt{VALENCE}.
+                \item 	On a le schéma suivant :
+
+                        \textbf{ATOMES}(\uline{Z INT}, nom VARCHAR , Sym VARCHAR , L INT, \dashuline{C INT}, masse\_atom DEC )\\
+
+                        VALENCE(\uline{COL INT}, Couche TEXT)
+            \end{enumerate}
+
+    \item 	\begin{enumerate}[\bfseries a.]
+               	\item 	 On obtient la table suivante :
+                        \begin{center}
+                            \begin{tabular}{|c|}
+                                \hline
+                                \textbf{nom}\\
+                                \hline
+                                aluminium \\
+                                \hline
+                                 argon\\
+                                \hline     
+                                 chlore    \\
+                                \hline
+                                  magnesium\\
+                                \hline
+                                sodium\\
+                                \hline
+                                phosphore\\
+                                \hline
+                                soufre\\
+                                \hline
+                                silice\\
+                                \hline
+                            \end{tabular}
+                        \end{center}
+           	    \item  On obtient une table avec l'attribut \texttt{C}, où tous les entiers de 1 à 18 sont présents.
+            \end{enumerate}
+    \item 	\begin{enumerate}[\bfseries a.]
+    	   \item
+\begin{minted}{sql}
+SELECT  nom,masse_atom FROM ATOMES;
+\end{minted}
+            \item
+\begin{minted}{sql}
+SELECT Sym FROM ATOMES
+JOIN VALENCE ON ATOMES.C = VALENCE.col
+WHERE VALENCE.couche = "s";
+\end{minted}
+        \end{enumerate}
+    \item 
+\begin{minted}{sql}
+UPDATE ATOMES
+SET masse_atom = 39.948
+WHERE Sym = "Ar";
+\end{minted}
+\end{enumerate}
+
+\exo{}
+
+\begin{enumerate}[\bfseries 1.]
+	\item 	\begin{enumerate}[\bfseries a.]
+            	\item 	Un fichier CSV (\textit{Comma Separated Values}) est un fichier texte contenant des informations (liste ou liste de listes) séparées par des virgules.
+            	\item 	\pythoninline{prenom} et la valeur de retour sont de type \pythoninline{str}.
+            \end{enumerate}
+	\item 	 \begin{enumerate}[\bfseries a.]
+            	\item 	\pythoninline{import csv}
+            	\item 	\pythoninline{assert type(prenom) is str, "L'argument doit être de type str."}
+                \item 	Voici ce que l'on peut faire :
+\begin{minted}{python}
+def genre(prenom):
+
+    if not (type(prenom) is str):
+        return ""
+
+    liste_M = ['f', 'd', 'c', 'b', 'o', 'n', 'm', 'l', 'k',
+                'j', 'é', 'h', 'w', 'v', 'u', 't', 's', 'r',
+                'q', 'p', 'i', 'þ', 'z', 'x', 'ç', 'ö', 'ã',
+                'â', 'ï', 'g']
+    liste_F = ['e', 'a', 'ä', 'ü', 'y', 'ë']
+
+    if prenom[len(prenom)-1].lower() in liste_M :
+        return "M"
+    elif prenom[len(prenom)-1].lower() in liste_F :
+        return "F"
+    else :
+        return "I"                        
+\end{minted}
+Ainsi si l'argument n'est pas un str, la fonction renvoie \pythoninline{""} mais ne produit pas d'erreur.
+\end{enumerate}
+\item Il suffit de remplacer \pythoninline{prenom[len(prenom)-1]} par \pythoninline{prenom[-2:]}.
+\end{enumerate}
+\end{document}

@@ -1,0 +1,212 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  12pt,
+  a4paper,
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{setspace}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+  \setmainfont[Numbers=Lowercase,Numbers=Proportional]{Fira Sans Light}
+  \setmonofont[]{Fira Mono}
+  \setmathfont[]{Fira Math Light}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin = 2cm,landscape]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={Corrigé du CCF sur l'ISSN},
+  pdfauthor={NSI2},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Corrigé du CCF sur l'ISSN}
+\author{NSI2}
+\date{}
+
+\begin{document}
+\maketitle
+
+\setstretch{1.2}
+\hypertarget{question-a-1}{%
+\subsubsection{Question A-1}\label{question-a-1}}
+
+On effectue le calcul :
+
+\(8\times 0+7\times 3+6\times 9+5\times 8+4\times 1+3\times 1+2\times 6 = 134\).
+
+Donc \(N=134\).
+
+Alors \(r=134\mod 11 = 2\) et la clé est \(11-2=9\).
+
+Donc ce numéro est valide.
+
+Pour compléter l'ISSN 0373-800 on fait pareil :
+
+\(8\times 0+7\times 3+6\times 7+5\times 3+4\times 8+3\times 0+2\times 0 = 110\).
+
+Donc \(N=110\).
+
+Alors \(r=110\mod 11 = 0\) et la clé est \(0\).
+
+Donc ce numéro ISSN complété est 0373-8000.
+
+\hypertarget{question-a-2}{%
+\subsubsection{Question A-2}\label{question-a-2}}
+
+On n'a réécrit que la partie utile de l'algorithme :
+
+\begin{verbatim}
+Début
+    N ← 0
+    m ← 8
+    Pour i allant de 0 à 6
+        N ← N + m * int(code7[i])
+        m ← m - 1
+    FinPour
+    Renvoyer N
+Fin
+\end{verbatim}
+
+Voici la traduction en Python :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ calcN(code7: }\BuiltInTok{str}\NormalTok{) }\OperatorTok{{-}\textgreater{}} \BuiltInTok{int}\NormalTok{:}
+\NormalTok{    N }\OperatorTok{=} \DecValTok{0} \CommentTok{\# on initialise N à 0}
+\NormalTok{    m }\OperatorTok{=} \DecValTok{8} \CommentTok{\# on commence par multiplier par 8}
+    \ControlFlowTok{for}\NormalTok{ i }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\DecValTok{7}\NormalTok{):  }\CommentTok{\# pour parcourir code7}
+\NormalTok{        N }\OperatorTok{+=}\NormalTok{ m }\OperatorTok{*} \BuiltInTok{int}\NormalTok{(code7[i])  }\CommentTok{\# on rajoute la bonne valeur}
+\NormalTok{        m }\OperatorTok{{-}=}\DecValTok{1} \CommentTok{\# m "descend"}
+    \ControlFlowTok{return}\NormalTok{ N }\CommentTok{\# on renvoie le résultat}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{question-a-3}{%
+\subsubsection{Question A-3}\label{question-a-3}}
+
+On écrit l'algorithme en Python
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ calcCle(N: }\BuiltInTok{int}\NormalTok{) }\OperatorTok{{-}\textgreater{}} \BuiltInTok{str}\NormalTok{:}
+\NormalTok{    r }\OperatorTok{=}\NormalTok{ N }\OperatorTok{\%} \DecValTok{11} \CommentTok{\# on calcule le reste}
+    \ControlFlowTok{if} \KeywordTok{not}\NormalTok{ r:}
+        \ControlFlowTok{return} \StringTok{\textquotesingle{}0\textquotesingle{}}  \CommentTok{\# comme dit, s\textquotesingle{}il vaut 0 on renvoie \textquotesingle{}0\textquotesingle{}}
+    \ControlFlowTok{elif}\NormalTok{ r }\OperatorTok{==} \DecValTok{1}\NormalTok{:}
+        \ControlFlowTok{return} \StringTok{\textquotesingle{}X\textquotesingle{}} \CommentTok{\# Sinon s\textquotesingle{}il vaut 1 on renvoie \textquotesingle{}X\textquotesingle{}}
+    \ControlFlowTok{else}\NormalTok{:}
+        \ControlFlowTok{return} \BuiltInTok{str}\NormalTok{(}\DecValTok{11} \OperatorTok{{-}}\NormalTok{ r) }\CommentTok{\# Sinon cela}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{question-a-4}{%
+\subsubsection{Question A-4}\label{question-a-4}}
+
+De même
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ ISSNok(code8: }\BuiltInTok{str}\NormalTok{) }\OperatorTok{{-}\textgreater{}} \BuiltInTok{bool}\NormalTok{:}
+\NormalTok{    code7 }\OperatorTok{=}\NormalTok{ code8[:}\DecValTok{7}\NormalTok{] }\CommentTok{\# On ne prend que les chiffres sans la clé}
+\NormalTok{    cle }\OperatorTok{=}\NormalTok{ code8[}\DecValTok{7}\NormalTok{] }\CommentTok{\# on stocke la clé}
+\NormalTok{    N }\OperatorTok{=}\NormalTok{ calcN(code7) }\CommentTok{\# on calcule N pour les 7 premiers chiffres}
+    \ControlFlowTok{if}\NormalTok{ cle }\OperatorTok{==}\NormalTok{ calcCle(N):   }\CommentTok{\# on vérifie si la clé calculée correspond}
+        \ControlFlowTok{return} \VariableTok{True}  \CommentTok{\# si oui c\textquotesingle{}est bien}
+    \ControlFlowTok{else}\NormalTok{:}
+        \ControlFlowTok{return} \VariableTok{False} \CommentTok{\# sinon ce n\textquotesingle{}est pas bien}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{question-a-5}{%
+\subsubsection{Question A-5}\label{question-a-5}}
+
+De même
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ bonus(code8:}\BuiltInTok{str}\NormalTok{) }\OperatorTok{{-}\textgreater{}} \VariableTok{None}\NormalTok{:}
+\NormalTok{    code6}\OperatorTok{=}\NormalTok{ code8[}\DecValTok{1}\NormalTok{:}\DecValTok{7}\NormalTok{] }\CommentTok{\# On ne garde que les 6 chiffres, sans les extrémités }
+    \ControlFlowTok{for}\NormalTok{ i }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\DecValTok{10}\NormalTok{):  }\CommentTok{\# i va parcourir toutes les valeurs de 0 à 9}
+\NormalTok{        code\_variant }\OperatorTok{=} \BuiltInTok{str}\NormalTok{(i)}\OperatorTok{+}\NormalTok{code6 }\CommentTok{\# on forme un code de 7 chiffres commençant par i}
+        \BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"Pour }\SpecialCharTok{\{}\NormalTok{code\_variant}\SpecialCharTok{\}}\SpecialStringTok{ on trouve une  }\CharTok{\textbackslash{}}
+\SpecialStringTok{        clé de }\SpecialCharTok{\{}\NormalTok{calcCle(calcN(code\_variant))}\SpecialCharTok{\}}\SpecialStringTok{."}\NormalTok{)  }\CommentTok{\# on affiche la clé du code obtenu}
+\end{Highlighting}
+\end{Shaded}
+
+
+\end{document}
